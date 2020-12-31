@@ -3,15 +3,19 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Home from "Routes/Home";
 import Search from "Routes/Search";
 import Company from "Routes/Company";
+import Header from "Components/Header";
 
 const Router = () => (
   <BrowserRouter>
-    <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/search" component={Search} />
-      <Route path="/company" component={Company} />
-      <Redirect from="*" to="/" />
-    </Switch>
+    <>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/search" component={Search} />
+        <Route path="/company" component={Company} />
+        <Redirect from="*" to="/" />
+      </Switch>
+    </>
   </BrowserRouter>
 );
 

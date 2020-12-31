@@ -1,19 +1,20 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 
-const Header = () => (
+const Header = ({ location: { pathname } }) => (
   <header>
     <ul>
       <li>
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a href="/search">Search</a>
+        <Link to="/search">Search</Link>
       </li>
       <li>
-        <a href="/company">TV</a>
+        <Link to="/company">Company Introduction</Link>
       </li>
     </ul>
   </header>
 );
 
-export default Header;
+export default withRouter(Header);
