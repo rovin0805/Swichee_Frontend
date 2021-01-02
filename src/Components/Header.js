@@ -11,6 +11,8 @@ const CssHeader = styled.header`
   height: 50px;
   display: flex;
   align-items: center;
+  z-index: 10;
+  box-shadow: 0px 1px 5px 0.1px rgba(0, 0, 0, 0.2);
 `;
 
 const List = styled.ul`
@@ -23,6 +25,7 @@ const Item = styled.li`
   text-align: center;
   border-bottom: 3px solid
     ${(props) => (props.current ? "#FF9900" : "transparent")};
+  transition: border-bottom 0.2s ease-in-out;
 `;
 
 const CssLink = styled(Link)`
