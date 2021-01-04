@@ -18,7 +18,7 @@
 - [x] TOP 버튼
 - [x] 회사 푸터
 - [x] 사진 원본 다 보이기
-- [?] 우측 컬럼바 height 문제
+- [?] 우측 컬럼바 height 문제 -> make dynamic for number of categories
 - [ ] 포스팅 데이터 추가 : 날짜, 아바타, 댓글 수
 - [ ] 컨텐츠 옵션 (셀렉트)
 - [ ] hover animation

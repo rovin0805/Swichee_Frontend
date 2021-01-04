@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiOutlineArrowUp } from "react-icons/ai";
+import { AiOutlineFieldTime } from "react-icons/ai";
 import * as Scroll from "react-scroll";
 
 import Posting from "Components/Posting";
@@ -41,7 +42,7 @@ const Container = styled.div`
 const MainContent = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 `;
 
 const PostContainer = styled.div`
@@ -62,7 +63,7 @@ const SidebarContainer = styled.div`
 
 const Order = styled.div`
   width: 100%;
-  height: 560px; // TODO: make dynamic for number of categories
+  height: 480px; // TODO: make dynamic for number of categories
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   margin-top: 20px;
@@ -109,6 +110,15 @@ const TopBtn = styled.div`
   margin-top: 15px;
 `;
 
+const MainTitle = styled.div`
+  color: #ff9900;
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+`;
+
 const HomePresenter = ({ thumbnails, loading, error }) => {
   return (
     <>
@@ -117,50 +127,60 @@ const HomePresenter = ({ thumbnails, loading, error }) => {
       ) : (
         <Container>
           <Trending thumbnails={thumbnails} />
-          <MainContent>
-            <PostContainer>
-              {thumbnails &&
-                thumbnails.map((thumbnail) => (
-                  <Posting2
-                    key={thumbnail.Contents_id}
-                    id={thumbnail.Contents_id}
-                    imageUrl={thumbnail.Thumbnail}
-                    avatar={thumbnail.image}
-                    contentsType={thumbnail.type_id}
-                    title={thumbnail.Title}
-                    writer={thumbnail.User_name}
-                    blue={thumbnail.blue}
-                    likes={thumbnail.Likes}
-                    view={thumbnail.Views}
-                    comments={thumbnail.count}
-                    date={thumbnail.Date}
-                  />
-                ))}
-            </PostContainer>
-            <SidebarContainer>
-              <Order>
-                <OrderTitle>
+          <div>
+            <MainTitle>
+              <AiOutlineFieldTime
+                style={{ marginRight: 5 }}
+                color="#ff9900"
+                size={25}
+              />
+              Recent Posts
+            </MainTitle>
+            <MainContent>
+              <PostContainer>
+                {thumbnails &&
+                  thumbnails.map((thumbnail) => (
+                    <Posting2
+                      key={thumbnail.Contents_id}
+                      id={thumbnail.Contents_id}
+                      imageUrl={thumbnail.Thumbnail}
+                      avatar={thumbnail.image}
+                      contentsType={thumbnail.type_id}
+                      title={thumbnail.Title}
+                      writer={thumbnail.User_name}
+                      blue={thumbnail.blue}
+                      likes={thumbnail.Likes}
+                      view={thumbnail.Views}
+                      comments={thumbnail.count}
+                      date={thumbnail.Date}
+                    />
+                  ))}
+              </PostContainer>
+              <SidebarContainer>
+                <Order>
+                  {/* <OrderTitle>
                   Order
                   <OrderItem>최신순</OrderItem>
                   <OrderItem>인기순</OrderItem>
-                </OrderTitle>
-                <OrderTitle>
-                  Category
-                  {categories.map((category) => (
-                    <OrderItem key={categories.indexOf(category)}>
-                      {category}
-                    </OrderItem>
-                  ))}
-                </OrderTitle>
-              </Order>
-              <Footer>
-                <Link to="/company">About Swichee © 2021</Link>
-              </Footer>
-              <TopBtn onClick={() => Scroll.animateScroll.scrollToTop()}>
-                <AiOutlineArrowUp size={20} />
-              </TopBtn>
-            </SidebarContainer>
-          </MainContent>
+                </OrderTitle> */}
+                  <OrderTitle>
+                    Post Category
+                    {categories.map((category) => (
+                      <OrderItem key={categories.indexOf(category)}>
+                        {category}
+                      </OrderItem>
+                    ))}
+                  </OrderTitle>
+                </Order>
+                <Footer>
+                  <Link to="/company">About Swichee © 2021</Link>
+                </Footer>
+                <TopBtn onClick={() => Scroll.animateScroll.scrollToTop()}>
+                  <AiOutlineArrowUp size={20} />
+                </TopBtn>
+              </SidebarContainer>
+            </MainContent>
+          </div>
         </Container>
       )}
     </>
