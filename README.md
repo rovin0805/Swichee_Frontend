@@ -23,7 +23,7 @@
 - [ ] 컨텐츠 옵션 (셀렉트)
 - [ ] hover animation
 - [ ] media query
-- [ ] Trending api + (moving animation effect (?))
+- [ ] Trending api + (moving animation effect (?)) + behavior&buttons issues
 - [ ] order / categories api
 - [ ] 무한 스크롤
 
