@@ -105,6 +105,9 @@ const Posting = ({
   writer,
   blue,
   view,
+  avatar,
+  comments,
+  date,
 }) => (
   <Link to={`/posting/${id}`}>
     <Post>
@@ -152,6 +155,7 @@ const Posting = ({
         <Badge id="sub">
           <AiOutlineMessage style={{ marginRight: 5 }} size={20} />
           123
+          {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
         </Badge>
         <Date>12일전</Date>
       </ActionBtns>
@@ -167,6 +171,9 @@ Posting.propTypes = {
   writer: PropTypes.string.isRequired,
   blue: PropTypes.number.isRequired,
   view: PropTypes.number.isRequired,
+  avatar: PropTypes.string,
+  comments: PropTypes.number,
+  date: PropTypes.string,
 };
 
 export default Posting;

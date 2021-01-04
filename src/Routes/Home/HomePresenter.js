@@ -1,12 +1,12 @@
-import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { AiOutlineArrowUp } from "react-icons/ai";
+import * as Scroll from "react-scroll";
+
 import Posting from "Components/Posting";
 import Posting2 from "Components/Posting2";
 import Trending from "Components/Trending";
-import { AiOutlineArrowUp } from "react-icons/ai";
-import * as Scroll from "react-scroll";
 
 const categories = [
   "Funding",
@@ -46,6 +46,8 @@ const MainContent = styled.div`
 const PostContainer = styled.div`
   width: 100%;
 `;
+
+///////////// side bar ///////////
 
 const SidebarContainer = styled.div`
   width: 250px;
@@ -106,86 +108,63 @@ const TopBtn = styled.div`
   margin-top: 15px;
 `;
 
-const TrendingContainer = styled.div`
-  width: 100%;
-  height: 150px;
-  border: 1px solid black;
-  margin-top: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  line-height: 148px; //different from height because of border, should be the same as height in the end
-`;
-
-const CarouselImg = styled.div`
-  width: 80px;
-  height: 80px;
-  border-radius: 100px;
-  border: 1px solid black;
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 10px;
-`;
-
-const HomePresenter = ({ thumbnails, loading, error }) => (
-  <>
-    {loading ? (
-      <p>loading..</p>
-    ) : (
-      <Container>
-        <TrendingContainer>
-          {thumbnails &&
-            thumbnails.map((s, i) => (
-              <CarouselImg className="cImg">
-                <img alt="blah" style={{ width: "100%" }} src={s.Thumbnail} />
-              </CarouselImg>
-            ))}
-        </TrendingContainer>
-        <MainContent>
-          <PostContainer>
-            {thumbnails &&
-              thumbnails.map((thumbnail) => (
-                <Posting2
-                  key={thumbnail.Contents_id}
-                  id={thumbnail.Contents_id}
-                  imageUrl={thumbnail.Thumbnail}
-                  contentsType={thumbnail.type_id}
-                  title={thumbnail.Title}
-                  writer={thumbnail.User_name}
-                  blue={thumbnail.blue}
-                  likes={thumbnail.Likes}
-                  view={thumbnail.Views}
-                />
-              ))}
-          </PostContainer>
-          <SidebarContainer>
-            <Order>
-              <OrderTitle>
-                Order
-                <OrderItem>최신순</OrderItem>
-                <OrderItem>인기순</OrderItem>
-              </OrderTitle>
-              <OrderTitle>
-                Category
-                {categories.map((category) => (
-                  <OrderItem key={categories.indexOf(category)}>
-                    {category}
-                  </OrderItem>
+const HomePresenter = ({ thumbnails, loading, error }) => {
+  return (
+    <>
+      {loading ? (
+        <p>loading..</p>
+      ) : (
+        <Container>
+          <Trending />
+          <MainContent>
+            <PostContainer>
+              {thumbnails &&
+                thumbnails.map((thumbnail) => (
+                  <Posting2
+                    key={thumbnail.Contents_id}
+                    id={thumbnail.Contents_id}
+                    imageUrl={thumbnail.Thumbnail}
+                    avatar={thumbnail.image}
+                    contentsType={thumbnail.type_id}
+                    title={thumbnail.Title}
+                    writer={thumbnail.User_name}
+                    blue={thumbnail.blue}
+                    likes={thumbnail.Likes}
+                    view={thumbnail.Views}
+                    comments={thumbnail.count}
+                    date={thumbnail.Date}
+                  />
                 ))}
-              </OrderTitle>
-            </Order>
-            <Footer>
-              <Link to="/company">About Swichee © 2021</Link>
-            </Footer>
-            <TopBtn onClick={() => Scroll.animateScroll.scrollToTop()}>
-              <AiOutlineArrowUp size={20} />
-            </TopBtn>
-          </SidebarContainer>
-        </MainContent>
-      </Container>
-    )}
-  </>
-);
+            </PostContainer>
+            <SidebarContainer>
+              <Order>
+                <OrderTitle>
+                  Order
+                  <OrderItem>최신순</OrderItem>
+                  <OrderItem>인기순</OrderItem>
+                </OrderTitle>
+                <OrderTitle>
+                  Category
+                  {categories.map((category) => (
+                    <OrderItem key={categories.indexOf(category)}>
+                      {category}
+                    </OrderItem>
+                  ))}
+                </OrderTitle>
+              </Order>
+              <Footer>
+                <Link to="/company">About Swichee © 2021</Link>
+              </Footer>
+              <TopBtn onClick={() => Scroll.animateScroll.scrollToTop()}>
+                <AiOutlineArrowUp size={20} />
+              </TopBtn>
+            </SidebarContainer>
+          </MainContent>
+        </Container>
+      )}
+    </>
+  );
+};
 
 HomePresenter.propTypes = {
   thumbnails: PropTypes.array,
