@@ -115,7 +115,7 @@ const HomePresenter = ({ thumbnails, loading, error }) => {
         <p>loading..</p>
       ) : (
         <Container>
-          <Trending />
+          <Trending thumbnails={thumbnails} />
           <MainContent>
             <PostContainer>
               {thumbnails &&

@@ -13,10 +13,9 @@ const TrendingContainer = styled.div`
   line-height: 148px; //different from height because of border, should be the same as height in the end
 `;
 
-//TODO: stupid Carousel doesn't smooth scroll, buttons disappear when they're not supposed to, etc. => need to fix
 class Trending extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.carousel = React.createRef();
     this.content = React.createRef();
     this.previous = React.createRef();
@@ -24,6 +23,7 @@ class Trending extends Component {
     this.handlePrevious = this.handlePrevious.bind(this);
     this.handleNext = this.handleNext.bind(this);
   }
+
   handlePrevious() {
     const { carousel, content, previous, next } = this;
     const currentCarousel = carousel.current;
@@ -45,6 +45,7 @@ class Trending extends Component {
       currentNext.style.display = "flex";
     }
   }
+
   handleNext() {
     const { carousel, content, previous, next } = this;
     const currentCarousel = carousel.current;
@@ -66,6 +67,7 @@ class Trending extends Component {
       currentNext.style.display = "none";
     }
   }
+
   render() {
     const {
       carousel,
@@ -80,11 +82,11 @@ class Trending extends Component {
         <div id="wrapper">
           <div id="carousel" ref={carousel}>
             <div id="content" ref={content}>
-              {trendingImages.map((imageUrl, index) => (
+              {this.props.thumbnails.map(({ Thumbnail }, index) => (
                 <img
-                  key={`${imageUrl}-${index}`}
-                  src={imageUrl}
-                  alt={`${imageUrl}-${index}`}
+                  key={`${Thumbnail}-${index}`}
+                  src={Thumbnail}
+                  alt={`${Thumbnail}-${index}`}
                   className="item"
                 />
               ))}
