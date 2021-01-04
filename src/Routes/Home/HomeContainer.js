@@ -12,6 +12,9 @@ class HomeContainer extends React.Component {
   async componentDidMount() {
     try {
       const { data: thumbnails } = await feedApi.thumbnails();
+      this.setState({
+        thumbnails,
+      });
       console.log(thumbnails);
     } catch {
       this.setState({

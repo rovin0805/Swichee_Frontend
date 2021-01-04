@@ -12,7 +12,8 @@ const CssHeader = styled.header`
   display: flex;
   align-items: center;
   z-index: 10;
-  box-shadow: 0px 1px 5px 0.1px rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px;
+  background-color: white;
 `;
 
 const List = styled.ul`
