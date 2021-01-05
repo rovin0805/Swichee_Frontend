@@ -17,7 +17,7 @@ const Post = styled.div`
   background-color: white;
   width: 90%;
   margin: 20px 0;
-  border-radius: 10px;
+  border-radius: 35px;
   // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   font-size: 18px;
   color: #383838;
@@ -35,7 +35,7 @@ const HeaderTop = styled.div`
 `;
 
 const HeadrBottom = styled.div`
-  margin-top: 13px;
+  margin: 18px 0 2px 0;
   font-weight: 600;
 `;
 
@@ -43,13 +43,14 @@ const Writer = styled.span`
   margin-left: 10px;
   display: flex;
   align-items: center;
+  font-family: 'Noto Sans KR';
   font-size: 15px;
 `;
 
 const Badge = styled.div`
   display: flex;
   align-items: center;
-  font-size: 25px;
+  font-size: 35px;
   cursor: pointer;
   &#sub {
     font-size: 15px;
@@ -72,7 +73,7 @@ const Img = styled.img.attrs((props) => ({
 }))`
   width: 450px; //fixed
   height: 450px; //fixed
-  border-radius: 10px;
+  border-radius: 35px;
   transition: 0.3s all ease-in-out;
   &:hover {
     transform: scale(1.05);
@@ -129,7 +130,7 @@ const Posting = ({
             <Writer>
               {writer}
               {blue === 1 ? (
-                <HiBadgeCheck color="#488dea" style={{ marginLeft: 1 }} />
+                <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
               ) : (
                 ""
               )}
