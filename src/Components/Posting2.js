@@ -29,13 +29,12 @@ const Header = styled.div`
 `;
 
 const HeaderTop = styled.div`
-  margin-top: 10px;
+  margin: 10px 0 18px 0;
   display: flex;
   justify-content: space-between;
 `;
 
 const HeadrBottom = styled.div`
-  margin-top: 13px;
   font-weight: 600;
 `;
 
@@ -44,12 +43,13 @@ const Writer = styled.span`
   display: flex;
   align-items: center;
   font-size: 15px;
+  font-family: "Noto Sans KR";
 `;
 
 const Badge = styled.div`
   display: flex;
   align-items: center;
-  font-size: 25px;
+  font-size: 35px;
   &#sub {
     font-size: 15px;
   }
@@ -127,7 +127,7 @@ const Posting = ({
             <Writer>
               {writer}
               {blue === 1 ? (
-                <HiBadgeCheck color="#488dea" style={{ marginLeft: 1 }} />
+                <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
               ) : (
                 ""
               )}
@@ -158,15 +158,15 @@ const Posting = ({
       </ImgContainer>
       <ActionBtns>
         <Badge id="sub">
-          <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={20} />
+          <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={25} />
           {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
         </Badge>
         <Badge id="sub">
-          <AiOutlineEye style={{ marginRight: 5 }} size={20} />
+          <AiOutlineEye style={{ marginRight: 5 }} size={25} />
           {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
         </Badge>
         <Badge id="sub">
-          <AiOutlineMessage style={{ marginRight: 5 }} size={20} />
+          <AiOutlineMessage style={{ marginRight: 5 }} size={25} />
           {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
         </Badge>
         <SDate>{date}</SDate>
