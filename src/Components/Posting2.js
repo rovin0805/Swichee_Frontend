@@ -86,8 +86,8 @@ const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 3px;
 `;
@@ -96,7 +96,7 @@ const ActionBtns = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 15px 10px;
+  padding: 20px 10px;
 `;
 
 const SDate = styled.span`
@@ -148,10 +148,14 @@ const Posting = ({
       <ImgContainer>
         <Img bgUrl={imageUrl}></Img>
         <Overlay>
-          {contentsType === 1 ? <HiPhotograph color="white" /> : ""}
-          {contentsType === 2 ? <MdAudiotrack color="white" /> : ""}
-          {contentsType === 3 ? <BsFillCameraVideoFill color="white" /> : ""}
-          {contentsType === 4 ? <CgFileDocument color="white" /> : ""}
+          {contentsType === 1 ? <HiPhotograph color="white" size={25} /> : ""}
+          {contentsType === 2 ? <MdAudiotrack color="white" size={25} /> : ""}
+          {contentsType === 3 ? (
+            <BsFillCameraVideoFill color="white" size={25} />
+          ) : (
+            ""
+          )}
+          {contentsType === 4 ? <CgFileDocument color="white" size={25} /> : ""}
         </Overlay>
       </ImgContainer>
       <ActionBtns>
