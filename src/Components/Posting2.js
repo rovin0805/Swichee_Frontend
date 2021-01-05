@@ -170,10 +170,12 @@ const Posting = ({
         <AiOutlineEye style={{ marginRight: 5 }} size={25} />
         {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
       </Badge>
-      <Badge id="sub">
-        <AiOutlineMessage style={{ marginRight: 5 }} size={25} />
-        {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
-      </Badge>
+      <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
+        <Badge id="sub">
+          <AiOutlineMessage style={{ marginRight: 5 }} size={25} />
+          {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
+        </Badge>
+      </Link>
       <SDate>{date}</SDate>
     </ActionBtns>
   </Post>
