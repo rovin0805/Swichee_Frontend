@@ -14,7 +14,7 @@ const Router = () => (
         <Route path="/" exact component={Home} />
         <Route path="/search" component={Search} />
         <Route path="/company" component={Company} />
-        <Route path="/posting/:id" component={Detail} />
+        <Route path="/posting" component={Detail} />
         <Redirect from="*" to="/" />
       </Switch>
     </>

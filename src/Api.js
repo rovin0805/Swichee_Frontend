@@ -7,9 +7,10 @@ const api = axios.create({
 export const feedApi = {
   thumbnails: () => api.get(""), // home
   postingDetail: (id, type) =>
-    api.get(`posting/${id}`, {
+    api.get("api/posting", {
       params: {
-        type,
+        id,
+        type_id: type,
       },
     }),
 };
