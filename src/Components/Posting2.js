@@ -34,7 +34,7 @@ const HeaderTop = styled.div`
 `;
 
 const HeadrBottom = styled.div`
-  margin-top: 13px;
+  margin: 18px 0 2px 30px;
   font-weight: 600;
 `;
 
@@ -42,13 +42,15 @@ const Writer = styled.span`
   margin-left: 10px;
   display: flex;
   align-items: center;
+  font-family: 'Noto Sans KR';
   font-size: 15px;
 `;
 
 const Badge = styled.div`
   display: flex;
   align-items: center;
-  font-size: 25px;
+  margin-left: 30px;
+  font-size: 35px;
   cursor: pointer;
   &#sub {
     font-size: 15px;
@@ -57,15 +59,21 @@ const Badge = styled.div`
 
 const ImgContainer = styled.div`
   overflow: hidden;
-  max-height: 500px;
-  position: relative;
+  height: 100%;
+  width: 100%;
+  display: inline-block;
   cursor: pointer;
 `;
 
 const Img = styled.img.attrs((props) => ({
   src: props.bgUrl,
 }))`
-  width: 100%;
+  width: 450px;
+  height: 450px;
+  display: block;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
   transition: 0.3s all ease-in-out;
   &:hover {
     transform: scale(1.1);
@@ -89,7 +97,8 @@ const ActionBtns = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 15px 10px;
+  padding: 15px 10px 10px;
+  margin-bottom: 20px;
 `;
 
 const SDate = styled.span`
@@ -122,7 +131,7 @@ const Posting = ({
             <Writer>
               {writer}
               {blue === 1 ? (
-                <HiBadgeCheck color="#488dea" style={{ marginLeft: 1 }} />
+                <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
               ) : (
                 ""
               )}
