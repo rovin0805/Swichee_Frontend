@@ -92,9 +92,13 @@ const ActionBtns = styled.div`
   padding: 15px 10px;
 `;
 
-const Date = styled.span`
+const SDate = styled.span`
   font-size: 15px;
 `;
+
+const getDate = new Date();
+
+console.log(getDate);
 
 const Posting = ({
   id,
@@ -154,10 +158,9 @@ const Posting = ({
         </Badge>
         <Badge id="sub">
           <AiOutlineMessage style={{ marginRight: 5 }} size={20} />
-          123
           {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
         </Badge>
-        <Date>12일전</Date>
+        <SDate>{date}</SDate>
       </ActionBtns>
     </Post>
   </Link>
