@@ -5,5 +5,11 @@ const api = axios.create({
 });
 
 export const feedApi = {
-  thumbnails: () => api.get(""),
+  thumbnails: () => api.get(""), // home
+  postingDetail: (id, type) =>
+    api.get(`posting/${id}`, {
+      params: {
+        type,
+      },
+    }),
 };

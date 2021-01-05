@@ -113,7 +113,7 @@ const Posting = ({
   comments,
   date,
 }) => (
-  <Link to={`/posting/${id}`}>
+  <Link to={`/posting/${id}?type=${contentsType}`}>
     <Post>
       <Header>
         <HeaderTop>
