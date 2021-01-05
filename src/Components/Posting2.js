@@ -17,7 +17,7 @@ const Post = styled.div`
   background-color: white;
   width: 90%;
   margin: 20px 0;
-  border-radius: 10px;
+  border-radius: 35px;
   // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   font-size: 18px;
   color: #383838;
@@ -50,7 +50,6 @@ const Badge = styled.div`
   display: flex;
   align-items: center;
   font-size: 25px;
-  cursor: pointer;
   &#sub {
     font-size: 15px;
   }
@@ -62,7 +61,6 @@ const ImgContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  cursor: pointer;
   display: flex;
   justify-content: center;
 `;
@@ -72,7 +70,7 @@ const Img = styled.img.attrs((props) => ({
 }))`
   width: 450px; //fixed
   height: 450px; //fixed
-  border-radius: 10px;
+  border-radius: 35px;
   transition: 0.3s all ease-in-out;
   &:hover {
     transform: scale(1.05);
@@ -120,8 +118,8 @@ const Posting = ({
   comments,
   date,
 }) => (
-  <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
-    <Post>
+  <Post>
+    <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
       <Header>
         <HeaderTop>
           <Badge>
@@ -173,8 +171,8 @@ const Posting = ({
         </Badge>
         <SDate>{date}</SDate>
       </ActionBtns>
-    </Post>
-  </Link>
+    </Link>
+  </Post>
 );
 
 Posting.propTypes = {
