@@ -18,7 +18,7 @@ const Post = styled.div`
   width: 90%;
   margin: 20px 0;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
+  // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   font-size: 18px;
   color: #383838;
 `;

@@ -11,10 +11,10 @@ const globalStyles = createGlobalStyle`
         box-sizing:border-box;
     }
     body{
-        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family:-apple-system, BlinkMacSystemFont, 'Noto Sans KR', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         padding-top: 50px;
         font-size: 12px;
-        background-color: whitesmoke;
+        background-color: #f4f5f7;
     }
 `;
 

@@ -34,13 +34,14 @@ const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: left;
 `;
 
 const Category = styled.div`
   width: 100%;
-  height: 480px; // TODO: make dynamic for number of categories
+  height: 530px; // TODO: make dynamic for number of categories
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
+  // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   margin-top: 20px;
   padding: 25px 20px;
   background-color: white;
@@ -48,13 +49,15 @@ const Category = styled.div`
 
 const Title = styled.ul`
   font-size: 15px;
+  margin-left: 10px;
   font-weight: bold;
   color: #ff9900;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 `;
 
 const Item = styled.li`
-  margin: 10px 0;
+  margin: 13px 0;
+  margin-left: 10px;
   font-size: 13px;
   color: #525252;
   cursor: pointer;
