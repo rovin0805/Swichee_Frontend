@@ -25,7 +25,7 @@ const Container = styled.div`
   width: 90%;
   height: ${postSizes.container};
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
+  // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -86,7 +86,7 @@ const SubInfo = styled.div`
 const Badge = styled.div`
   display: flex;
   align-items: center;
-  font-size: 25px;
+  font-size: 35px;
   cursor: pointer;
   &#sub {
     font-size: 15px;
@@ -94,7 +94,7 @@ const Badge = styled.div`
 `;
 
 const Writer = styled.span`
-  font-size: 18px;
+  font-size: 30px;
   margin-left: 10px;
   display: flex;
   align-items: center;
