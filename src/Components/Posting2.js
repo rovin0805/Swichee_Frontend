@@ -44,9 +44,11 @@ const Writer = styled.span`
   align-items: center;
   font-size: 15px;
   font-family: "Noto Sans KR";
+  cursor: pointer;
 `;
 
 const Badge = styled.div`
+  cursor: pointer;
   display: flex;
   align-items: center;
   font-size: 35px;
@@ -119,31 +121,33 @@ const Posting = ({
   date,
 }) => (
   <Post>
-    <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
-      <Header>
-        <HeaderTop>
-          <Badge>
-            <FaUserCircle />
-            <Writer>
-              {writer}
-              {blue === 1 ? (
-                <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-              ) : (
-                ""
-              )}
-            </Writer>
-          </Badge>
-          <Badge>
-            <BsThreeDots color="grey" />
-          </Badge>
-        </HeaderTop>
+    <Header>
+      <HeaderTop>
+        <Badge>
+          <FaUserCircle />
+          <Writer>
+            {writer}
+            {blue === 1 ? (
+              <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
+            ) : (
+              ""
+            )}
+          </Writer>
+        </Badge>
+        <Badge>
+          <BsThreeDots color="grey" />
+        </Badge>
+      </HeaderTop>
+      <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
         <HeadrBottom>
           {title.length > 30
             ? `${title.substring(0, 30).replace(/\.+$/, "")}...`
             : title}
         </HeadrBottom>
-      </Header>
-      <ImgContainer>
+      </Link>
+    </Header>
+    <ImgContainer>
+      <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
         <Img bgUrl={imageUrl}></Img>
         <Overlay>
           {contentsType === 1 ? <HiPhotograph color="white" size={25} /> : ""}
@@ -155,23 +159,23 @@ const Posting = ({
           )}
           {contentsType === 4 ? <CgFileDocument color="white" size={25} /> : ""}
         </Overlay>
-      </ImgContainer>
-      <ActionBtns>
-        <Badge id="sub">
-          <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={25} />
-          {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
-        </Badge>
-        <Badge id="sub">
-          <AiOutlineEye style={{ marginRight: 5 }} size={25} />
-          {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
-        </Badge>
-        <Badge id="sub">
-          <AiOutlineMessage style={{ marginRight: 5 }} size={25} />
-          {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
-        </Badge>
-        <SDate>{date}</SDate>
-      </ActionBtns>
-    </Link>
+      </Link>
+    </ImgContainer>
+    <ActionBtns>
+      <Badge id="sub">
+        <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={25} />
+        {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
+      </Badge>
+      <Badge id="sub">
+        <AiOutlineEye style={{ marginRight: 5 }} size={25} />
+        {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
+      </Badge>
+      <Badge id="sub">
+        <AiOutlineMessage style={{ marginRight: 5 }} size={25} />
+        {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
+      </Badge>
+      <SDate>{date}</SDate>
+    </ActionBtns>
   </Post>
 );
 
