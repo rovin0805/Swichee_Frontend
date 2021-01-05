@@ -24,7 +24,8 @@ const Post = styled.div`
 `;
 
 const Header = styled.div`
-  padding: 10px 15px 15px 15px;
+  /* padding: 10px 15px 15px 15px; */
+  padding: 15px 47px;
 `;
 
 const HeaderTop = styled.div`
@@ -56,26 +57,32 @@ const Badge = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  overflow: hidden;
-  max-height: 500px;
+  /* overflow: hidden;
+  max-height: 500px; */
+  width: 100%;
+  height: 100%;
   position: relative;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 `;
 
 const Img = styled.img.attrs((props) => ({
   src: props.bgUrl,
 }))`
-  width: 100%;
+  width: 450px; //fixed
+  height: 450px; //fixed
+  border-radius: 10px;
   transition: 0.3s all ease-in-out;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `;
 
 const Overlay = styled.div`
   position: absolute;
-  right: 0.75em;
-  top: 0.75em;
+  right: 70px;
+  top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,7 +120,7 @@ const Posting = ({
   comments,
   date,
 }) => (
-  <Link to={`/posting/${id}?type=${contentsType}`}>
+  <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
     <Post>
       <Header>
         <HeaderTop>
