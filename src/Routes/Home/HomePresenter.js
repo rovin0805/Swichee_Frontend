@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { AiOutlineFieldTime } from "react-icons/ai";
-import Posting2 from "Components/Posting2";
+import HomePosting from "Components/HomePosting";
 import Trending from "Components/Trending";
 import Sidebar from "Components/Sidebar";
 import Loader from "Components/Loader";
@@ -53,7 +53,7 @@ const HomePresenter = ({ thumbnails, loading, error }) => {
               <PostContainer>
                 {thumbnails &&
                   thumbnails.map((thumbnail) => (
-                    <Posting2
+                    <HomePosting
                       key={thumbnail.Contents_id}
                       id={thumbnail.Contents_id}
                       imageUrl={thumbnail.Thumbnail}
