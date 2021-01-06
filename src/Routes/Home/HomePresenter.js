@@ -33,7 +33,6 @@ const PostContainer = styled.div`
 `;
 
 const HomePresenter = ({ thumbnails, loading, error }) => {
-  // console.log(thumbnails);
   return (
     <>
       {loading ? (

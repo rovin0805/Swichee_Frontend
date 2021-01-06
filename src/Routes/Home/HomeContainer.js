@@ -20,7 +20,7 @@ class HomeContainer extends React.Component {
       this.setState({
         thumbnails,
       });
-      console.log(thumbnails);
+      console.log("initial api call", thumbnails);
     } catch {
       this.setState({
         error: "Can't find any information.",
@@ -34,13 +34,17 @@ class HomeContainer extends React.Component {
 
   async fetchMoreData() {
     const { data: thumbnails } = await feedApi.thumbnails();
-    this.setState((prev) => ({
-      thumbnails: [...prev.thumbnails, ...thumbnails],
-    }));
+    this.setState(
+      (prev) => ({
+        thumbnails: [...prev.thumbnails, ...thumbnails],
+      }),
+      () => console.log("fetched new data", thumbnails)
+    );
   }
 
   render() {
     const { thumbnails, error, loading } = this.state;
+    console.log("updated data", thumbnails);
     return (
       <InfiniteScroll
         dataLength={this.state.thumbnails.length}
