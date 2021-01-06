@@ -6,22 +6,32 @@ import queryStirng from "query-string";
 class DetailContainer extends React.Component {
   constructor(props) {
     super(props);
-    // const {
-    //   location: { search },
-    // } = props;
     this.state = {
       postingDetail: null,
+      recommendPostings: null,
+      comments: null,
       error: null,
       loading: true,
     };
   }
 
   async componentDidMount() {
-    const { search } = this.props.location;
+    console.log(this.props);
+    const {
+      location: { search },
+      history: { push },
+    } = this.props;
     const queryObj = queryStirng.parse(search);
     const { id, type_id } = queryObj;
     const parsedId = parseInt(id);
     const parsedTypeId = parseInt(type_id);
+
+    if (isNaN(parsedId)) {
+      return push("/");
+    }
+    if (isNaN(parsedTypeId)) {
+      return push("/");
+    }
 
     try {
       const { data: postingDetail } = await feedApi.postingDetail(
@@ -45,7 +55,6 @@ class DetailContainer extends React.Component {
 
   render() {
     const { postingDetail, error, loading } = this.state;
-    console.log(this.props);
     return (
       <DetailPresenter
         postingDetail={postingDetail}
