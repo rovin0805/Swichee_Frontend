@@ -4,6 +4,7 @@ import { AiOutlineFieldTime } from "react-icons/ai";
 import Posting2 from "Components/Posting2";
 import Trending from "Components/Trending";
 import Sidebar from "Components/Sidebar";
+import Loader from "Components/Loader";
 
 const Container = styled.div`
   width: 800px;
@@ -35,7 +36,7 @@ const HomePresenter = ({ thumbnails, loading, error }) => {
   return (
     <>
       {loading ? (
-        <p>loading..</p>
+        <Loader />
       ) : (
         <Container>
           <Trending thumbnails={thumbnails} />
