@@ -33,6 +33,7 @@ const PostContainer = styled.div`
 `;
 
 const HomePresenter = ({ thumbnails, loading, error }) => {
+  // console.log(thumbnails);
   return (
     <>
       {loading ? (
@@ -52,9 +53,9 @@ const HomePresenter = ({ thumbnails, loading, error }) => {
             <MainContent>
               <PostContainer>
                 {thumbnails &&
-                  thumbnails.map((thumbnail) => (
+                  thumbnails.map((thumbnail, index) => (
                     <HomePosting
-                      key={thumbnail.Contents_id}
+                      key={`post-${index}`}
                       id={thumbnail.Contents_id}
                       imageUrl={thumbnail.Thumbnail}
                       avatar={thumbnail.image}
