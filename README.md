@@ -21,7 +21,7 @@
 - [x] 사진 원본 다 보이기
 - [?] 우측 컬럼바 height 문제 -> make dynamic for number of categories
 - [x] hover animation
-- [ ] 포스팅 데이터 추가 : 날짜, 아바타
+- [ ] 포스팅 데이터 추가 : 아바타
 - [ ] 컨텐츠 옵션 (셀렉트)
 - [ ] Trending api + (moving animation effect (?))
 - [ ] order / categories api

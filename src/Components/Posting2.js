@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
+import parseISO from "date-fns/parseISO";
 import { HiBadgeCheck } from "react-icons/hi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
@@ -103,9 +105,8 @@ const SDate = styled.span`
   font-size: 15px;
 `;
 
-const getDate = new Date();
-
-console.log(getDate);
+let now = new Date();
+console.log(now);
 
 const Posting = ({
   id,
@@ -119,67 +120,74 @@ const Posting = ({
   avatar,
   comments,
   date,
-}) => (
-  <Post>
-    <Header>
-      <HeaderTop>
-        <Badge>
-          <FaUserCircle />
-          <Writer>
-            {writer}
-            {blue === 1 ? (
-              <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
+}) => {
+  const time = parseISO(date);
+  return (
+    <Post>
+      <Header>
+        <HeaderTop>
+          <Badge>
+            <FaUserCircle />
+            <Writer>
+              {writer}
+              {blue === 1 ? (
+                <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
+              ) : (
+                ""
+              )}
+            </Writer>
+          </Badge>
+          <Badge>
+            <BsThreeDots color="grey" />
+          </Badge>
+        </HeaderTop>
+        <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
+          <HeadrBottom>
+            {title.length > 30
+              ? `${title.substring(0, 30).replace(/\.+$/, "")}...`
+              : title}
+          </HeadrBottom>
+        </Link>
+      </Header>
+      <ImgContainer>
+        <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
+          <Img bgUrl={imageUrl}></Img>
+          <Overlay>
+            {contentsType === 1 ? <HiPhotograph color="white" size={25} /> : ""}
+            {contentsType === 2 ? <MdAudiotrack color="white" size={25} /> : ""}
+            {contentsType === 3 ? (
+              <BsFillCameraVideoFill color="white" size={25} />
             ) : (
               ""
             )}
-          </Writer>
-        </Badge>
-        <Badge>
-          <BsThreeDots color="grey" />
-        </Badge>
-      </HeaderTop>
-      <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
-        <HeadrBottom>
-          {title.length > 30
-            ? `${title.substring(0, 30).replace(/\.+$/, "")}...`
-            : title}
-        </HeadrBottom>
-      </Link>
-    </Header>
-    <ImgContainer>
-      <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
-        <Img bgUrl={imageUrl}></Img>
-        <Overlay>
-          {contentsType === 1 ? <HiPhotograph color="white" size={25} /> : ""}
-          {contentsType === 2 ? <MdAudiotrack color="white" size={25} /> : ""}
-          {contentsType === 3 ? (
-            <BsFillCameraVideoFill color="white" size={25} />
-          ) : (
-            ""
-          )}
-          {contentsType === 4 ? <CgFileDocument color="white" size={25} /> : ""}
-        </Overlay>
-      </Link>
-    </ImgContainer>
-    <ActionBtns>
-      <Badge id="sub">
-        <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={25} />
-        {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
-      </Badge>
-      <Badge id="sub">
-        <AiOutlineEye style={{ marginRight: 5 }} size={25} />
-        {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
-      </Badge>
-      <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
+            {contentsType === 4 ? (
+              <CgFileDocument color="white" size={25} />
+            ) : (
+              ""
+            )}
+          </Overlay>
+        </Link>
+      </ImgContainer>
+      <ActionBtns>
         <Badge id="sub">
-          <AiOutlineMessage style={{ marginRight: 5 }} size={25} />
-          {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
+          <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={25} />
+          {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
         </Badge>
-      </Link>
-      <SDate>{date}</SDate>
-    </ActionBtns>
-  </Post>
-);
+        <Badge id="sub">
+          <AiOutlineEye style={{ marginRight: 5 }} size={25} />
+          {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
+        </Badge>
+        <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
+          <Badge id="sub">
+            <AiOutlineMessage style={{ marginRight: 5 }} size={25} />
+            {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
+          </Badge>
+        </Link>
+        <SDate>{formatDistanceToNowStrict(time)} ago</SDate>
+      </ActionBtns>
+    </Post>
+  );
+};
 
 Posting.propTypes = {
   id: PropTypes.number.isRequired,
