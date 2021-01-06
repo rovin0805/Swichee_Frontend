@@ -55,17 +55,17 @@ const Header = ({ location: { pathname } }) => (
       <Coulmn>
         <Item current={pathname === "/"}>
           <CssLink to="/">
-            <AiOutlineHome style={{ marginRight: 5 }} size={23} />
+            <AiOutlineHome size={23} />
           </CssLink>
         </Item>
         <Item current={pathname === "/search"}>
           <CssLink to="/search">
-            <CgSearch style={{ marginRight: 5 }} size={23} />
+            <CgSearch size={23} />
           </CssLink>
         </Item>
         <Item current={pathname === "/company"}>
           <CssLink to="/company">
-            <FaRegBuilding style={{ marginRight: 5 }} size={23} />
+            <FaRegBuilding size={23} />
           </CssLink>
         </Item>
       </Coulmn>
