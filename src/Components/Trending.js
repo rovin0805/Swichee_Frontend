@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { trendingImages } from "../testData";
-import "./trending.css";
+import "./Trending.css";
 import PropTypes from "prop-types";
 import { FaHotjar } from "react-icons/fa";
 // import { Link } from "react-router-dom";
