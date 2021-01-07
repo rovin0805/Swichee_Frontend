@@ -9,7 +9,7 @@ class DetailContainer extends React.Component {
     this.state = {
       type: null,
       postingDetail: null,
-      recommendPostings: null,
+      recommend: null,
       comments: null,
       error: null,
       loading: true,
@@ -23,7 +23,7 @@ class DetailContainer extends React.Component {
       history: { push },
     } = this.props;
     const queryObj = queryStirng.parse(search);
-    const { id, type_id } = queryObj;
+    const { id, type_id, category } = queryObj;
     const parsedId = parseInt(id);
     const parsedTypeId = parseInt(type_id);
 
@@ -39,11 +39,18 @@ class DetailContainer extends React.Component {
         parsedId,
         parsedTypeId
       );
+      await feedApi.addView(parsedId);
+      const { data: comments } = await feedApi.comments(parsedId);
+      const { data: recommend } = await feedApi.recommend(category);
       this.setState({
-        postingDetail,
         type: parsedTypeId,
+        postingDetail,
+        comments,
+        recommend,
       });
-      console.log("data", postingDetail);
+      console.log("posting info", postingDetail);
+      console.log("comments", comments);
+      console.log("recommend", recommend);
     } catch {
       this.setState({
         error: "Can't find any information.",
@@ -56,11 +63,20 @@ class DetailContainer extends React.Component {
   }
 
   render() {
-    const { postingDetail, type, error, loading } = this.state;
+    const {
+      postingDetail,
+      type,
+      comments,
+      recommend,
+      error,
+      loading,
+    } = this.state;
     return (
       <DetailPresenter
         type={type}
         postingDetail={postingDetail}
+        comments={comments}
+        recommend={recommend}
         error={error}
         loading={loading}
       />

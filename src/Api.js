@@ -5,12 +5,34 @@ const api = axios.create({
 });
 
 export const feedApi = {
-  thumbnails: () => api.get(""), // home
+  // fpr home page
+  thumbnails: () => api.get(""), // initial call at home
+  infinite: () => api.get("api/inf"), // call when infinite scroll is moved
+
+  // for posting detail page
   postingDetail: (id, type) =>
     api.get("api/posting", {
       params: {
         id,
         type_id: type,
+      },
+    }),
+  addView: (id) =>
+    api.get("api/add", {
+      params: {
+        id,
+      },
+    }),
+  comments: (id) =>
+    api.get("api/comment", {
+      params: {
+        id,
+      },
+    }),
+  recommend: (category) =>
+    api.get("api/recommend", {
+      params: {
+        category,
       },
     }),
 };

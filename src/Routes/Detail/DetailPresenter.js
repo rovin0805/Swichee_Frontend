@@ -3,7 +3,14 @@ import styled from "styled-components";
 import Loader from "Components/Loader";
 import DetailPosting from "Components/DetailPosting";
 
-const DetailPresenter = ({ type, postingDetail, loading, error }) => {
+const DetailPresenter = ({
+  type,
+  postingDetail,
+  comments,
+  recommend,
+  loading,
+  error,
+}) => {
   return loading ? (
     <Loader />
   ) : (
@@ -29,6 +36,8 @@ const DetailPresenter = ({ type, postingDetail, loading, error }) => {
 DetailPresenter.propTypes = {
   type: PropTypes.number,
   postingDetail: PropTypes.array,
+  comments: PropTypes.array,
+  recommend: PropTypes.array,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
 };
