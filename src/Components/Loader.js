@@ -74,7 +74,7 @@ const Loader = () => (
         fill="url(#wave)"
         fillOpacity="0.9"
       >
-        LOADING
+        LOADING...
       </text>
       <text
         textAnchor="middle"
@@ -82,9 +82,9 @@ const Loader = () => (
         y="15"
         fontSize="17"
         fill="url(#gradient)"
-        fillOpacity="0.1"
+        fillOpacity="0.3"
       >
-        LOADING
+        LOADING...
       </text>
     </SVG>
   </Container>
