@@ -201,7 +201,7 @@ HomePosting.propTypes = {
   title: PropTypes.string.isRequired,
   writer: PropTypes.string.isRequired,
   blue: PropTypes.number.isRequired,
-  view: PropTypes.number.isRequired,
+  views: PropTypes.number.isRequired,
   avatar: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,
   comments: PropTypes.number.isRequired,
