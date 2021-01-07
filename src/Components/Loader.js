@@ -37,8 +37,8 @@ const Loader = () => (
     <SVG viewBox="0 0 100 20">
       <defs>
         <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="10%" stopColor="#FF9900" />
-          <stop offset="90%" stopColor="#FFC68D" />
+          <stop offset="5%" stopColor="#FF9900" />
+          <stop offset="95%" stopColor="#FFC68D" />
         </linearGradient>
         <pattern
           id="wave"
