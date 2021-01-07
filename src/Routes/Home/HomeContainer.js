@@ -50,7 +50,7 @@ class HomeContainer extends React.Component {
         dataLength={this.state.infinite.length}
         next={this.fetchMoreData}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={<span></span>}
         style={{ overflow: "none" }}
       >
         <HomePresenter
