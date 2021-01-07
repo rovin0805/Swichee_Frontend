@@ -165,7 +165,7 @@ const DetailPosting = ({
 DetailPosting.propTypes = {
   type: PropTypes.number,
   audio: PropTypes.string,
-  imgUrl: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string,
   body: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   writer: PropTypes.string.isRequired,

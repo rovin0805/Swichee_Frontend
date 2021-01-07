@@ -37,7 +37,6 @@ class HomeContainer extends React.Component {
     const { data: infinite } = await feedApi.infinite();
     this.setState(
       (prev) => ({
-        // thumbnails: [...prev.thumbnails, ...thumbnails],
         infinite: [...prev.infinite, ...infinite],
       }),
       () => console.log("fetched new data", infinite)

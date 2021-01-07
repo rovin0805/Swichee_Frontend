@@ -14,7 +14,7 @@ const DetailPresenter = ({
   return loading ? (
     <Loader />
   ) : (
-    postingDetail.length && (
+    postingDetail && postingDetail.length && (
       <DetailPosting
         key={postingDetail[0].Contents_id}
         type={type}

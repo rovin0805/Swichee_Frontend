@@ -51,7 +51,8 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
             </MainTitle>
             <MainContent>
               <PostContainer>
-                {thumbnails.length &&
+                {thumbnails &&
+                  thumbnails.length &&
                   thumbnails.map((thumbnail, index) => (
                     <HomePosting
                       key={`post-${index}`}
@@ -69,7 +70,8 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
                       date={thumbnail.Date}
                     />
                   ))}
-                {infinite.length &&
+                {infinite &&
+                  infinite.length &&
                   infinite.map((infi, index) => (
                     <HomePosting
                       key={`post-${index}`}
