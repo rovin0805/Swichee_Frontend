@@ -113,9 +113,6 @@ const SDate = styled.span`
   font-size: 15px;
 `;
 
-let now = new Date();
-console.log(now);
-
 const HomePosting = ({
   id,
   imageUrl,
@@ -124,7 +121,7 @@ const HomePosting = ({
   title,
   writer,
   blue,
-  view,
+  views,
   avatar,
   comments,
   date,
@@ -183,7 +180,7 @@ const HomePosting = ({
         </Badge>
         <Badge className="sub">
           <AiOutlineEye style={{ marginRight: 5 }} size={25} />
-          {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
+          {views > 999 ? `${Math.floor(views * 0.001)}K` : views}
         </Badge>
         <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
           <Badge id="comments" className="sub">
@@ -205,9 +202,10 @@ HomePosting.propTypes = {
   writer: PropTypes.string.isRequired,
   blue: PropTypes.number.isRequired,
   view: PropTypes.number.isRequired,
-  avatar: PropTypes.string,
-  comments: PropTypes.number,
-  date: PropTypes.string,
+  avatar: PropTypes.string.isRequired,
+  likes: PropTypes.number.isRequired,
+  comments: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 export default HomePosting;

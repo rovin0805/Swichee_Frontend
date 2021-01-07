@@ -24,7 +24,7 @@
 - [?] 우측 컬럼바 height 문제 -> make dynamic for number of categories
 - [x] hover animation
 - [x] 포스팅 데이터 추가 : 아바타, 날짜, 댓글 수
-- [ ] 컨텐츠 옵션 (셀렉트)
+- [ ] 컨텐츠 옵션 (dropdown)
 - [ ] Trending api + (moving animation effect (?))
 - [ ] categories api
 - [ ] media query (!)
@@ -40,9 +40,9 @@
 
 ### Posting Detail
 
-- [ ] 조회수 증가 api
+- [ ] 조회수 증가 api (!)
+- [ ] 추천 피드 api (!)
 - [ ] 댓글 api
-- [ ] 추천 피드 api
 - [ ] 이미지
 - [x] 오디오
 - [ ] 비디오
@@ -51,3 +51,5 @@
 ### Company Introduction
 
 - [ ]
+
+### Search

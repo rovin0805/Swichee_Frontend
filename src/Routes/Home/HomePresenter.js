@@ -63,7 +63,7 @@ const HomePresenter = ({ thumbnails, loading, error }) => {
                       writer={thumbnail.User_name}
                       blue={thumbnail.blue}
                       likes={thumbnail.Likes}
-                      view={thumbnail.Views}
+                      views={thumbnail.Views}
                       comments={thumbnail["count(Contents.Contents_id)"]}
                       date={thumbnail.Date}
                     />
