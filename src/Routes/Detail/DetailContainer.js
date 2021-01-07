@@ -7,6 +7,7 @@ class DetailContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      type: null,
       postingDetail: null,
       recommendPostings: null,
       comments: null,
@@ -40,6 +41,7 @@ class DetailContainer extends React.Component {
       );
       this.setState({
         postingDetail,
+        type: parsedTypeId,
       });
       console.log("data", postingDetail);
     } catch {
@@ -54,9 +56,10 @@ class DetailContainer extends React.Component {
   }
 
   render() {
-    const { postingDetail, error, loading } = this.state;
+    const { postingDetail, type, error, loading } = this.state;
     return (
       <DetailPresenter
+        type={type}
         postingDetail={postingDetail}
         error={error}
         loading={loading}
