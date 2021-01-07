@@ -50,7 +50,9 @@ const Header = ({ location: { pathname } }) => (
   <CssHeader>
     <List>
       <Coulmn>
-        <img src={logo} alt="logo" height="25px" />
+        <CssLink to="/">
+          <img src={logo} alt="logo" height="25px" />
+        </CssLink>
       </Coulmn>
       <Coulmn>
         <Item current={pathname === "/"}>
