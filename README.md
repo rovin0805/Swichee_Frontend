@@ -28,7 +28,7 @@
 - [ ] Trending api + (moving animation effect (?))
 - [ ] categories api
 - [ ] media query (!)
-- [ ] 무한 스크롤 구현 [v] + 중복 방지 [ ]
+- [x] 무한 스크롤 구현 [v] + 중복 방지 [v]
 
 ### Loading
 
@@ -40,9 +40,9 @@
 
 ### Posting Detail
 
-- [ ] 조회수 증가 api (!)
-- [ ] 추천 피드 api (!)
-- [ ] 댓글 api
+- [x] 조회수 증가 api
+- [ ] 추천 피드 api [x] + 렌더링 [ ]
+- [ ] 댓글 api [x] + 렌더링 [ ]
 - [ ] 이미지
 - [x] 오디오
 - [ ] 비디오
@@ -53,3 +53,5 @@
 - [ ]
 
 ### Search
+
+- [ ]
