@@ -8,6 +8,7 @@ class HomeContainer extends React.Component {
     super();
     this.state = {
       thumbnails: [],
+      infinite: [],
       error: null,
       loading: true,
     };
@@ -20,7 +21,7 @@ class HomeContainer extends React.Component {
       this.setState({
         thumbnails,
       });
-      console.log("initial api call", thumbnails);
+      console.log("initial data", thumbnails);
     } catch {
       this.setState({
         error: "Can't find any information.",
@@ -33,21 +34,21 @@ class HomeContainer extends React.Component {
   }
 
   async fetchMoreData() {
-    const { data: thumbnails } = await feedApi.thumbnails();
+    const { data: infinite } = await feedApi.infinite();
     this.setState(
       (prev) => ({
-        thumbnails: [...prev.thumbnails, ...thumbnails],
+        // thumbnails: [...prev.thumbnails, ...thumbnails],
+        infinite: [...prev.infinite, ...infinite],
       }),
-      () => console.log("fetched new data", thumbnails)
+      () => console.log("fetched new data", infinite)
     );
   }
 
   render() {
-    const { thumbnails, error, loading } = this.state;
-    console.log("updated data", thumbnails);
+    const { thumbnails, infinite, error, loading } = this.state;
     return (
       <InfiniteScroll
-        dataLength={this.state.thumbnails.length}
+        dataLength={this.state.infinite.length}
         next={this.fetchMoreData}
         hasMore={true}
         loader={<h4>Loading...</h4>}
@@ -55,6 +56,7 @@ class HomeContainer extends React.Component {
       >
         <HomePresenter
           thumbnails={thumbnails}
+          infinite={infinite}
           error={error}
           loading={loading}
         />

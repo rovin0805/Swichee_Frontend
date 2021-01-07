@@ -32,7 +32,7 @@ const PostContainer = styled.div`
   width: 100%;
 `;
 
-const HomePresenter = ({ thumbnails, loading, error }) => {
+const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
   return (
     <>
       {loading ? (
@@ -51,7 +51,7 @@ const HomePresenter = ({ thumbnails, loading, error }) => {
             </MainTitle>
             <MainContent>
               <PostContainer>
-                {thumbnails &&
+                {thumbnails.length &&
                   thumbnails.map((thumbnail, index) => (
                     <HomePosting
                       key={`post-${index}`}
@@ -68,6 +68,23 @@ const HomePresenter = ({ thumbnails, loading, error }) => {
                       date={thumbnail.Date}
                     />
                   ))}
+                {infinite.length &&
+                  infinite.map((infi, index) => (
+                    <HomePosting
+                      key={`post-${index}`}
+                      id={infi.Contents_id}
+                      imageUrl={infi.Thumbnail}
+                      avatar={infi.image}
+                      contentsType={infi.type_id}
+                      title={infi.Title}
+                      writer={infi.User_name}
+                      blue={infi.blue}
+                      likes={infi.Likes}
+                      views={infi.Views}
+                      comments={infi["count(Contents.Contents_id)"]}
+                      date={infi.Date}
+                    />
+                  ))}
               </PostContainer>
               <Sidebar />
             </MainContent>
@@ -80,6 +97,7 @@ const HomePresenter = ({ thumbnails, loading, error }) => {
 
 HomePresenter.propTypes = {
   thumbnails: PropTypes.array,
+  infinite: PropTypes.array,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
 };
