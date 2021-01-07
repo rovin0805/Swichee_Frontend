@@ -56,6 +56,7 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
                     <HomePosting
                       key={`post-${index}`}
                       id={thumbnail.Contents_id}
+                      category={thumbnail.Category}
                       imageUrl={thumbnail.Thumbnail}
                       avatar={thumbnail.image}
                       contentsType={thumbnail.type_id}
@@ -73,6 +74,7 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
                     <HomePosting
                       key={`post-${index}`}
                       id={infi.Contents_id}
+                      category={infi.Category}
                       imageUrl={infi.Thumbnail}
                       avatar={infi.image}
                       contentsType={infi.type_id}

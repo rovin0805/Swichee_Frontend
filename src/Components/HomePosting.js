@@ -115,6 +115,7 @@ const SDate = styled.span`
 
 const HomePosting = ({
   id,
+  category,
   imageUrl,
   contentsType,
   likes,
@@ -155,7 +156,9 @@ const HomePosting = ({
         </Link>
       </Header>
       <ImgContainer>
-        <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
+        <Link
+          to={`/posting?id=${id}&type_id=${contentsType}&category=${category}`}
+        >
           <Img bgUrl={imageUrl}></Img>
           <Overlay>
             {contentsType === 1 ? <HiPhotograph color="white" size={25} /> : ""}
@@ -196,6 +199,7 @@ const HomePosting = ({
 
 HomePosting.propTypes = {
   id: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   contentsType: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
