@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
-import parseISO from "date-fns/parseISO";
+import { subHours, formatDistanceToNowStrict } from "date-fns";
 import { HiBadgeCheck } from "react-icons/hi";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
@@ -127,7 +126,9 @@ const HomePosting = ({
   comments,
   date,
 }) => {
-  const time = parseISO(date);
+  const time = Date.parse(date);
+  const koTime = subHours(time, 9);
+
   return (
     <Post>
       <Header>
@@ -191,7 +192,7 @@ const HomePosting = ({
             {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
           </Badge>
         </Link>
-        <SDate>{formatDistanceToNowStrict(time)} ago</SDate>
+        <SDate>{formatDistanceToNowStrict(koTime)} ago</SDate>
       </ActionBtns>
     </Post>
   );
