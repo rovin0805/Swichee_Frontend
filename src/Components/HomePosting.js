@@ -112,6 +112,44 @@ const SDate = styled.span`
   font-size: 15px;
 `;
 
+const DropDown = styled.div`
+  position: relative;
+  display: inline-block;
+  &:hover {
+    #item {
+      display: block;
+    }
+  }
+`;
+
+const DropBtn = styled.button`
+  background-color: white;
+  font-size: 28px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+`;
+
+const DropDownItem = styled.div`
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 150px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  span {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  span:not(:first-child):hover {
+    background-color: #ddd;
+    cursor: pointer;
+  }
+`;
+
 const HomePosting = ({
   id,
   category,
@@ -144,9 +182,16 @@ const HomePosting = ({
               )}
             </Writer>
           </Badge>
-          <Badge>
-            <BsThreeDots color="grey" />
-          </Badge>
+          <DropDown>
+            <DropBtn id="btn">
+              <BsThreeDots color="grey" />
+            </DropBtn>
+            <DropDownItem id="item">
+              <span>컨텐츠 옵션</span>
+              <span>링크 복사</span>
+              <span>신고</span>
+            </DropDownItem>
+          </DropDown>
         </HeaderTop>
         <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
           <HeadrBottom>

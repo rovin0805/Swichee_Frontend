@@ -25,7 +25,7 @@
 - [x] hover animation
 - [x] 포스팅 데이터 추가 : 아바타, 날짜, 댓글 수
 - [x] 무한 스크롤 구현 [v] + 중복 방지 [v] --> 가끔 데이터를 중복되게 가져옴
-- [ ] 컨텐츠 옵션 (dropdown)
+- [ ] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고
 - [ ] Trending api + (moving animation effect (?))
 - [ ] categories api
 - [ ] media query (!)
