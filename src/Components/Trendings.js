@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { trendingImages } from "../testData";
-import "./Trending.css";
+import "./Trendings.css";
 import PropTypes from "prop-types";
 import { FaHotjar } from "react-icons/fa";
 // import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ const TrendingContainer = styled.div`
   line-height: 148px; //different from height because of border, should be the same as height in the end
 `;
 
-class Trending extends Component {
+class Trendings extends Component {
   constructor(props) {
     super(props);
     this.carousel = React.createRef();
@@ -128,8 +128,8 @@ class Trending extends Component {
   }
 }
 
-Trending.propTypes = {
+Trendings.propTypes = {
   thumbnails: PropTypes.array,
 };
 
-export default Trending;
+export default Trendings;

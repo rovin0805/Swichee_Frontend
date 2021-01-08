@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import HomePosting from "Components/HomePosting";
-import Trending from "Components/Trending";
+import Trendings from "Components/Trendings";
 import Sidebar from "Components/Sidebar";
 import Loader from "Components/Loader";
 import Message from "Components/Message";
@@ -24,7 +24,7 @@ const MainTitle = styled.div`
   color: #ff9900;
   margin-top: 40px;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 18px;
   display: flex;
   align-items: center;
 `;
@@ -40,7 +40,7 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
         <Loader />
       ) : (
         <Container>
-          <Trending thumbnails={thumbnails} />
+          <Trendings thumbnails={thumbnails} />
           <div>
             <MainTitle>
               <AiOutlineFieldTime
@@ -70,7 +70,7 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
                           blue={thumbnail.blue}
                           likes={thumbnail.Likes}
                           views={thumbnail.Views}
-                          comments={thumbnail["count(Contents.Contents_id)"]}
+                          comments={thumbnail["count(Comment.Comment_id)"]}
                           date={thumbnail.Date}
                         />
                       ))}
@@ -88,7 +88,7 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
                           blue={infi.blue}
                           likes={infi.Likes}
                           views={infi.Views}
-                          comments={infi["count(Contents.Contents_id)"]}
+                          comments={infi["count(Comment.Comment_id)"]}
                           date={infi.Date}
                         />
                       ))}
