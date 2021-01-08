@@ -22,7 +22,7 @@ const Container = styled.div`
 
 const SVG = styled.svg`
   font-weight: bold;
-  max-width: 600px;
+  max-width: 450px;
   height: auto;
 `;
 
