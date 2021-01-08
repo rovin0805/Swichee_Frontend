@@ -32,11 +32,11 @@
 
 ### Loading
 
-- [x]
+- [x] 구현
 
 ### Msg
 
-- [x]
+- [x] 구현
 
 ### Posting Detail
 
@@ -50,8 +50,8 @@
 
 ### Company Introduction
 
-- [ ]
+- [ ] 구현
 
 ### Search
 
-- [ ]
+- [ ] 구현
