@@ -5,6 +5,7 @@ import HomePosting from "Components/HomePosting";
 import Trending from "Components/Trending";
 import Sidebar from "Components/Sidebar";
 import Loader from "Components/Loader";
+import Message from "Components/Message";
 
 const Container = styled.div`
   width: 800px;
@@ -50,47 +51,51 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
               Recent Posts
             </MainTitle>
             <MainContent>
-              <PostContainer>
-                {thumbnails &&
-                  thumbnails.length &&
-                  thumbnails.map((thumbnail, index) => (
-                    <HomePosting
-                      key={`post-${index}`}
-                      id={thumbnail.Contents_id}
-                      category={thumbnail.Category}
-                      imageUrl={thumbnail.Thumbnail}
-                      avatar={thumbnail.image}
-                      contentsType={thumbnail.type_id}
-                      title={thumbnail.Title}
-                      writer={thumbnail.User_name}
-                      blue={thumbnail.blue}
-                      likes={thumbnail.Likes}
-                      views={thumbnail.Views}
-                      comments={thumbnail["count(Contents.Contents_id)"]}
-                      date={thumbnail.Date}
-                    />
-                  ))}
-                {infinite &&
-                  infinite.length &&
-                  infinite.map((infi, index) => (
-                    <HomePosting
-                      key={`post-${index}`}
-                      id={infi.Contents_id}
-                      category={infi.Category}
-                      imageUrl={infi.Thumbnail}
-                      avatar={infi.image}
-                      contentsType={infi.type_id}
-                      title={infi.Title}
-                      writer={infi.User_name}
-                      blue={infi.blue}
-                      likes={infi.Likes}
-                      views={infi.Views}
-                      comments={infi["count(Contents.Contents_id)"]}
-                      date={infi.Date}
-                    />
-                  ))}
-              </PostContainer>
-              <Sidebar />
+              {error ? (
+                error && <Message color="#D3D3D3" text={error} />
+              ) : (
+                <>
+                  <PostContainer>
+                    {thumbnails?.length &&
+                      thumbnails.map((thumbnail, index) => (
+                        <HomePosting
+                          key={`post-${index}`}
+                          id={thumbnail.Contents_id}
+                          category={thumbnail.Category}
+                          imageUrl={thumbnail.Thumbnail}
+                          avatar={thumbnail.image}
+                          contentsType={thumbnail.type_id}
+                          title={thumbnail.Title}
+                          writer={thumbnail.User_name}
+                          blue={thumbnail.blue}
+                          likes={thumbnail.Likes}
+                          views={thumbnail.Views}
+                          comments={thumbnail["count(Contents.Contents_id)"]}
+                          date={thumbnail.Date}
+                        />
+                      ))}
+                    {infinite?.length &&
+                      infinite.map((infi, index) => (
+                        <HomePosting
+                          key={`post-${index}`}
+                          id={infi.Contents_id}
+                          category={infi.Category}
+                          imageUrl={infi.Thumbnail}
+                          avatar={infi.image}
+                          contentsType={infi.type_id}
+                          title={infi.Title}
+                          writer={infi.User_name}
+                          blue={infi.blue}
+                          likes={infi.Likes}
+                          views={infi.Views}
+                          comments={infi["count(Contents.Contents_id)"]}
+                          date={infi.Date}
+                        />
+                      ))}
+                  </PostContainer>
+                  <Sidebar />
+                </>
+              )}
             </MainContent>
           </div>
         </Container>

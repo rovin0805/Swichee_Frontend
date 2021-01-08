@@ -36,7 +36,7 @@
 
 ### Msg
 
-- [ ]
+- [x]
 
 ### Posting Detail
 

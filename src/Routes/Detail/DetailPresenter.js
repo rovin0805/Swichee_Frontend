@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
 import DetailPosting from "Components/DetailPosting";
+import Message from "Components/Message";
 
 const DetailPresenter = ({
   type,
@@ -13,8 +14,10 @@ const DetailPresenter = ({
 }) => {
   return loading ? (
     <Loader />
+  ) : error ? (
+    error && <Message color="#D3D3D3" text={error} />
   ) : (
-    postingDetail && postingDetail.length && (
+    postingDetail?.length && (
       <DetailPosting
         key={postingDetail[0].Contents_id}
         type={type}
