@@ -9,6 +9,7 @@ class HomeContainer extends React.Component {
     this.state = {
       thumbnails: [],
       infinite: [],
+      trendings: [],
       error: null,
       loading: true,
     };
@@ -18,10 +19,13 @@ class HomeContainer extends React.Component {
   async componentDidMount() {
     try {
       const { data: thumbnails } = await feedApi.thumbnails();
+      const { data: trendings } = await feedApi.trending();
       this.setState({
         thumbnails,
+        trendings,
       });
       console.log("initial data", thumbnails);
+      console.log("trendings", trendings);
     } catch {
       this.setState({
         error: "Can't find any information.",
