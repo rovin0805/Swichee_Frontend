@@ -70,7 +70,7 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
                           blue={thumbnail.blue}
                           likes={thumbnail.Likes}
                           views={thumbnail.Views}
-                          comments={thumbnail["count(Contents.Contents_id)"]}
+                          comments={thumbnail.comment_count}
                           date={thumbnail.Date}
                         />
                       ))}
@@ -88,7 +88,7 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
                           blue={infi.blue}
                           likes={infi.Likes}
                           views={infi.Views}
-                          comments={infi["count(Comment.Comment_id)"]}
+                          comments={infi.comment_count}
                           date={infi.Date}
                         />
                       ))}
