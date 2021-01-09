@@ -8,17 +8,17 @@ export const feedApi = {
   // fpr home page
   thumbnails: () => api.get(""), // initial call at home
   infinite: () => api.get("api/inf"), // call when infinite scroll is moved
-  trending: () => api.get("/api/trending"), // 좋아요 & 최신순
-  category: (term) =>
+  trending: () => api.get("contents/trending"), // 하루동안 조회수 증가순 & 최신순
+  category: (category) =>
     api.get("api/sidebar", {
       params: {
-        term,
+        category,
       },
     }), // side bar category
 
   // for posting detail page
   postingDetail: (id, type) =>
-    api.get("api/posting", {
+    api.get("contents/posting", {
       params: {
         id,
         type_id: type,
@@ -34,6 +34,13 @@ export const feedApi = {
     api.get("api/comment", {
       params: {
         id,
+      },
+    }),
+  recomments: (id, co_id) =>
+    api.get("api/recomment", {
+      params: {
+        id,
+        co_id,
       },
     }),
   recommend: (category) =>
