@@ -9,6 +9,8 @@ import { AiOutlineEye } from "react-icons/ai";
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import parseISO from "date-fns/parseISO";
 import ReactPlayer from "react-player";
+import ReactStoreBadges from 'react-store-badges';
+import "./DetailPosting.css";
 
 const Container = styled.div`
   margin: 30px;
@@ -117,6 +119,8 @@ const CommentsTitle = styled.div`
 
 const Hide = styled.div``;
 
+const Open_model = styled.div``;
+
 class DetailPosting extends Component {
   constructor(props) {
     super(props);
@@ -153,7 +157,7 @@ class DetailPosting extends Component {
       date,
       comments,
     } = this.props;
-    const photoArr = photoImg.split(",");
+    // const photoArr = photoImg.split(",");
     return (
       <Container>
         {type === 1 ? <></> : ""}
@@ -207,10 +211,12 @@ class DetailPosting extends Component {
               )}
             </Text>
           </Coulmn>
+          <a href="#open-modal">
           <Btn>
             <img src={logo} alt="logo" height="36px" />
             전체 보기
           </Btn>
+          </a>
         </User>
         <Title>{title}</Title>
         <Body>{body}</Body>
@@ -247,6 +253,23 @@ class DetailPosting extends Component {
               />
             ))}
         </Hide>
+        <div id="open-modal" class="modal-window">
+        <Badge>
+          <a href="#" title="Close" class="modal-close">Close</a>
+          <Badge style={{ marginRight: 5 }}>
+        <ReactStoreBadges 
+          platform={'ios'}
+          url={'https://apps.apple.com/au/app/id1472654007'}
+          locale={'ko-kr'}
+        />
+        <ReactStoreBadges
+          platform={'android'}
+          url={'https://play.google.com/store/apps/details?id=com.swichee.swichee&hl=ko&gl=US'}
+          locale={'ko-kr'}
+        />
+          </Badge>
+       </Badge>
+      </div>
       </Container>
     );
   }
