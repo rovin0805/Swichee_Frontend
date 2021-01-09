@@ -24,8 +24,8 @@
 - [?] 우측 컬럼바 height 문제 -> make dynamic for number of categories
 - [x] hover animation
 - [x] 포스팅 데이터 추가 : 아바타, 날짜, 댓글 수
-- [x] 무한 스크롤 구현 [v] + 중복 방지 [v] --> 가끔 데이터를 중복되게 가져옴
-- [ ] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고
+- [x] 무한 스크롤 구현 [v] + 중복 방지 [v]
+- [x] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고
 - [ ] Trending api + (moving animation effect (?))
 - [ ] categories api
 - [ ] media query (!)
@@ -42,13 +42,18 @@
 
 - [x] 조회수 증가 api
 - [ ] 추천 피드 api [x] + 렌더링 [ ]
-- [ ] 댓글 api [x] + 렌더링 [ ]
+- [x] 댓글 api [x] + 렌더링 [x]
 - [ ] 이미지
 - [x] 오디오
-- [ ] 비디오
-- [ ] 블로그
+- [x] 비디오
+- [x] 블로그
+- [ ] ReactPlayer outline 없애기
 
 ### Company Introduction
+
+- [ ] 구현
+
+### Log / Sign In 페이지
 
 - [ ] 구현
 
