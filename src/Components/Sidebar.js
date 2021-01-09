@@ -94,7 +94,9 @@ const Sidebar = () => (
       <Title>
         Post Category
         {categories.map((category) => (
-          <Item key={categories.indexOf(category)}>{category}</Item>
+          <Link to={`/category/${category}`} key={categories.indexOf(category)}>
+            <Item>{category}</Item>
+          </Link>
         ))}
       </Title>
     </Category>
