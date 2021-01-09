@@ -8,6 +8,13 @@ export const feedApi = {
   // fpr home page
   thumbnails: () => api.get(""), // initial call at home
   infinite: () => api.get("api/inf"), // call when infinite scroll is moved
+  trending: () => api.get("/api/trending"), // 좋아요 & 최신순
+  category: (term) =>
+    api.get("api/sidebar", {
+      params: {
+        term,
+      },
+    }), // side bar category
 
   // for posting detail page
   postingDetail: (id, type) =>
