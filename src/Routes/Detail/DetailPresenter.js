@@ -34,6 +34,7 @@ const DetailPresenter = ({
         <DetailPosting
           key={postingDetail[0].Contents_id}
           type={type}
+          photoImg={postingDetail[0]["GROUP_CONCAT(Image.Image SEPARATOR ',')"]}
           audioImg={postingDetail[0].Album_image}
           audio={postingDetail[0].Audio}
           video={postingDetail[0].Video}
