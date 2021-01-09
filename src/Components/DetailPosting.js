@@ -153,6 +153,7 @@ class DetailPosting extends Component {
       date,
       comments,
     } = this.props;
+    const photoArr = photoImg.split(",");
     return (
       <Container>
         {type === 1 ? <></> : ""}
