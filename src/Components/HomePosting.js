@@ -16,8 +16,11 @@ import { AiOutlineMessage } from "react-icons/ai";
 const Post = styled.div`
   background-color: white;
   width: 90%;
-  margin: 20px 0;
-  border-radius: 35px;
+  margin: 40px 0;
+  :first-child {
+    margin: 20px 0;
+  }
+  border-radius: 20px;
   // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   font-size: 18px;
   color: #383838;
@@ -57,10 +60,7 @@ const Writer = styled.span`
 const Badge = styled.div`
   display: flex;
   align-items: center;
-  font-size: 35px;
-  &.sub {
-    font-size: 15px;
-  }
+  font-size: 15px;
   &#comments {
     cursor: pointer;
   }
@@ -81,7 +81,7 @@ const Img = styled.img.attrs((props) => ({
 }))`
   width: 450px; //fixed
   height: 450px; //fixed
-  border-radius: 35px;
+  border-radius: 20px;
   transition: 0.3s all ease-in-out;
   &:hover {
     transform: scale(1.05);
@@ -106,10 +106,6 @@ const ActionBtns = styled.div`
   align-items: center;
   justify-content: space-evenly;
   padding: 20px 10px;
-`;
-
-const SDate = styled.span`
-  font-size: 15px;
 `;
 
 const DropDown = styled.div`
@@ -146,6 +142,7 @@ const DropDownItem = styled.div`
   }
   span:not(:first-child):hover {
     background-color: #ddd;
+    border-radius: 10px;
     cursor: pointer;
   }
 `;
@@ -237,7 +234,7 @@ const HomePosting = ({
             {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
           </Badge>
         </Link>
-        <SDate>{formatDistanceToNowStrict(koTime)} ago</SDate>
+        <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
       </ActionBtns>
     </Post>
   );
