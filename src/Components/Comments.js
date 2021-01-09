@@ -1,5 +1,7 @@
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { feedApi } from "../Api";
 import { subHours, formatDistanceToNowStrict } from "date-fns";
 import { HiBadgeCheck } from "react-icons/hi";
 import { AiOutlineMessage } from "react-icons/ai";
@@ -53,46 +55,107 @@ const Badge = styled.div`
   }
 `;
 
-const Comments = ({ avatar, writer, blue, contents, likes, hates, date }) => {
-  const time = Date.parse(date);
-  const koTime = subHours(time, 9);
-  return (
-    <Container>
-      <Column>
-        <Avatar bgUrl={avatar} />
-      </Column>
-      <Column>
-        <Writer>
-          {writer}
-          {blue === 1 ? (
-            <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-          ) : (
-            ""
-          )}
-        </Writer>
-        <Contents>{contents}</Contents>
-        <ActionBtns>
-          <Badge id="comments" className="sub">
-            <AiOutlineMessage style={{ marginRight: 5 }} size={17} /> 0
-          </Badge>
-          <Badge className="sub">
-            <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={17} />
-            {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
-          </Badge>
-          <Badge className="sub">
-            <IoHeartDislikeOutline
-              style={{ marginRight: 5 }}
-              color="red"
-              size={17}
-            />
-            {hates > 999 ? `${Math.floor(hates * 0.001)}K` : hates}
-          </Badge>
-          <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
-        </ActionBtns>
-      </Column>
-    </Container>
-  );
-};
+class Comments extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      block: "none",
+      flag: true,
+      recomments: [],
+    };
+    this.handleBlock = this.handleBlock.bind(this);
+    this.handleRecomments = this.handleRecomments.bind(this);
+  }
+
+  handleRecomments = (commentId, contentsId) => {
+    // try {
+    //   const { data: recomments } = await feedApi.recomments(
+    //     commentId,
+    //     contentsId
+    //   );
+    //   this.setState({
+    //     recomments,
+    //   });
+    //   console.log("recomments", recomments);
+    // } catch {
+    //   this.setState({
+    //     error: "Can't find any information.",
+    //   });
+    // } finally {
+    //   this.setState({
+    //     loading: false,
+    //   });
+    // }
+    console.log(commentId, contentsId);
+  };
+
+  handleBlock() {
+    const currentFlag = this.state.flag;
+    this.setState({ flag: !currentFlag });
+    if (this.state.flag === true) {
+      this.setState({ block: "block" });
+    } else this.setState({ block: "none" });
+  }
+
+  render() {
+    const {
+      commentId,
+      contentsId,
+      avatar,
+      writer,
+      blue,
+      contents,
+      likes,
+      hates,
+      date,
+    } = this.props;
+    const time = Date.parse(date);
+    const koTime = subHours(time, 9);
+    return (
+      <Container>
+        <Column>
+          <Avatar bgUrl={avatar} />
+        </Column>
+        <Column>
+          <Writer>
+            {writer}
+            {blue === 1 ? (
+              <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
+            ) : (
+              ""
+            )}
+          </Writer>
+          <Contents>{contents}</Contents>
+          <ActionBtns>
+            <Badge
+              id="comments"
+              onClick={this.handleRecomments(commentId, contentsId)}
+            >
+              <AiOutlineMessage style={{ marginRight: 5 }} size={17} /> 0
+            </Badge>
+            <Badge>
+              <AiOutlineHeart
+                style={{ marginRight: 5 }}
+                color="red"
+                size={17}
+              />
+              {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
+            </Badge>
+            <Badge>
+              <IoHeartDislikeOutline
+                style={{ marginRight: 5 }}
+                color="red"
+                size={17}
+              />
+              {hates > 999 ? `${Math.floor(hates * 0.001)}K` : hates}
+            </Badge>
+            <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
+          </ActionBtns>
+        </Column>
+      </Container>
+    );
+  }
+}
 
 Comments.propTypes = {
   avatar: PropTypes.string.isRequired,

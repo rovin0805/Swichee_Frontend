@@ -6,7 +6,6 @@ import { HiBadgeCheck } from "react-icons/hi";
 import logo from "Assets/logo.png";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
-import { AiOutlineMessage } from "react-icons/ai";
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import parseISO from "date-fns/parseISO";
 import ReactPlayer from "react-player";
@@ -139,6 +138,7 @@ class DetailPosting extends Component {
   render() {
     const {
       type,
+      photoImg,
       audioImg,
       audio,
       video,
@@ -155,6 +155,7 @@ class DetailPosting extends Component {
     } = this.props;
     return (
       <Container>
+        {type === 1 ? <></> : ""}
         {type === 2 ? (
           <>
             <ImgWrapper id="audio">
@@ -233,10 +234,12 @@ class DetailPosting extends Component {
             comments.map((comment, index) => (
               <Comments
                 key={`comment-${index}`}
+                commentId={comment.Comment_id}
+                contentsId={comment.Contents_id}
                 avatar={comment.image}
                 writer={comment.User_name}
-                blue={comment.blue}
-                contents={comment.Contents}
+                blue={comment.Blue}
+                contents={comment.contents}
                 likes={comment.Likes}
                 hates={comment.Hate}
                 date={comment.Date}
@@ -248,118 +251,9 @@ class DetailPosting extends Component {
   }
 }
 
-// const DetailPosting = ({
-//   type,
-//   audioImg,
-//   audio,
-//   video,
-//   blogImg,
-//   avatar,
-//   writer,
-//   blue,
-//   title,
-//   body,
-//   views,
-//   likes,
-//   date,
-//   comments,
-// }) => {
-//   return (
-//     <Container>
-//       {type === 2 ? (
-//         <>
-//           <ImgWrapper id="audio">
-//             <Img bgUrl={audioImg} id="audio" />
-//           </ImgWrapper>
-//           <PlayerWrapper>
-//             <ReactPlayer
-//               url={audio}
-//               width="400px"
-//               height="50px"
-//               playing={false}
-//               controls={true}
-//               style={{ outline: "none" }}
-//             />
-//           </PlayerWrapper>
-//         </>
-//       ) : (
-//         ""
-//       )}
-//       {type === 3 ? (
-//         <PlayerWrapper>
-//           <ReactPlayer
-//             url={video}
-//             playing={false}
-//             controls={true}
-//             style={{ outline: "none" }}
-//           />
-//         </PlayerWrapper>
-//       ) : (
-//         ""
-//       )}
-//       {type === 4 ? (
-//         <ImgWrapper id="blog">
-//           <Img bgUrl={blogImg} id="blog" />
-//         </ImgWrapper>
-//       ) : (
-//         ""
-//       )}
-//       <User>
-//         <Coulmn>
-//           <Avatar bgUrl={avatar} />
-//           <Text>
-//             {writer}
-//             {blue === 1 ? (
-//               <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-//             ) : (
-//               ""
-//             )}
-//           </Text>
-//         </Coulmn>
-//         <Btn>
-//           <img src={logo} alt="logo" height="36px" />
-//           전체 보기
-//         </Btn>
-//       </User>
-//       <Title>{title}</Title>
-//       <Body>{body}</Body>
-//       <SubInfo>
-//         <Badge>{formatDistanceToNowStrict(parseISO(date))} ago</Badge>
-//         <Badge>
-//           <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={25} />
-//           {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
-//         </Badge>
-//         <Badge>
-//           <AiOutlineEye style={{ marginRight: 5 }} size={25} />
-//           {views > 999 ? `${Math.floor((views + 1) * 0.001)}K` : views + 1}
-//         </Badge>
-//       </SubInfo>
-//       <CommentsTitle>
-//         <span style={{ cursor: "pointer" }}>
-//           View All {comments.length} Comments
-//         </span>
-//       </CommentsTitle>
-//       <Hide id="hide">
-//         {comments &&
-//           comments.map((comment, index) => (
-//             <Comments
-//               key={`comment-${index}`}
-//               avatar={comment.image}
-//               writer={comment.User_name}
-//               blue={comment.blue}
-//               contents={comment.Contents}
-//               likes={comment.Likes}
-//               hates={comment.Hate}
-//               date={comment.Date}
-//             />
-//           ))}
-//       </Hide>
-//     </Container>
-//   );
-// };
-
 DetailPosting.propTypes = {
   type: PropTypes.number.isRequired,
+  photoImg: PropTypes.string,
   audioImg: PropTypes.string,
   audio: PropTypes.string,
   video: PropTypes.string,
