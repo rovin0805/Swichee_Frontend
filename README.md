@@ -3,6 +3,7 @@
 ## To Do
 
 - [ ] 모바일 앱으로 연결
+- [ ] helmet
 
 ### Header
 
@@ -25,10 +26,10 @@
 - [x] hover animation
 - [x] 포스팅 데이터 추가 : 아바타, 날짜, 댓글 수
 - [x] 무한 스크롤 구현 [v] + 중복 방지 [v]
-- [x] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고
-- [ ] Trending api + (moving animation effect (?))
-- [ ] categories api
-- [ ] media query (!)
+- [x] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고 --> hover를 onclick으로 수정 [v]
+- [ ] Trending api [v] (시간 기준 필요) + 렌더링 [ ] + (moving animation effect (?))
+- [ ] categories api [v] + 렌더링 [ ] + 무한 스크롤 [ ]
+- [ ] media query
 
 ### Loading
 
@@ -43,11 +44,19 @@
 - [x] 조회수 증가 api
 - [ ] 추천 피드 api [x] + 렌더링 [ ]
 - [x] 댓글 api [x] + 렌더링 [x]
+- [ ] 대댓글 api [ ] + 렌더링 [ ]
 - [ ] 이미지
 - [x] 오디오
 - [x] 비디오
 - [x] 블로그
 - [ ] ReactPlayer outline 없애기
+- [ ] 미디어 쿼리
+- [ ] 전체 보기 버튼 -> 앱으로 전달
+
+### Category
+
+- [x] 경로
+- [ ] 관련 카테고리 0 일 때 처리
 
 ### Company Introduction
 
