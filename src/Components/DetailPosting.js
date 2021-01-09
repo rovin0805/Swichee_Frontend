@@ -9,9 +9,16 @@ import { AiOutlineEye } from "react-icons/ai";
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import parseISO from "date-fns/parseISO";
 import ReactPlayer from "react-player";
+import Slider from "Components/Slider";
 
 const Container = styled.div`
   margin: 30px;
+`;
+
+const SliderWrapper = styled.div`
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
 `;
 
 const ImgWrapper = styled.div`
@@ -44,7 +51,7 @@ const User = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 40px;
 `;
 
 const Avatar = styled.img.attrs((props) => ({
@@ -115,8 +122,6 @@ const CommentsTitle = styled.div`
   margin: 17px 0 10px 0;
 `;
 
-const Hide = styled.div``;
-
 class DetailPosting extends Component {
   constructor(props) {
     super(props);
@@ -153,10 +158,17 @@ class DetailPosting extends Component {
       date,
       comments,
     } = this.props;
-    const photoArr = photoImg.split(",");
+    let photoArr = [];
+    if (type === 1) photoArr = photoImg.split(",");
     return (
       <Container>
-        {type === 1 ? <></> : ""}
+        {type === 1 ? (
+          <SliderWrapper>
+            <Slider photoArr={photoArr} />
+          </SliderWrapper>
+        ) : (
+          ""
+        )}
         {type === 2 ? (
           <>
             <ImgWrapper id="audio">
@@ -230,7 +242,7 @@ class DetailPosting extends Component {
             View All {comments.length} Comments
           </span>
         </CommentsTitle>
-        <Hide style={{ display: this.state.block }}>
+        <div style={{ display: this.state.block }}>
           {comments &&
             comments.map((comment, index) => (
               <Comments
@@ -246,7 +258,7 @@ class DetailPosting extends Component {
                 date={comment.Date}
               />
             ))}
-        </Hide>
+        </div>
       </Container>
     );
   }
