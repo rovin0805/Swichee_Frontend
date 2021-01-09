@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -111,11 +111,6 @@ const ActionBtns = styled.div`
 const DropDown = styled.div`
   position: relative;
   display: inline-block;
-  &:hover {
-    #item {
-      display: block;
-    }
-  }
 `;
 
 const DropBtn = styled.button`
@@ -127,7 +122,6 @@ const DropBtn = styled.button`
 `;
 
 const DropDownItem = styled.div`
-  display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 150px;
@@ -147,98 +141,125 @@ const DropDownItem = styled.div`
   }
 `;
 
-const HomePosting = ({
-  id,
-  category,
-  imageUrl,
-  contentsType,
-  likes,
-  title,
-  writer,
-  blue,
-  views,
-  avatar,
-  comments,
-  date,
-}) => {
-  const time = Date.parse(date);
-  const koTime = subHours(time, 9);
+class HomePosting extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      block: "none",
+      flag: true,
+    };
+    this.handleBlock = this.handleBlock.bind(this);
+  }
 
-  return (
-    <Post>
-      <Header>
-        <HeaderTop>
-          <Badge>
-            <Avatar bgUrl={avatar} />
-            <Writer>
-              {writer}
-              {blue === 1 ? (
-                <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
+  handleBlock() {
+    const currentFlag = this.state.flag;
+    this.setState({ flag: !currentFlag });
+    if (this.state.flag === true) {
+      this.setState({ block: "block" });
+    } else this.setState({ block: "none" });
+  }
+
+  render() {
+    const {
+      id,
+      category,
+      imageUrl,
+      contentsType,
+      likes,
+      title,
+      writer,
+      blue,
+      views,
+      avatar,
+      comments,
+      date,
+    } = this.props;
+    const time = Date.parse(date);
+    const koTime = subHours(time, 9);
+    return (
+      <Post>
+        <Header>
+          <HeaderTop>
+            <Badge>
+              <Avatar bgUrl={avatar} />
+              <Writer>
+                {writer}
+                {blue === 1 ? (
+                  <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
+                ) : (
+                  ""
+                )}
+              </Writer>
+            </Badge>
+            <DropDown onClick={this.handleBlock}>
+              <DropBtn>
+                <BsThreeDots color="grey" />
+              </DropBtn>
+              <DropDownItem style={{ display: this.state.block }}>
+                <span>컨텐츠 옵션</span>
+                <span>링크 복사</span>
+                <span>신고</span>
+              </DropDownItem>
+            </DropDown>
+          </HeaderTop>
+          <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
+            <HeadrBottom>
+              {title.length > 30
+                ? `${title.substring(0, 30).replace(/\.+$/, "")}...`
+                : title}
+            </HeadrBottom>
+          </Link>
+        </Header>
+        <ImgContainer>
+          <Link
+            to={`/posting?id=${id}&type_id=${contentsType}&category=${category}`}
+          >
+            <Img bgUrl={imageUrl}></Img>
+            <Overlay>
+              {contentsType === 1 ? (
+                <HiPhotograph color="white" size={25} />
               ) : (
                 ""
               )}
-            </Writer>
+              {contentsType === 2 ? (
+                <MdAudiotrack color="white" size={25} />
+              ) : (
+                ""
+              )}
+              {contentsType === 3 ? (
+                <BsFillCameraVideoFill color="white" size={25} />
+              ) : (
+                ""
+              )}
+              {contentsType === 4 ? (
+                <CgFileDocument color="white" size={25} />
+              ) : (
+                ""
+              )}
+            </Overlay>
+          </Link>
+        </ImgContainer>
+        <ActionBtns>
+          <Badge className="sub">
+            <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={25} />
+            {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
           </Badge>
-          <DropDown>
-            <DropBtn id="btn">
-              <BsThreeDots color="grey" />
-            </DropBtn>
-            <DropDownItem id="item">
-              <span>컨텐츠 옵션</span>
-              <span>링크 복사</span>
-              <span>신고</span>
-            </DropDownItem>
-          </DropDown>
-        </HeaderTop>
-        <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
-          <HeadrBottom>
-            {title.length > 30
-              ? `${title.substring(0, 30).replace(/\.+$/, "")}...`
-              : title}
-          </HeadrBottom>
-        </Link>
-      </Header>
-      <ImgContainer>
-        <Link
-          to={`/posting?id=${id}&type_id=${contentsType}&category=${category}`}
-        >
-          <Img bgUrl={imageUrl}></Img>
-          <Overlay>
-            {contentsType === 1 ? <HiPhotograph color="white" size={25} /> : ""}
-            {contentsType === 2 ? <MdAudiotrack color="white" size={25} /> : ""}
-            {contentsType === 3 ? (
-              <BsFillCameraVideoFill color="white" size={25} />
-            ) : (
-              ""
-            )}
-            {contentsType === 4 ? (
-              <CgFileDocument color="white" size={25} />
-            ) : (
-              ""
-            )}
-          </Overlay>
-        </Link>
-      </ImgContainer>
-      <ActionBtns>
-        <Badge className="sub">
-          <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={25} />
-          {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
-        </Badge>
-        <Badge className="sub">
-          <AiOutlineEye style={{ marginRight: 5 }} size={25} />
-          {views > 999 ? `${Math.floor(views * 0.001)}K` : views}
-        </Badge>
-        <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
-          <Badge id="comments" className="sub">
-            <AiOutlineMessage style={{ marginRight: 5 }} size={25} />
-            {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
+          <Badge className="sub">
+            <AiOutlineEye style={{ marginRight: 5 }} size={25} />
+            {views > 999 ? `${Math.floor(views * 0.001)}K` : views}
           </Badge>
-        </Link>
-        <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
-      </ActionBtns>
-    </Post>
-  );
-};
+          <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
+            <Badge id="comments" className="sub">
+              <AiOutlineMessage style={{ marginRight: 5 }} size={25} />
+              {comments > 999 ? `${Math.floor(comments * 0.001)}K` : comments}
+            </Badge>
+          </Link>
+          <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
+        </ActionBtns>
+      </Post>
+    );
+  }
+}
 
 HomePosting.propTypes = {
   id: PropTypes.number.isRequired,
