@@ -17,11 +17,11 @@ export const feedApi = {
     }), // side bar category
 
   // for posting detail page
-  postingDetail: (id, type) =>
+  postingDetail: (id, type_id) =>
     api.get("contents/posting", {
       params: {
         id,
-        type_id: type,
+        type_id,
       },
     }),
   addView: (id) =>
@@ -43,9 +43,10 @@ export const feedApi = {
         co_id, //comment_id
       },
     }),
-  recommend: (category) =>
+  recommend: (id, category) =>
     api.get("api/recommend", {
       params: {
+        id,
         category,
       },
     }),

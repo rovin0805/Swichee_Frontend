@@ -85,7 +85,7 @@ const SubInfo = styled.div`
 
 const Badge = styled.div`
   :not(:first-child) {
-    padding-left: 10px;
+    padding-left: 20px;
   }
   display: flex;
   align-items: center;
@@ -130,15 +130,23 @@ const Recommend = ({
             <Badge>
               {writer}
               {blue === 1 && (
-                <HiBadgeCheck color="#488dea" style={{ marginLeft: 1 }} />
+                <HiBadgeCheck
+                  color="#488dea"
+                  style={{ marginLeft: 1 }}
+                  size={20}
+                />
               )}
             </Badge>
             <Badge>
-              <AiOutlineHeart color="red" style={{ marginRight: 3 }} />
+              <AiOutlineHeart
+                color="red"
+                style={{ marginRight: 3 }}
+                size={20}
+              />
               {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
             </Badge>
             <Badge>
-              <AiOutlineEye style={{ marginRight: 3 }} />
+              <AiOutlineEye style={{ marginRight: 3 }} size={20} />
               {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
             </Badge>
             <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>

@@ -41,7 +41,7 @@ class DetailContainer extends React.Component {
       );
       await feedApi.addView(parsedId);
       const { data: comments } = await feedApi.comments(parsedId);
-      const { data: recommend } = await feedApi.recommend(category);
+      const { data: recommend } = await feedApi.recommend(parsedId, category);
       this.setState({
         type: parsedTypeId,
         postingDetail,
