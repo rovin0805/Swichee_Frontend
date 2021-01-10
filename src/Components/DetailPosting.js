@@ -237,7 +237,7 @@ class DetailPosting extends Component {
           </span>
         </CommentsTitle>
         <div style={{ display: this.state.block }}>
-          {comments &&
+          {comments?.length > 0 &&
             comments.map((comment, index) => (
               <Comments
                 key={`comment-${index}`}

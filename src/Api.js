@@ -39,8 +39,8 @@ export const feedApi = {
   recomments: (id, co_id) =>
     api.get("api/recomment", {
       params: {
-        id,
-        co_id,
+        id, //content_id
+        co_id, //comment_id
       },
     }),
   recommend: (category) =>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Replies from "Components/Replies";
 import { feedApi } from "../Api";
 import { subHours, formatDistanceToNowStrict } from "date-fns";
 import { HiBadgeCheck } from "react-icons/hi";
@@ -10,7 +11,7 @@ import { IoHeartDislikeOutline } from "react-icons/io5";
 
 const Container = styled.div`
   display: flex;
-  padding: 10px 0;
+  padding-top: 10px;
 `;
 
 const Column = styled.div`
@@ -54,7 +55,6 @@ const Badge = styled.div`
     cursor: pointer;
   }
 `;
-
 class Comments extends Component {
   constructor(props) {
     super(props);
@@ -67,11 +67,19 @@ class Comments extends Component {
     this.handleRecomments = this.handleRecomments.bind(this);
   }
 
-  handleRecomments = async (commentId, contentsId) => {
+  handleBlock() {
+    const currentFlag = this.state.flag;
+    this.setState({ flag: !currentFlag });
+    if (this.state.flag === true) {
+      this.setState({ block: "block" });
+    } else this.setState({ block: "none" });
+  }
+
+  handleRecomments = async (contentsId, commentId) => {
     try {
       const { data: recomments } = await feedApi.recomments(
-        commentId,
-        contentsId
+        contentsId,
+        commentId
       );
       this.setState({
         recomments,
@@ -86,18 +94,11 @@ class Comments extends Component {
         loading: false,
       });
     }
-    console.log(commentId, contentsId);
+    console.log(`contentsId : ${contentsId} commentId : ${commentId}`);
   };
 
-  handleBlock() {
-    const currentFlag = this.state.flag;
-    this.setState({ flag: !currentFlag });
-    if (this.state.flag === true) {
-      this.setState({ block: "block" });
-    } else this.setState({ block: "none" });
-  }
-
   render() {
+    const { recomments } = this.state;
     const {
       commentId,
       contentsId,
@@ -127,13 +128,14 @@ class Comments extends Component {
           <ActionBtns>
             <Badge
               id="replies"
-              onClick={() => this.handleRecomments(commentId, contentsId)}
+              onClick={() => this.handleRecomments(contentsId, commentId)}
             >
               <ImReply
                 style={{ marginRight: 5, transform: "scale(-1,1)" }}
                 size={17}
-              />{" "}
-              Reply
+                onClick={this.handleBlock}
+              />
+              <span onClick={this.handleBlock}>Reply</span>
             </Badge>
             <Badge>
               <AiOutlineHeart
@@ -153,6 +155,22 @@ class Comments extends Component {
             </Badge>
             <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
           </ActionBtns>
+          <div style={{ display: this.state.block }}>
+            {recomments?.length > 0 &&
+              recomments[0].Comment_Comment_id === commentId &&
+              recomments.map((re, index) => (
+                <Replies
+                  key={`reply-${index}`}
+                  avatar={re.image}
+                  writer={re.User_name}
+                  blue={re.Blue}
+                  contents={re.Contents}
+                  likes={re.Likes}
+                  hates={re.Hate}
+                  date={re.Date}
+                />
+              ))}
+          </div>
         </Column>
       </Container>
     );
