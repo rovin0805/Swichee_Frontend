@@ -200,7 +200,9 @@ class HomePosting extends Component {
               </DropDownItem>
             </DropDown>
           </HeaderTop>
-          <Link to={`/posting?id=${id}&type_id=${contentsType}`}>
+          <Link
+            to={`/posting?id=${id}&type_id=${contentsType}&category=${category}`}
+          >
             <HeadrBottom>
               {title.length > 30
                 ? `${title.substring(0, 30).replace(/\.+$/, "")}...`
