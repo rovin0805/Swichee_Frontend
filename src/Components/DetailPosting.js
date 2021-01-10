@@ -1,18 +1,19 @@
 import React, { Component } from "react";
+import Comments from "Components/Comments";
+import Slider from "Components/Slider";
+import Recommend from "Components/Recommend";
+import logo from "Assets/logo.png";
+import "./Modal.css";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Comments from "Components/Comments";
-import { HiBadgeCheck } from "react-icons/hi";
-import logo from "Assets/logo.png";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiOutlineEye } from "react-icons/ai";
+import ReactStoreBadges from "react-store-badges";
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import parseISO from "date-fns/parseISO";
 import ReactPlayer from "react-player";
-import ReactStoreBadges from "react-store-badges";
-import "./Modal.css";
-import Slider from "Components/Slider";
-import Recommend from "Components/Recommend";
+import { HiBadgeCheck } from "react-icons/hi";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
+import { IoOptionsOutline } from "react-icons/io5";
 
 const Container = styled.div`
   margin: 30px;
@@ -117,7 +118,43 @@ const Badge = styled.div`
   display: flex;
   align-items: center;
   font-size: 15px;
-  margin-right: 10px;
+  margin-right: 20px;
+`;
+
+const DropDown = styled.div`
+  margin-top: 5px;
+  position: relative;
+  display: inline-block;
+`;
+
+const DropBtn = styled.button`
+  background-color: white;
+  font-size: 15px;
+  color: grey;
+  border: none;
+  cursor: pointer;
+  outline: none;
+`;
+
+const DropDownItem = styled.div`
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 150px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  span {
+    font-size: 16px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  span:not(:first-child):hover {
+    background-color: #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+  }
 `;
 
 const CommentsTitle = styled.div`
@@ -141,18 +178,29 @@ class DetailPosting extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      block: "none",
-      flag: true,
+      CommentsBlock: "none",
+      CommentsFlag: true,
+      OptionBlock: "none",
+      OptionFlag: true,
     };
-    this.handleBlock = this.handleBlock.bind(this);
+    this.handleCommentsBlock = this.handleCommentsBlock.bind(this);
+    this.handleOptionBlock = this.handleOptionBlock.bind(this);
   }
 
-  handleBlock() {
-    const currentFlag = this.state.flag;
-    this.setState({ flag: !currentFlag });
-    if (this.state.flag === true) {
-      this.setState({ block: "block" });
-    } else this.setState({ block: "none" });
+  handleCommentsBlock() {
+    const currentFlag = this.state.CommentsFlag;
+    this.setState({ CommentsFlag: !currentFlag });
+    if (this.state.CommentsFlag === true) {
+      this.setState({ CommentsBlock: "block" });
+    } else this.setState({ CommentsBlock: "none" });
+  }
+
+  handleOptionBlock() {
+    const currentFlag = this.state.OptionFlag;
+    this.setState({ OptionFlag: !currentFlag });
+    if (this.state.OptionFlag === true) {
+      this.setState({ OptionBlock: "block" });
+    } else this.setState({ OptionBlock: "none" });
   }
 
   render() {
@@ -250,13 +298,26 @@ class DetailPosting extends Component {
               <AiOutlineEye style={{ marginRight: 5 }} size={25} />
               {views > 999 ? `${Math.floor((views + 1) * 0.001)}K` : views + 1}
             </Badge>
+            <DropDown onClick={this.handleOptionBlock}>
+              <DropBtn>
+                <IoOptionsOutline size={25} />
+              </DropBtn>
+              <DropDownItem style={{ display: this.state.OptionBlock }}>
+                <span>컨텐츠 옵션</span>
+                <span>링크 복사</span>
+                <span>신고</span>
+              </DropDownItem>
+            </DropDown>
           </SubInfo>
           <CommentsTitle>
-            <span style={{ cursor: "pointer" }} onClick={this.handleBlock}>
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={this.handleCommentsBlock}
+            >
               View All {commentsCount} Comments
             </span>
           </CommentsTitle>
-          <div style={{ display: this.state.block }}>
+          <div style={{ display: this.state.CommentsBlock }}>
             {comments?.length > 0 &&
               comments.map((comment, index) => (
                 <Comments
@@ -270,6 +331,7 @@ class DetailPosting extends Component {
                   likes={comment.Likes}
                   hates={comment.Hate}
                   date={comment.Date}
+                  recommentsCount={comment.recomment}
                 />
               ))}
           </div>

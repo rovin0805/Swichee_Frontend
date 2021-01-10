@@ -108,6 +108,7 @@ class Comments extends Component {
       likes,
       hates,
       date,
+      recommentsCount,
     } = this.props;
     const time = Date.parse(date);
     const koTime = subHours(time, 9);
@@ -134,7 +135,7 @@ class Comments extends Component {
                 size={17}
                 onClick={this.handleBlock}
               />
-              <span onClick={this.handleBlock}>Reply</span>
+              <span onClick={this.handleBlock}>{recommentsCount}</span>
             </Badge>
             <Badge>
               <AiOutlineHeart
@@ -184,6 +185,7 @@ Comments.propTypes = {
   likes: PropTypes.number.isRequired,
   hates: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
+  recommentsCount: PropTypes.number.isRequired,
 };
 
 export default Comments;
