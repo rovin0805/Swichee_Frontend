@@ -307,7 +307,7 @@ class DetailPosting extends Component {
                 thumbnail={item.Thumbnail}
                 title={item.Title}
                 writer={item.User_name}
-                blue={1}
+                blue={item.Blue}
                 likes={item.Likes}
                 view={item.Views}
                 date={item.Date}
