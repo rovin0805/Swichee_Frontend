@@ -76,6 +76,10 @@ const Title = styled.div`
   font-size: 23px;
   font-weight: bold;
   color: #525252;
+  &#rocommend {
+    font-size: 18px;
+    margin-top: 0px;
+  }
 `;
 
 const Body = styled.div`
@@ -127,6 +131,9 @@ const CommentsTitle = styled.div`
 
 const RecommendWrapper = styled.div`
   background-color: #f0f0f0;
+  padding: 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 `;
 
 class DetailPosting extends Component {
@@ -287,6 +294,7 @@ class DetailPosting extends Component {
           </div>
         </Container>
         <RecommendWrapper>
+          <Title id="rocommend">Recommended For You</Title>
           {recommend?.length > 0 &&
             recommend.map((item, index) => (
               <Recommend

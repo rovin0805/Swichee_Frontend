@@ -1,9 +1,10 @@
-import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { subHours, formatDistanceToNowStrict } from "date-fns";
 import { HiBadgeCheck } from "react-icons/hi";
-import { FcLike } from "react-icons/fc";
-import { GrView } from "react-icons/gr";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { HiPhotograph } from "react-icons/hi";
 import { MdAudiotrack } from "react-icons/md";
@@ -11,31 +12,46 @@ import { CgFileDocument } from "react-icons/cg";
 
 const Container = styled.div`
   display: flex;
-  max-width: 450px;
-  width: 90vw;
-  height: 100px;
+  height: 150px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 25px;
+  margin: 20px 0;
   cursor: pointer;
+  background-color: white;
+  transition: 0.3s all ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const ImageContainer = styled.div`
-  width: 40%;
-`;
-
-const Image = styled.div`
+  overflow: hidden;
+  max-width: 40%;
+  max-height: 200px;
+  position: relative;
+  display: flex;
+  justify-content: center;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+`;
+
+const Image = styled.img.attrs((props) => ({
+  src: props.bgUrl,
+}))`
   width: 100%;
   height: 100%;
-  background-image: url(${(props) => props.bgUrl});
-  background-size: cover;
-  background-position: center center;
-  position: relative;
 `;
+
+// const Image = styled.div`
+//   border-top-left-radius: 10px;
+//   border-bottom-left-radius: 10px;
+//   width: 100%;
+//   height: 100%;
+//   background-image: url(${(props) => props.bgUrl});
+//   background-size: cover;
+//   background-position: center center;
+//   position: relative;
+// `;
 
 const Overlay = styled.div`
   position: absolute;
@@ -44,26 +60,24 @@ const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 3px;
 `;
 
 const StrInfo = styled.div`
-  width: 60%;
-  padding: 20px;
+  padding: 30px;
 `;
 
 const Title = styled.span`
-  margin-bottom: 5px;
-  font-size: 13px;
+  font-size: 18px;
   font-weight: bold;
+  color: #383838;
 `;
 
 const SubInfo = styled.div`
-  margin-top: 30px;
-  font-size: 11px;
+  margin-top: 50px;
   color: grey;
   display: flex;
   align-items: center;
@@ -75,6 +89,7 @@ const Badge = styled.div`
   }
   display: flex;
   align-items: center;
+  font-size: 16px;
 `;
 
 const Recommend = ({
@@ -88,41 +103,51 @@ const Recommend = ({
   likes,
   view,
   date,
-}) => (
-  <Container>
-    <ImageContainer>
-      <Image bgUrl={thumbnail}>
-        <Overlay>
-          {typeId === 1 && <HiPhotograph color="white" />}
-          {typeId === 2 && <MdAudiotrack color="white" />}
-          {typeId === 3 && <BsFillCameraVideoFill color="white" />}
-          {typeId === 4 && <CgFileDocument color="white" />}
-        </Overlay>
-      </Image>
-    </ImageContainer>
-    <StrInfo>
-      <Title>
-        {title.length > 13 ? `${title.substring(0, 13)}...` : title}
-      </Title>
-      <SubInfo>
-        <Badge>
-          {writer}
-          {blue === 1 && (
-            <HiBadgeCheck color="#488dea" style={{ marginLeft: 1 }} />
-          )}
-        </Badge>
-        <Badge>
-          <FcLike style={{ marginRight: 3 }} />
-          {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
-        </Badge>
-        <Badge>
-          <GrView style={{ marginRight: 3 }} />
-          {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
-        </Badge>
-      </SubInfo>
-    </StrInfo>
-  </Container>
-);
+}) => {
+  const time = Date.parse(date);
+  const koTime = subHours(time, 9);
+  return (
+    <Link
+      to={`/posting?id=${contentsId}&type_id=${typeId}&category=${category}`}
+    >
+      <Container>
+        <ImageContainer>
+          <Image bgUrl={thumbnail} />
+          <Overlay>
+            {typeId === 1 && <HiPhotograph color="white" size={20} />}
+            {typeId === 2 && <MdAudiotrack color="white" size={20} />}
+            {typeId === 3 && <BsFillCameraVideoFill color="white" size={20} />}
+            {typeId === 4 && <CgFileDocument color="white" size={20} />}
+          </Overlay>
+        </ImageContainer>
+        <StrInfo>
+          <Title>
+            {title.length > 20
+              ? `${title.substring(0, 30).replace(/\.+$/, "")}...`
+              : title}
+          </Title>
+          <SubInfo>
+            <Badge>
+              {writer}
+              {blue === 1 && (
+                <HiBadgeCheck color="#488dea" style={{ marginLeft: 1 }} />
+              )}
+            </Badge>
+            <Badge>
+              <AiOutlineHeart color="red" style={{ marginRight: 3 }} />
+              {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
+            </Badge>
+            <Badge>
+              <AiOutlineEye style={{ marginRight: 3 }} />
+              {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
+            </Badge>
+            <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
+          </SubInfo>
+        </StrInfo>
+      </Container>
+    </Link>
+  );
+};
 
 Recommend.propTypes = {
   contentsId: PropTypes.number.isRequired,
