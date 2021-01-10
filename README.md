@@ -43,7 +43,7 @@
 ### Posting Detail
 
 - [x] 조회수 증가 api
-- [ ] 추천 피드 api [x] + 렌더링 [ ]
+- [x] 추천 피드 api [x] + 렌더링 [x]
 - [x] 댓글 api [x] + 렌더링 [x]
 - [x] 대댓글 api [x] + 렌더링 [x]
 - [x] 이미지
