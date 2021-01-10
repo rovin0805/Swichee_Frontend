@@ -9,8 +9,8 @@ import { AiOutlineEye } from "react-icons/ai";
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import parseISO from "date-fns/parseISO";
 import ReactPlayer from "react-player";
-import ReactStoreBadges from 'react-store-badges';
-import "./DetailPosting.css";
+import ReactStoreBadges from "react-store-badges";
+import "./Modal.css";
 import Slider from "Components/Slider";
 
 const Container = styled.div`
@@ -124,9 +124,6 @@ const CommentsTitle = styled.div`
   margin: 17px 0 10px 0;
 `;
 
-const Hide = styled.div``;
-const Open_model = styled.div``;
-
 class DetailPosting extends Component {
   constructor(props) {
     super(props);
@@ -167,14 +164,12 @@ class DetailPosting extends Component {
     if (type === 1) photoArr = photoImg.split(",");
     return (
       <Container>
-        {type === 1 ? (
+        {type === 1 && (
           <SliderWrapper>
             <Slider photoArr={photoArr} />
           </SliderWrapper>
-        ) : (
-          ""
         )}
-        {type === 2 ? (
+        {type === 2 && (
           <>
             <ImgWrapper id="audio">
               <Img bgUrl={audioImg} id="audio" />
@@ -190,10 +185,8 @@ class DetailPosting extends Component {
               />
             </PlayerWrapper>
           </>
-        ) : (
-          ""
         )}
-        {type === 3 ? (
+        {type === 3 && (
           <PlayerWrapper>
             <ReactPlayer
               url={video}
@@ -202,33 +195,27 @@ class DetailPosting extends Component {
               style={{ outline: "none" }}
             />
           </PlayerWrapper>
-        ) : (
-          ""
         )}
-        {type === 4 ? (
+        {type === 4 && (
           <ImgWrapper id="blog">
             <Img bgUrl={blogImg} id="blog" />
           </ImgWrapper>
-        ) : (
-          ""
         )}
         <User>
           <Coulmn>
             <Avatar bgUrl={avatar} />
             <Text>
               {writer}
-              {blue === 1 ? (
+              {blue === 1 && (
                 <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-              ) : (
-                ""
               )}
             </Text>
           </Coulmn>
           <a href="#open-modal">
-          <Btn>
-            <img src={logo} alt="logo" height="36px" />
-            전체 보기
-          </Btn>
+            <Btn>
+              <img src={logo} alt="logo" height="36px" />
+              전체 보기
+            </Btn>
           </a>
         </User>
         <Title>{title}</Title>
@@ -266,23 +253,27 @@ class DetailPosting extends Component {
               />
             ))}
         </div>
-        <div id="open-modal" class="modal-window">
-        <Badge>
-          <a href="#" title="Close" class="modal-close">Close</a>
-          <Badge style={{ marginRight: 5 }}>
-        <ReactStoreBadges 
-          platform={'ios'}
-          url={'https://apps.apple.com/au/app/id1472654007'}
-          locale={'ko-kr'}
-        />
-        <ReactStoreBadges
-          platform={'android'}
-          url={'https://play.google.com/store/apps/details?id=com.swichee.swichee&hl=ko&gl=US'}
-          locale={'ko-kr'}
-        />
+        <div id="open-modal" className="modal-window">
+          <Badge>
+            <a href="#" title="Close" className="modal-close">
+              Close
+            </a>
+            <Badge style={{ marginRight: 5 }}>
+              <ReactStoreBadges
+                platform={"ios"}
+                url={"https://apps.apple.com/au/app/id1472654007"}
+                locale={"ko-kr"}
+              />
+              <ReactStoreBadges
+                platform={"android"}
+                url={
+                  "https://play.google.com/store/apps/details?id=com.swichee.swichee&hl=ko&gl=US"
+                }
+                locale={"ko-kr"}
+              />
+            </Badge>
           </Badge>
-       </Badge>
-      </div>
+        </div>
       </Container>
     );
   }

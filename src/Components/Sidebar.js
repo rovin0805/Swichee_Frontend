@@ -94,7 +94,10 @@ const Sidebar = () => (
       <Title>
         Post Category
         {categories.map((category) => (
-          <Link to={`/category/${category}`} key={categories.indexOf(category)}>
+          <Link
+            to={`/category/${category.replace(/\s/g, "")}`}
+            key={categories.indexOf(category)}
+          >
             <Item>{category}</Item>
           </Link>
         ))}

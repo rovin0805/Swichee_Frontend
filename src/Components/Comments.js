@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { feedApi } from "../Api";
 import { subHours, formatDistanceToNowStrict } from "date-fns";
 import { HiBadgeCheck } from "react-icons/hi";
-import { AiOutlineMessage } from "react-icons/ai";
+import { ImReply } from "react-icons/im";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoHeartDislikeOutline } from "react-icons/io5";
 
@@ -50,7 +50,7 @@ const Badge = styled.div`
   color: #525252;
   margin-right: 20px;
   font-size: 15px;
-  &#comments {
+  &#replies {
     cursor: pointer;
   }
 `;
@@ -67,25 +67,25 @@ class Comments extends Component {
     this.handleRecomments = this.handleRecomments.bind(this);
   }
 
-  handleRecomments = (commentId, contentsId) => {
-    // try {
-    //   const { data: recomments } = await feedApi.recomments(
-    //     commentId,
-    //     contentsId
-    //   );
-    //   this.setState({
-    //     recomments,
-    //   });
-    //   console.log("recomments", recomments);
-    // } catch {
-    //   this.setState({
-    //     error: "Can't find any information.",
-    //   });
-    // } finally {
-    //   this.setState({
-    //     loading: false,
-    //   });
-    // }
+  handleRecomments = async (commentId, contentsId) => {
+    try {
+      const { data: recomments } = await feedApi.recomments(
+        commentId,
+        contentsId
+      );
+      this.setState({
+        recomments,
+      });
+      console.log("recomments", recomments);
+    } catch {
+      this.setState({
+        error: "Can't find any information.",
+      });
+    } finally {
+      this.setState({
+        loading: false,
+      });
+    }
     console.log(commentId, contentsId);
   };
 
@@ -119,19 +119,21 @@ class Comments extends Component {
         <Column>
           <Writer>
             {writer}
-            {blue === 1 ? (
+            {blue === 1 && (
               <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-            ) : (
-              ""
             )}
           </Writer>
           <Contents>{contents}</Contents>
           <ActionBtns>
             <Badge
-              id="comments"
-              onClick={this.handleRecomments(commentId, contentsId)}
+              id="replies"
+              onClick={() => this.handleRecomments(commentId, contentsId)}
             >
-              <AiOutlineMessage style={{ marginRight: 5 }} size={17} /> 0
+              <ImReply
+                style={{ marginRight: 5, transform: "scale(-1,1)" }}
+                size={17}
+              />{" "}
+              Reply
             </Badge>
             <Badge>
               <AiOutlineHeart

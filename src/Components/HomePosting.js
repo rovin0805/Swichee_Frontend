@@ -184,10 +184,8 @@ class HomePosting extends Component {
               <Avatar bgUrl={avatar} />
               <Writer>
                 {writer}
-                {blue === 1 ? (
+                {blue === 1 && (
                   <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-                ) : (
-                  ""
                 )}
               </Writer>
             </Badge>
@@ -216,26 +214,12 @@ class HomePosting extends Component {
           >
             <Img bgUrl={imageUrl}></Img>
             <Overlay>
-              {contentsType === 1 ? (
-                <HiPhotograph color="white" size={25} />
-              ) : (
-                ""
-              )}
-              {contentsType === 2 ? (
-                <MdAudiotrack color="white" size={25} />
-              ) : (
-                ""
-              )}
-              {contentsType === 3 ? (
+              {contentsType === 1 && <HiPhotograph color="white" size={25} />}
+              {contentsType === 2 && <MdAudiotrack color="white" size={25} />}
+              {contentsType === 3 && (
                 <BsFillCameraVideoFill color="white" size={25} />
-              ) : (
-                ""
               )}
-              {contentsType === 4 ? (
-                <CgFileDocument color="white" size={25} />
-              ) : (
-                ""
-              )}
+              {contentsType === 4 && <CgFileDocument color="white" size={25} />}
             </Overlay>
           </Link>
         </ImgContainer>

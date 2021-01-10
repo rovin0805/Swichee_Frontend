@@ -20,7 +20,7 @@ class CaContainer extends React.Component {
           params: { term },
         },
       } = this.props;
-      const noBlankTerm = term.replace(/ /g, "");
+      const noBlankTerm = term.replace(/\s/g, "");
       const { data: categories } = await feedApi.category(noBlankTerm);
       this.setState({
         categories,
