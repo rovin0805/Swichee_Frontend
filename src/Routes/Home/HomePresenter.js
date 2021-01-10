@@ -56,7 +56,7 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
               ) : (
                 <>
                   <PostContainer>
-                    {thumbnails?.length &&
+                    {thumbnails?.length > 0 &&
                       thumbnails.map((thumbnail, index) => (
                         <HomePosting
                           key={`post-${index}`}
@@ -74,7 +74,7 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
                           date={thumbnail.Date}
                         />
                       ))}
-                    {infinite?.length &&
+                    {infinite?.length > 0 &&
                       infinite.map((infi, index) => (
                         <HomePosting
                           key={`post-${index}`}
