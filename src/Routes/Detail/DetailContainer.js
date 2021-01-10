@@ -21,6 +21,7 @@ class DetailContainer extends React.Component {
   }
 
   componentDidMount() {
+    Scroll.animateScroll.scrollToTop();
     this.callApi();
   }
 
