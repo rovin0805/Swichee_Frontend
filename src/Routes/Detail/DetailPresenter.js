@@ -46,6 +46,7 @@ const DetailPresenter = ({
           views={postingDetail[0].Views}
           likes={postingDetail[0].Likes}
           date={postingDetail[0].Date}
+          commentsCount={postingDetail[0].comment_count}
           comments={comments}
           recommend={recommend}
         />

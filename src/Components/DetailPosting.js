@@ -132,6 +132,7 @@ const CommentsTitle = styled.div`
 const RecommendWrapper = styled.div`
   background-color: #f0f0f0;
   padding: 30px;
+  padding-bottom: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 `;
@@ -170,6 +171,7 @@ class DetailPosting extends Component {
       views,
       likes,
       date,
+      commentsCount,
       comments,
       recommend,
     } = this.props;
@@ -251,7 +253,7 @@ class DetailPosting extends Component {
           </SubInfo>
           <CommentsTitle>
             <span style={{ cursor: "pointer" }} onClick={this.handleBlock}>
-              View All {comments.length} Comments
+              View All {commentsCount} Comments
             </span>
           </CommentsTitle>
           <div style={{ display: this.state.block }}>
@@ -332,6 +334,7 @@ DetailPosting.propTypes = {
   views: PropTypes.number.isRequired,
   likes: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
+  commentsCount: PropTypes.number.isRequired,
   comments: PropTypes.array,
   recommend: PropTypes.array,
 };
