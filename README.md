@@ -29,7 +29,6 @@
 - [x] 무한 스크롤 구현 [v] + 중복 방지 [v]
 - [x] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고 --> hover를 onclick으로 수정 [v]
 - [ ] Trending api [v] (시간 기준 필요) + 렌더링 [ ] + (moving animation effect (?))
-- [ ] categories api [v] + 렌더링 [ ] + 무한 스크롤 [ ]
 - [ ] media query
 
 ### Loading
@@ -52,11 +51,13 @@
 - [x] 블로그
 - [ ] ReactPlayer outline 없애기
 - [ ] 미디어 쿼리
-- [x] 전체 보기 버튼 -> 앱으로 전달
 
 ### Category
 
 - [x] 경로
+- [x] category api data
+- [ ] 디자인
+- [ ] 무한 스크롤
 - [ ] 관련 카테고리 0 일 때 처리
 
 ### Company Introduction
