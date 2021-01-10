@@ -49,7 +49,7 @@
 - [x] 오디오
 - [x] 비디오
 - [x] 블로그
-- [ ] ReactPlayer outline 없애기
+- [x] ReactPlayer outline 없애기
 - [ ] 미디어 쿼리
 
 ### Category

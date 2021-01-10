@@ -246,19 +246,13 @@ class DetailPosting extends Component {
                   height="50px"
                   playing={false}
                   controls={true}
-                  style={{ outline: "none" }}
                 />
               </PlayerWrapper>
             </>
           )}
           {type === 3 && (
             <PlayerWrapper>
-              <ReactPlayer
-                url={video}
-                playing={false}
-                controls={true}
-                style={{ outline: "none" }}
-              />
+              <ReactPlayer url={video} playing={false} controls={true} />
             </PlayerWrapper>
           )}
           {type === 4 && (

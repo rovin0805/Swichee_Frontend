@@ -10,6 +10,9 @@ const globalStyles = createGlobalStyle`
     *{
         box-sizing:border-box;
     }
+    *:focus {
+        outline: none;
+    }
     body{
         font-family:-apple-system, BlinkMacSystemFont, 'Noto Sans KR', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         padding-top: 50px;
