@@ -94,7 +94,6 @@ class Comments extends Component {
         loading: false,
       });
     }
-    console.log(`contentsId : ${contentsId} commentId : ${commentId}`);
   };
 
   render() {
