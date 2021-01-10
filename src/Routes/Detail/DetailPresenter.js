@@ -47,6 +47,7 @@ const DetailPresenter = ({
           likes={postingDetail[0].Likes}
           date={postingDetail[0].Date}
           comments={comments}
+          recommend={recommend}
         />
       )}
     </Container>

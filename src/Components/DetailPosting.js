@@ -12,6 +12,7 @@ import ReactPlayer from "react-player";
 import ReactStoreBadges from "react-store-badges";
 import "./Modal.css";
 import Slider from "Components/Slider";
+import Recommend from "Components/Recommend";
 
 const Container = styled.div`
   margin: 30px;
@@ -124,6 +125,10 @@ const CommentsTitle = styled.div`
   margin: 17px 0 10px 0;
 `;
 
+const RecommendWrapper = styled.div`
+  background-color: #f0f0f0;
+`;
+
 class DetailPosting extends Component {
   constructor(props) {
     super(props);
@@ -159,122 +164,147 @@ class DetailPosting extends Component {
       likes,
       date,
       comments,
+      recommend,
     } = this.props;
     let photoArr = [];
     if (type === 1) photoArr = photoImg.split(",");
     return (
-      <Container>
-        {type === 1 && (
-          <SliderWrapper>
-            <Slider photoArr={photoArr} />
-          </SliderWrapper>
-        )}
-        {type === 2 && (
-          <>
-            <ImgWrapper id="audio">
-              <Img bgUrl={audioImg} id="audio" />
-            </ImgWrapper>
+      <>
+        <Container>
+          {type === 1 && (
+            <SliderWrapper>
+              <Slider photoArr={photoArr} />
+            </SliderWrapper>
+          )}
+          {type === 2 && (
+            <>
+              <ImgWrapper id="audio">
+                <Img bgUrl={audioImg} id="audio" />
+              </ImgWrapper>
+              <PlayerWrapper>
+                <ReactPlayer
+                  url={audio}
+                  width="400px"
+                  height="50px"
+                  playing={false}
+                  controls={true}
+                  style={{ outline: "none" }}
+                />
+              </PlayerWrapper>
+            </>
+          )}
+          {type === 3 && (
             <PlayerWrapper>
               <ReactPlayer
-                url={audio}
-                width="400px"
-                height="50px"
+                url={video}
                 playing={false}
                 controls={true}
                 style={{ outline: "none" }}
               />
             </PlayerWrapper>
-          </>
-        )}
-        {type === 3 && (
-          <PlayerWrapper>
-            <ReactPlayer
-              url={video}
-              playing={false}
-              controls={true}
-              style={{ outline: "none" }}
-            />
-          </PlayerWrapper>
-        )}
-        {type === 4 && (
-          <ImgWrapper id="blog">
-            <Img bgUrl={blogImg} id="blog" />
-          </ImgWrapper>
-        )}
-        <User>
-          <Coulmn>
-            <Avatar bgUrl={avatar} />
-            <Text>
-              {writer}
-              {blue === 1 && (
-                <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-              )}
-            </Text>
-          </Coulmn>
-          <a href="#open-modal">
-            <Btn>
-              <img src={logo} alt="logo" height="36px" />
-              전체 보기
-            </Btn>
-          </a>
-        </User>
-        <Title>{title}</Title>
-        <Body>{body}</Body>
-        <SubInfo>
-          <Badge>{formatDistanceToNowStrict(parseISO(date))} ago</Badge>
-          <Badge>
-            <AiOutlineHeart style={{ marginRight: 5 }} color="red" size={25} />
-            {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
-          </Badge>
-          <Badge>
-            <AiOutlineEye style={{ marginRight: 5 }} size={25} />
-            {views > 999 ? `${Math.floor((views + 1) * 0.001)}K` : views + 1}
-          </Badge>
-        </SubInfo>
-        <CommentsTitle>
-          <span style={{ cursor: "pointer" }} onClick={this.handleBlock}>
-            View All {comments.length} Comments
-          </span>
-        </CommentsTitle>
-        <div style={{ display: this.state.block }}>
-          {comments?.length > 0 &&
-            comments.map((comment, index) => (
-              <Comments
-                key={`comment-${index}`}
-                commentId={comment.Comment_id}
-                contentsId={comment.Contents_id}
-                avatar={comment.image}
-                writer={comment.User_name}
-                blue={comment.Blue}
-                contents={comment.contents}
-                likes={comment.Likes}
-                hates={comment.Hate}
-                date={comment.Date}
+          )}
+          {type === 4 && (
+            <ImgWrapper id="blog">
+              <Img bgUrl={blogImg} id="blog" />
+            </ImgWrapper>
+          )}
+          <User>
+            <Coulmn>
+              <Avatar bgUrl={avatar} />
+              <Text>
+                {writer}
+                {blue === 1 && (
+                  <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
+                )}
+              </Text>
+            </Coulmn>
+            <a href="#open-modal">
+              <Btn>
+                <img src={logo} alt="logo" height="36px" />
+                전체 보기
+              </Btn>
+            </a>
+          </User>
+          <Title>{title}</Title>
+          <Body>{body}</Body>
+          <SubInfo>
+            <Badge>{formatDistanceToNowStrict(parseISO(date))} ago</Badge>
+            <Badge>
+              <AiOutlineHeart
+                style={{ marginRight: 5 }}
+                color="red"
+                size={25}
+              />
+              {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
+            </Badge>
+            <Badge>
+              <AiOutlineEye style={{ marginRight: 5 }} size={25} />
+              {views > 999 ? `${Math.floor((views + 1) * 0.001)}K` : views + 1}
+            </Badge>
+          </SubInfo>
+          <CommentsTitle>
+            <span style={{ cursor: "pointer" }} onClick={this.handleBlock}>
+              View All {comments.length} Comments
+            </span>
+          </CommentsTitle>
+          <div style={{ display: this.state.block }}>
+            {comments?.length > 0 &&
+              comments.map((comment, index) => (
+                <Comments
+                  key={`comment-${index}`}
+                  commentId={comment.Comment_id}
+                  contentsId={comment.Contents_id}
+                  avatar={comment.image}
+                  writer={comment.User_name}
+                  blue={comment.Blue}
+                  contents={comment.contents}
+                  likes={comment.Likes}
+                  hates={comment.Hate}
+                  date={comment.Date}
+                />
+              ))}
+          </div>
+          <div id="open-modal" className="modal-window">
+            <Badge>
+              <a href="#" title="Close" className="modal-close">
+                Close
+              </a>
+              <Badge style={{ marginRight: 5 }}>
+                <ReactStoreBadges
+                  platform={"ios"}
+                  url={"https://apps.apple.com/au/app/id1472654007"}
+                  locale={"ko-kr"}
+                />
+                <ReactStoreBadges
+                  platform={"android"}
+                  url={
+                    "https://play.google.com/store/apps/details?id=com.swichee.swichee&hl=ko&gl=US"
+                  }
+                  locale={"ko-kr"}
+                />
+              </Badge>
+            </Badge>
+          </div>
+        </Container>
+        <RecommendWrapper>
+          {recommend?.length > 0 &&
+            recommend.map((item, index) => (
+              <Recommend
+                key={`recommend-${index}`}
+                contentsId={item.Contents_id}
+                typeId={item.type_id}
+                category={item.Category}
+                thumbnail={item.Thumbnail}
+                title={item.Title}
+                writer={item.User_name}
+                blue={1}
+                likes={item.Likes}
+                view={item.Views}
+                date={item.Date}
               />
             ))}
-        </div>
-        <div id="open-modal" className="modal-window">
-          <Badge>
-            <a href="#" title="Close" className="modal-close">
-              Close
-            </a>
-            <Badge style={{ marginRight: 5 }}>
-              <ReactStoreBadges
-                platform={"ios"}
-                url={"https://apps.apple.com/au/app/id1472654007"}
-                locale={"ko-kr"}
-              />
-              <ReactStoreBadges
-                platform={"android"}
-                url={
-                  "https://play.google.com/store/apps/details?id=com.swichee.swichee&hl=ko&gl=US"
-                }
-                locale={"ko-kr"}
-              />
-            </Badge>
-          </Badge>
-        </div>
-      </Container>
+        </RecommendWrapper>
+      </>
     );
   }
 }
@@ -294,7 +324,8 @@ DetailPosting.propTypes = {
   views: PropTypes.number.isRequired,
   likes: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
-  comment: PropTypes.array,
+  comments: PropTypes.array,
+  recommend: PropTypes.array,
 };
 
 export default DetailPosting;
