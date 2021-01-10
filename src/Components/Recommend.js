@@ -83,10 +83,17 @@ const SubInfo = styled.div`
   align-items: center;
 `;
 
+const Avatar = styled.img.attrs((props) => ({
+  src: props.bgUrl,
+}))`
+  border-radius: 50px;
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
+`;
+
 const Badge = styled.div`
-  :not(:first-child) {
-    padding-left: 20px;
-  }
+  padding-right: 20px;
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -103,12 +110,14 @@ const Recommend = ({
   likes,
   view,
   date,
+  updateContainer,
 }) => {
   const time = Date.parse(date);
   const koTime = subHours(time, 9);
   return (
     <Link
       to={`/posting?id=${contentsId}&type_id=${typeId}&category=${category}`}
+      onClick={() => updateContainer()}
     >
       <Container>
         <ImageContainer>
@@ -127,6 +136,7 @@ const Recommend = ({
               : title}
           </Title>
           <SubInfo>
+            <Avatar bgUrl={thumbnail} />
             <Badge>
               {writer}
               {blue === 1 && (
@@ -168,6 +178,7 @@ Recommend.propTypes = {
   likes: PropTypes.number.isRequired,
   view: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
+  updateContainer: PropTypes.func.isRequired,
 };
 
 export default Recommend;

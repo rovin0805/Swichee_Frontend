@@ -22,6 +22,7 @@ const DetailPresenter = ({
   recommend,
   loading,
   error,
+  updateContainer,
 }) => {
   return loading ? (
     <Loader />
@@ -29,7 +30,7 @@ const DetailPresenter = ({
     error && <Message color="#D3D3D3" text={error} />
   ) : (
     <Container>
-      {postingDetail?.length && (
+      {postingDetail?.length > 0 && (
         <DetailPosting
           key={postingDetail[0].Contents_id}
           type={type}
@@ -49,6 +50,7 @@ const DetailPresenter = ({
           commentsCount={postingDetail[0].comment_count}
           comments={comments}
           recommend={recommend}
+          updateContainer={updateContainer}
         />
       )}
     </Container>
@@ -61,6 +63,7 @@ DetailPresenter.propTypes = {
   recommend: PropTypes.array,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
+  updateContainer: PropTypes.func.isRequired,
 };
 
 export default DetailPresenter;

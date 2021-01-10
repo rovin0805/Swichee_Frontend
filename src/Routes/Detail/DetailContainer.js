@@ -2,6 +2,7 @@ import React from "react";
 import DetailPresenter from "./DetailPresenter";
 import { feedApi } from "../../Api";
 import queryStirng from "query-string";
+import * as Scroll from "react-scroll";
 
 class DetailContainer extends React.Component {
   constructor(props) {
@@ -13,10 +14,23 @@ class DetailContainer extends React.Component {
       comments: null,
       error: null,
       loading: true,
+      alreadyCalled: false,
     };
+    this.callApi = this.callApi.bind(this);
+    this.updateContainer = this.updateContainer.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.callApi();
+  }
+
+  componentDidUpdate() {
+    if (!this.state.alreadyCalled) {
+      this.callApi();
+    }
+  }
+
+  async callApi() {
     console.log(this.props);
     const {
       location: { search },
@@ -47,6 +61,8 @@ class DetailContainer extends React.Component {
         postingDetail,
         comments,
         recommend,
+        loading: false,
+        alreadyCalled: true,
       });
       console.log("posting info", postingDetail);
       console.log("comments", comments);
@@ -55,11 +71,13 @@ class DetailContainer extends React.Component {
       this.setState({
         error: "Can't find any information.",
       });
-    } finally {
-      this.setState({
-        loading: false,
-      });
     }
+  }
+
+  updateContainer() {
+    this.setState({ alreadyCalled: false }, () =>
+      Scroll.animateScroll.scrollToTop()
+    );
   }
 
   render() {
@@ -79,6 +97,7 @@ class DetailContainer extends React.Component {
         recommend={recommend}
         error={error}
         loading={loading}
+        updateContainer={this.updateContainer}
       />
     );
   }

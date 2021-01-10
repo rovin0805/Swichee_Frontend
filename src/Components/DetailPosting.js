@@ -222,6 +222,7 @@ class DetailPosting extends Component {
       commentsCount,
       comments,
       recommend,
+      updateContainer,
     } = this.props;
     let photoArr = [];
     if (type === 1) photoArr = photoImg.split(",");
@@ -373,6 +374,7 @@ class DetailPosting extends Component {
                 likes={item.Likes}
                 view={item.Views}
                 date={item.Date}
+                updateContainer={updateContainer}
               />
             ))}
         </RecommendWrapper>
@@ -399,6 +401,7 @@ DetailPosting.propTypes = {
   commentsCount: PropTypes.number.isRequired,
   comments: PropTypes.array,
   recommend: PropTypes.array,
+  updateContainer: PropTypes.func.isRequired,
 };
 
 export default DetailPosting;
