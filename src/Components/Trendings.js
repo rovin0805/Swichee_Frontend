@@ -77,12 +77,13 @@ class Trendings extends Component {
       next,
       handlePrevious,
       handleNext,
+      trendings,
     } = this;
     return (
       <>
         <div id="title">
           <FaHotjar style={{ marginRight: 5 }} color="#ff9900" size={20} />
-          Todays Trending
+          Trending
         </div>
         <TrendingContainer>
           <div id="wrapper">
@@ -129,7 +130,7 @@ class Trendings extends Component {
 }
 
 Trendings.propTypes = {
-  thumbnails: PropTypes.array,
+  trendings: PropTypes.array.isRequired,
 };
 
 export default Trendings;

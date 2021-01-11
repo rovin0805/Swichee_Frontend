@@ -31,16 +31,8 @@
 - [x] 무한 스크롤 구현 [v] + 중복 방지 [v]
 - [x] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고 --> hover를 onclick으로 수정 [v]
 - [x] 닉네임
-- [ ] Trending api [ ] + 렌더링 [ ] + (moving animation effect (?))
+- [ ] Trending api [x] + 렌더링 [ ] + (moving animation effect (?))
 - [ ] 미디어 쿼리
-
-### Loading
-
-- [x] 구현
-
-### Msg
-
-- [x] 구현
 
 ### Posting Detail
 
@@ -60,10 +52,23 @@
 
 - [x] 경로
 - [x] category api data
+- [x] 관련 카테고리 0 일 때 처리
 - [ ] 배경 배너
 - [ ] 무한 스크롤
-- [x] 관련 카테고리 0 일 때 처리
 - [ ] 미디어 쿼리
+
+### Search
+
+- [ ] search api [ ] + 렌더링 [ ]
+- [ ] 미디어 쿼리
+
+### Loading
+
+- [x] 구현
+
+### Msg
+
+- [x] 구현
 
 ### Company Introduction
 
@@ -71,11 +76,6 @@
 - [ ] 미디어 쿼리
 
 ### Log in / Sign up 페이지
-
-- [ ] 구현
-- [ ] 미디어 쿼리
-
-### Search
 
 - [ ] 구현
 - [ ] 미디어 쿼리

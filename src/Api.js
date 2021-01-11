@@ -8,7 +8,7 @@ export const feedApi = {
   // fpr home page
   thumbnails: () => api.get(""), // initial call at home
   infinite: () => api.get("api/inf"), // call when infinite scroll is moved
-  trending: () => api.get("contents/trending"), // 하루동안 조회수 증가순 & 최신순
+  trending: () => api.get("api/likes"), // likes 높은 순
   category: (category) =>
     api.get("api/sidebar", {
       params: {

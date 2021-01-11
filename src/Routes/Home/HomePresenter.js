@@ -40,7 +40,7 @@ const HomePresenter = ({ thumbnails, infinite, trendings, loading, error }) => {
         <Loader />
       ) : (
         <Container>
-          <Trendings thumbnails={thumbnails} />
+          <Trendings trendings={trendings} />
           <div>
             <MainTitle>
               <AiOutlineFieldTime
