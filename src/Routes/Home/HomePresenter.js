@@ -33,7 +33,7 @@ const PostContainer = styled.div`
   width: 100%;
 `;
 
-const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
+const HomePresenter = ({ thumbnails, infinite, trendings, loading, error }) => {
   return (
     <>
       {loading ? (
@@ -105,8 +105,8 @@ const HomePresenter = ({ thumbnails, infinite, loading, error }) => {
 };
 
 HomePresenter.propTypes = {
-  thumbnails: PropTypes.array,
-  infinite: PropTypes.array,
+  thumbnails: PropTypes.array.isRequired,
+  infinite: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
 };

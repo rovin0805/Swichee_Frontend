@@ -48,7 +48,7 @@ class HomeContainer extends React.Component {
   }
 
   render() {
-    const { thumbnails, infinite, error, loading } = this.state;
+    const { thumbnails, infinite, trendings, error, loading } = this.state;
     return (
       <InfiniteScroll
         dataLength={this.state.infinite.length}
@@ -60,6 +60,7 @@ class HomeContainer extends React.Component {
         <HomePresenter
           thumbnails={thumbnails}
           infinite={infinite}
+          trendings={trendings}
           error={error}
           loading={loading}
         />
