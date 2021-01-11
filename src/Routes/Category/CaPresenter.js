@@ -22,7 +22,7 @@ const MainTitle = styled.div`
   color: #ff9900;
   margin-top: 40px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
 `;
@@ -31,11 +31,48 @@ const PostContainer = styled.div`
   width: 100%;
 `;
 
+const categories = [
+  "No Choice",
+  "Funding",
+  "Music",
+  "Sports",
+  "Gaming",
+  "Codemy",
+  "Entertainment",
+  "News & Politics",
+  "Education",
+  "Pets & Animal",
+  "Travel & Events",
+  "Science & Tech",
+  "People & Blogs",
+  "Fashion & Style",
+  "Autos & Vehicles",
+  "Film & Animation",
+  "Food & Recipe",
+  "Webtoon",
+  "Daily",
+  "Illustration",
+];
+
+const Background = styled.img.attrs((props) => ({
+  src: props.bgUrl,
+}))`
+  margin-top: 50px;
+  width: 100%;
+  max-height: 250px;
+  overflow: hidden;
+`;
+
 const CaPresenter = ({ categories, theme, loading, error, updateContainer }) =>
   loading ? (
     <Loader />
   ) : (
     <Container>
+      <Background
+        bgUrl={
+          "https://mk0madklubben208sy3o.kinstacdn.com/wp-content/uploads/2020/07/restaurant_hero_FCKbh.jpg"
+        }
+      />
       <div>
         <MainTitle>{theme}</MainTitle>
         <MainContent>
@@ -44,7 +81,7 @@ const CaPresenter = ({ categories, theme, loading, error, updateContainer }) =>
           ) : (
             <>
               <PostContainer>
-                {categories?.length > 0 &&
+                {categories?.length > 0 ? (
                   categories.map((ca, index) => (
                     <HomePosting
                       key={`post-${index}`}
@@ -61,7 +98,10 @@ const CaPresenter = ({ categories, theme, loading, error, updateContainer }) =>
                       comments={ca.comment_count}
                       date={ca.Date}
                     />
-                  ))}
+                  ))
+                ) : (
+                  <Message color="#D3D3D3" text={"No contents"} />
+                )}
                 {/* {infinite?.length > 0 &&
                   infinite.map((infi, index) => (
                     <HomePosting

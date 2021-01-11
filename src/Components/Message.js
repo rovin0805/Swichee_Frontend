@@ -15,7 +15,7 @@ const Text = styled.span`
 
 const Message = ({ text, color }) => (
   <Text color={color}>
-    <BiError color="#D3D3D3" style={{ marginRight: 5 }} size={40} />
+    <BiError color={color} style={{ marginRight: 5 }} size={40} />
     {text}
   </Text>
 );
