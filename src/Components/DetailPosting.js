@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import Comments from "Components/Comments";
 import Slider from "Components/Slider";
 import Recommend from "Components/Recommend";
+import Modal from "Components/Modal";
 import logo from "Assets/logo.png";
-import "./Modal.css";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import ReactStoreBadges from "react-store-badges";
 import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
 import parseISO from "date-fns/parseISO";
 import ReactPlayer from "react-player";
@@ -330,27 +329,7 @@ class DetailPosting extends Component {
                 />
               ))}
           </div>
-          <div id="open-modal" className="modal-window">
-            <Badge>
-              <a href="#" title="Close" className="modal-close">
-                Close
-              </a>
-              <Badge style={{ marginRight: 5 }}>
-                <ReactStoreBadges
-                  platform={"ios"}
-                  url={"https://apps.apple.com/au/app/id1472654007"}
-                  locale={"ko-kr"}
-                />
-                <ReactStoreBadges
-                  platform={"android"}
-                  url={
-                    "https://play.google.com/store/apps/details?id=com.swichee.swichee&hl=ko&gl=US"
-                  }
-                  locale={"ko-kr"}
-                />
-              </Badge>
-            </Badge>
-          </div>
+          <Modal />
         </Container>
         <RecommendWrapper>
           <Title id="rocommend">Recommended For You</Title>
