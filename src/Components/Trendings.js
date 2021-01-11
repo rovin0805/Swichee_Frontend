@@ -6,13 +6,68 @@ import PropTypes from "prop-types";
 import { FaHotjar } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 
+const Title = styled.div`
+  color: #ff9900;
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: 767px){
+    align-items: center;
+    
+    margin-left: 10px;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    align-items: center;
+    
+    margin-left: 10px;
+  }
+  @media only screen and (min-width: 1025px) {
+    align-items: center;
+    
+    padding-right : 100px;
+    padding-left : 100px;
+  }
+`;
 const TrendingContainer = styled.div`
   width: 100%;
   margin-top: 20px;
   white-space: nowrap;
   overflow: hidden;
   line-height: 148px; //different from height because of border, should be the same as height in the end
-`;
+  @media only screen and (max-width: 767px){
+    align-items: center;
+    padding-right : 50px;
+    padding-left : 30px;
+    margin-left: 10px;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    align-items: center;
+    overflow:hidden;
+    padding-right : 50px;
+    padding-left : 30px;
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  @media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    align-items: center;
+    overflow:hidden;
+    padding-right : 100px;
+    padding-left : 100px;
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  @media only screen and (min-width: 1201px) {
+    width :1200px;
+    align-items: center;
+    overflow:hidden;
+    padding-right : 100px;
+    padding-left : 100px;
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  `;
 
 class Trendings extends Component {
   constructor(props) {
@@ -80,10 +135,10 @@ class Trendings extends Component {
     } = this;
     return (
       <>
-        <div id="title">
+        <Title>
           <FaHotjar style={{ marginRight: 5 }} color="#ff9900" size={20} />
           Todays Trending
-        </div>
+        </Title>
         <TrendingContainer>
           <div id="wrapper">
             <div id="carousel" ref={carousel}>

@@ -16,8 +16,9 @@ const StyledSlider = styled(Slider)`
 const Img = styled.img.attrs((props) => ({
   src: props.src,
 }))`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  margin: 0 auto;
 `;
 
 export default class SimpleSlider extends Component {

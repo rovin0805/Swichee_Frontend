@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Replies from "Components/Replies";
 import { feedApi } from "../Api";
 import { subHours, formatDistanceToNowStrict } from "date-fns";
 import { HiBadgeCheck } from "react-icons/hi";
-import { AiOutlineMessage } from "react-icons/ai";
+import { ImReply } from "react-icons/im";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoHeartDislikeOutline } from "react-icons/io5";
 
 const Container = styled.div`
   display: flex;
-  padding: 10px 0;
+  padding-top: 10px;
 `;
 
 const Column = styled.div`
@@ -50,11 +51,10 @@ const Badge = styled.div`
   color: #525252;
   margin-right: 20px;
   font-size: 15px;
-  &#comments {
+  &#replies {
     cursor: pointer;
   }
 `;
-
 class Comments extends Component {
   constructor(props) {
     super(props);
@@ -67,28 +67,6 @@ class Comments extends Component {
     this.handleRecomments = this.handleRecomments.bind(this);
   }
 
-  handleRecomments = (commentId, contentsId) => {
-    // try {
-    //   const { data: recomments } = await feedApi.recomments(
-    //     commentId,
-    //     contentsId
-    //   );
-    //   this.setState({
-    //     recomments,
-    //   });
-    //   console.log("recomments", recomments);
-    // } catch {
-    //   this.setState({
-    //     error: "Can't find any information.",
-    //   });
-    // } finally {
-    //   this.setState({
-    //     loading: false,
-    //   });
-    // }
-    console.log(commentId, contentsId);
-  };
-
   handleBlock() {
     const currentFlag = this.state.flag;
     this.setState({ flag: !currentFlag });
@@ -97,7 +75,29 @@ class Comments extends Component {
     } else this.setState({ block: "none" });
   }
 
+  handleRecomments = async (contentsId, commentId) => {
+    try {
+      const { data: recomments } = await feedApi.recomments(
+        contentsId,
+        commentId
+      );
+      this.setState({
+        recomments,
+      });
+      console.log("recomments", recomments);
+    } catch {
+      this.setState({
+        error: "Can't find any information.",
+      });
+    } finally {
+      this.setState({
+        loading: false,
+      });
+    }
+  };
+
   render() {
+    const { recomments } = this.state;
     const {
       commentId,
       contentsId,
@@ -119,19 +119,22 @@ class Comments extends Component {
         <Column>
           <Writer>
             {writer}
-            {blue === 1 ? (
+            {blue === 1 && (
               <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-            ) : (
-              ""
             )}
           </Writer>
           <Contents>{contents}</Contents>
           <ActionBtns>
             <Badge
-              id="comments"
-              onClick={this.handleRecomments(commentId, contentsId)}
+              id="replies"
+              onClick={() => this.handleRecomments(contentsId, commentId)}
             >
-              <AiOutlineMessage style={{ marginRight: 5 }} size={17} /> 0
+              <ImReply
+                style={{ marginRight: 5, transform: "scale(-1,1)" }}
+                size={17}
+                onClick={this.handleBlock}
+              />
+              <span onClick={this.handleBlock}>Reply</span>
             </Badge>
             <Badge>
               <AiOutlineHeart
@@ -151,6 +154,22 @@ class Comments extends Component {
             </Badge>
             <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
           </ActionBtns>
+          <div style={{ display: this.state.block }}>
+            {recomments?.length > 0 &&
+              recomments[0].Comment_Comment_id === commentId &&
+              recomments.map((re, index) => (
+                <Replies
+                  key={`reply-${index}`}
+                  avatar={re.image}
+                  writer={re.User_name}
+                  blue={re.Blue}
+                  contents={re.Contents}
+                  likes={re.Likes}
+                  hates={re.Hate}
+                  date={re.Date}
+                />
+              ))}
+          </div>
         </Column>
       </Container>
     );

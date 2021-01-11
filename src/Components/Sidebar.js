@@ -35,6 +35,15 @@ const SidebarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: left;
+  margin-top : 20px;
+  margin-left : 70px;
+  @media only screen and (max-width: 768px) {
+    display : none;
+  }
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    width:200px;
+    height: auto;
+  }
 `;
 
 const Category = styled.div`
@@ -43,6 +52,7 @@ const Category = styled.div`
   border-radius: 35px;
   // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   margin-top: 20px;
+  margin-right: 100px;
   padding: 25px 20px;
   background-color: white;
 `;
@@ -71,6 +81,7 @@ const Footer = styled.div`
   color: #cccc;
   font-size: 15px;
   cursor: pointer;
+  margin-right: 88px;
 `;
 
 const TopBtn = styled.div`
@@ -86,6 +97,7 @@ const TopBtn = styled.div`
   color: white;
   cursor: pointer;
   margin-top: 15px;
+  margin-right: 88px;
 `;
 
 const Sidebar = () => (
@@ -94,7 +106,10 @@ const Sidebar = () => (
       <Title>
         Post Category
         {categories.map((category) => (
-          <Link to={`/category/${category}`} key={categories.indexOf(category)}>
+          <Link
+            to={`/category/${category.replace(/\s/g, "")}`}
+            key={categories.indexOf(category)}
+          >
             <Item>{category}</Item>
           </Link>
         ))}

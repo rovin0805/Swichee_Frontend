@@ -2,15 +2,19 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import logo from "Assets/swichee.png";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
+import { FiZap } from "react-icons/fi";
 import { CgSearch } from "react-icons/cg";
 import { FaRegBuilding } from "react-icons/fa";
+import logo2 from "Assets/logo.png";
+//<img src={logo2} alt="logo" height="15px" />
+
 
 const CssHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 60px;
   display: flex;
   align-items: center;
@@ -29,10 +33,13 @@ const List = styled.ul`
 const Coulmn = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 10px;
 `;
 
 const Item = styled.li`
-  width: 80px;
+  padding : 2px 10px 10px 10px;
+  margin-top: 0px;
+  width: 60px;
   height: 60px;
   border-bottom: 3px solid
     ${(props) => (props.current ? "#FF9900" : "transparent")};
@@ -57,17 +64,22 @@ const Header = ({ location: { pathname } }) => (
       <Coulmn>
         <Item current={pathname === "/"}>
           <CssLink to="/">
-            <AiOutlineHome size={23} />
+            <AiOutlineHome size={20} />
           </CssLink>
         </Item>
         <Item current={pathname === "/search"}>
           <CssLink to="/search">
-            <CgSearch size={23} />
+            <CgSearch size={20} />
+          </CssLink>
+        </Item>
+        <Item current={pathname === "/user"}>
+          <CssLink to="/user">
+            <AiOutlineUser size={20} />
           </CssLink>
         </Item>
         <Item current={pathname === "/company"}>
           <CssLink to="/company">
-            <FaRegBuilding size={23} />
+            <FiZap size={20} />
           </CssLink>
         </Item>
       </Coulmn>

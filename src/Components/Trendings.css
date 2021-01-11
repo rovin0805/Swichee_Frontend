@@ -1,16 +1,16 @@
 #title {
   color: #ff9900;
-  margin-top: 50px;
+  margin-top: 40px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 17px;
   display: flex;
   align-items: center;
 }
 
 #wrapper {
-  width: 100%;
-  max-width: 964px;
+  display: flex;
   position: relative;
+  width: 100%;
 }
 
 #carousel {
@@ -59,8 +59,9 @@
 }
 
 .item {
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 150px;
   background: green;
   cursor: pointer;
+  flex : 1;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { HiBadgeCheck } from "react-icons/hi";
 import { FcLike } from "react-icons/fc";
@@ -76,23 +77,26 @@ const Badge = styled.div`
   align-items: center;
 `;
 
-const Thumbnail = ({
-  imageUrl,
-  contentsType,
-  likes,
+const Recommend = ({
+  contentsId,
+  typeId,
+  category,
+  thumbnail,
   title,
   writer,
   blue,
+  likes,
   view,
+  date,
 }) => (
   <Container>
     <ImageContainer>
-      <Image bgUrl={imageUrl}>
+      <Image bgUrl={thumbnail}>
         <Overlay>
-          {contentsType === 1 ? <HiPhotograph color="white" /> : ""}
-          {contentsType === 2 ? <MdAudiotrack color="white" /> : ""}
-          {contentsType === 3 ? <BsFillCameraVideoFill color="white" /> : ""}
-          {contentsType === 4 ? <CgFileDocument color="white" /> : ""}
+          {typeId === 1 && <HiPhotograph color="white" />}
+          {typeId === 2 && <MdAudiotrack color="white" />}
+          {typeId === 3 && <BsFillCameraVideoFill color="white" />}
+          {typeId === 4 && <CgFileDocument color="white" />}
         </Overlay>
       </Image>
     </ImageContainer>
@@ -103,10 +107,9 @@ const Thumbnail = ({
       <SubInfo>
         <Badge>
           {writer}
-          {blue === 1 ? (
+          {blue === 1 && (
             <HiBadgeCheck color="#488dea" style={{ marginLeft: 1 }} />
-          ) : (
-            ""
+
           )}
         </Badge>
         <Badge>
@@ -122,4 +125,17 @@ const Thumbnail = ({
   </Container>
 );
 
-export default Thumbnail;
+Recommend.propTypes = {
+  contentsId: PropTypes.number.isRequired,
+  typeId: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  writer: PropTypes.string.isRequired,
+  blue: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
+  view: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
+};
+
+export default Recommend;

@@ -5,10 +5,9 @@ import Message from "Components/Message";
 import DetailPosting from "Components/DetailPosting";
 
 const Container = styled.div`
-  width: 800px;
+  width: 100%;
   margin: 0 auto;
   margin-top: 50px;
-  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,6 +47,7 @@ const DetailPresenter = ({
           likes={postingDetail[0].Likes}
           date={postingDetail[0].Date}
           comments={comments}
+          recommend={recommend}
         />
       )}
     </Container>
