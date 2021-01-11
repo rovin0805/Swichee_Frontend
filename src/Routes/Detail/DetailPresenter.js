@@ -41,6 +41,7 @@ const DetailPresenter = ({
           blogImg={postingDetail[0].Background_image}
           avatar={postingDetail[0].image}
           writer={postingDetail[0].User_name}
+          nickname={postingDetail[0].Nickname}
           blue={postingDetail[0].Blue}
           title={postingDetail[0].Title}
           body={postingDetail[0].Contents}

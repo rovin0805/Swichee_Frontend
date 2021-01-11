@@ -67,6 +67,7 @@ const HomePresenter = ({ thumbnails, infinite, trendings, loading, error }) => {
                           contentsType={thumbnail.type_id}
                           title={thumbnail.Title}
                           writer={thumbnail.User_name}
+                          nickname={thumbnail.Nickname}
                           blue={thumbnail.blue}
                           likes={thumbnail.Likes}
                           views={thumbnail.Views}
@@ -85,6 +86,7 @@ const HomePresenter = ({ thumbnails, infinite, trendings, loading, error }) => {
                           contentsType={infi.type_id}
                           title={infi.Title}
                           writer={infi.User_name}
+                          nickname={infi.Nickname}
                           blue={infi.blue}
                           likes={infi.Likes}
                           views={infi.Views}

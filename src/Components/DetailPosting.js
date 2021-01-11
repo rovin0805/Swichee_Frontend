@@ -66,9 +66,17 @@ const Avatar = styled.img.attrs((props) => ({
   margin-right: 10px;
 `;
 
-const Text = styled.span`
+const Writer = styled.span`
   font-size: 20px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+`;
+
+const Nickname = styled.div`
+  color: grey;
+  font-size: 14px;
+  margin-top: 3px;
 `;
 
 const Title = styled.div`
@@ -212,6 +220,7 @@ class DetailPosting extends Component {
       blogImg,
       avatar,
       writer,
+      nickname,
       blue,
       title,
       body,
@@ -262,12 +271,15 @@ class DetailPosting extends Component {
           <User>
             <Coulmn>
               <Avatar bgUrl={avatar} />
-              <Text>
-                {writer}
-                {blue === 1 && (
-                  <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-                )}
-              </Text>
+              <div>
+                <Writer>
+                  {writer}
+                  {blue === 1 && (
+                    <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
+                  )}
+                </Writer>
+                <Nickname>{nickname}</Nickname>
+              </div>
             </Coulmn>
             <a href="#open-modal">
               <Btn>
@@ -366,6 +378,7 @@ DetailPosting.propTypes = {
   title: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   writer: PropTypes.string.isRequired,
+  nickname: PropTypes.string.isRequired,
   blue: PropTypes.number.isRequired,
   body: PropTypes.string.isRequired,
   views: PropTypes.number.isRequired,

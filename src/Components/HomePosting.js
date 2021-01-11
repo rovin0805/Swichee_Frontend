@@ -54,7 +54,13 @@ const Writer = styled.span`
   display: flex;
   align-items: center;
   font-size: 18px;
-  font-family: "Noto Sans KR";
+  font-weight: bold;
+`;
+
+const Nickname = styled.div`
+  color: grey;
+  font-size: 13px;
+  margin-top: 7px;
 `;
 
 const Badge = styled.div`
@@ -168,6 +174,7 @@ class HomePosting extends Component {
       likes,
       title,
       writer,
+      nickname,
       blue,
       views,
       avatar,
@@ -182,12 +189,15 @@ class HomePosting extends Component {
           <HeaderTop>
             <Badge>
               <Avatar bgUrl={avatar} />
-              <Writer>
-                {writer}
-                {blue === 1 && (
-                  <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
-                )}
-              </Writer>
+              <div>
+                <Writer>
+                  {writer}
+                  {blue === 1 && (
+                    <HiBadgeCheck color="#488dea" style={{ marginLeft: 3 }} />
+                  )}
+                </Writer>
+                <Nickname>{nickname}</Nickname>
+              </div>
             </Badge>
             <DropDown onClick={this.handleBlock}>
               <DropBtn>
@@ -254,6 +264,7 @@ HomePosting.propTypes = {
   contentsType: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   writer: PropTypes.string.isRequired,
+  nickname: PropTypes.string.isRequired,
   blue: PropTypes.number.isRequired,
   views: PropTypes.number.isRequired,
   avatar: PropTypes.string.isRequired,

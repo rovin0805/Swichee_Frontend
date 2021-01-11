@@ -28,8 +28,8 @@
 - [x] 포스팅 데이터 추가 : 아바타, 날짜, 댓글 수
 - [x] 무한 스크롤 구현 [v] + 중복 방지 [v]
 - [x] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고 --> hover를 onclick으로 수정 [v]
-- [ ] Trending api [ ] (시간 기준 필요) + 렌더링 [ ] + (moving animation effect (?))
-- [ ] 닉네임
+- [x] 닉네임
+- [ ] Trending api [ ] + 렌더링 [ ] + (moving animation effect (?))
 - [ ] 미디어 쿼리
 
 ### Loading
@@ -51,7 +51,7 @@
 - [x] 비디오
 - [x] 블로그
 - [x] ReactPlayer outline 없애기
-- [ ] 닉네임
+- [x] 닉네임
 - [ ] 미디어 쿼리
 
 ### Category
