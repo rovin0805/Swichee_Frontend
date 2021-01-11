@@ -29,6 +29,7 @@
 - [x] 무한 스크롤 구현 [v] + 중복 방지 [v]
 - [x] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고 --> hover를 onclick으로 수정 [v]
 - [ ] Trending api [v] (시간 기준 필요) + 렌더링 [ ] + (moving animation effect (?))
+- [ ] 닉네임
 - [ ] media query
 
 ### Loading
@@ -42,7 +43,7 @@
 ### Posting Detail
 
 - [x] 조회수 증가 api
-- [x] 추천 피드 api [x] + 렌더링 [x]
+- [x] 추천 피드 api [x] + 렌더링 [x] + 아바타 url[ ]
 - [x] 댓글 api [x] + 렌더링 [x]
 - [x] 대댓글 api [x] + 렌더링 [x]
 - [x] 이미지
@@ -50,6 +51,7 @@
 - [x] 비디오
 - [x] 블로그
 - [x] ReactPlayer outline 없애기
+- [ ] 닉네임
 - [ ] 미디어 쿼리
 
 ### Category

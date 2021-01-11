@@ -1,6 +1,7 @@
 import React from "react";
 import { feedApi } from "../../Api";
 import CaPresenter from "./CaPresenter";
+import * as Scroll from "react-scroll";
 
 class CaContainer extends React.Component {
   constructor(props) {
@@ -9,10 +10,25 @@ class CaContainer extends React.Component {
       categories: [],
       error: null,
       loading: true,
+      theme: null,
+      alreadyCalled: false,
     };
+    this.callApi = this.callApi.bind(this);
+    this.updateContainer = this.updateContainer.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    Scroll.animateScroll.scrollToTop();
+    this.callApi();
+  }
+
+  componentDidUpdate() {
+    if (!this.state.alreadyCalled) {
+      this.callApi();
+    }
+  }
+
+  async callApi() {
     try {
       console.log(this.props);
       const {
@@ -24,22 +40,35 @@ class CaContainer extends React.Component {
       const { data: categories } = await feedApi.category(noBlankTerm);
       this.setState({
         categories,
+        theme: noBlankTerm,
+        loading: false,
+        alreadyCalled: true,
       });
       console.log(`${term} category`, categories);
     } catch {
       this.setState({
         error: "Can't find any information.",
       });
-    } finally {
-      this.setState({
-        loading: false,
-      });
     }
   }
 
+  updateContainer() {
+    this.setState({ alreadyCalled: false }, () =>
+      Scroll.animateScroll.scrollToTop()
+    );
+  }
+
   render() {
-    const { categories } = this.state;
-    return <div></div>;
+    const { categories, theme, loading, error } = this.state;
+    return (
+      <CaPresenter
+        categories={categories}
+        theme={theme}
+        loading={loading}
+        error={error}
+        updateContainer={this.updateContainer}
+      />
+    );
   }
 }
 

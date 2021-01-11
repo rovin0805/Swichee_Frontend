@@ -88,15 +88,16 @@ const TopBtn = styled.div`
   margin-top: 15px;
 `;
 
-const Sidebar = () => (
+const Sidebar = ({ updateContainer }) => (
   <SidebarContainer>
     <Category>
       <Title>
-        Post Category
+        Post Categories
         {categories.map((category) => (
           <Link
             to={`/category/${category.replace(/\s/g, "")}`}
             key={categories.indexOf(category)}
+            onClick={() => updateContainer && updateContainer()}
           >
             <Item>{category}</Item>
           </Link>
