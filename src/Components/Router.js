@@ -6,6 +6,7 @@ import Company from "Routes/Company";
 import Header from "Components/Header";
 import Detail from "Routes/Detail";
 import Category from "Routes/Category";
+import User from "Routes/User";
 
 const Router = () => (
   <BrowserRouter>
@@ -17,6 +18,7 @@ const Router = () => (
         <Route path="/company" component={Company} />
         <Route path="/posting" component={Detail} />
         <Route path="/category/:term" component={Category} />
+        <Route path="/user" component={User} />
         <Redirect from="*" to="/" />
       </Switch>
     </>
