@@ -119,12 +119,12 @@ const UserPresenter = ({ loading, error }) => {
           <Logo>
             <img src={logo} alt="logo" height="70px" />
           </Logo>
-          <Title>Sign in to Swichee</Title>
+          <Title>Sign In To Swichee</Title>
           <Login>
             <Content>
               <div className="form-group">
                 <Content>
-                  <label>Username or Email address</label>
+                  <label>Username or Email Address</label>
                 </Content>
                 <input
                   type="email"
@@ -163,7 +163,7 @@ const UserPresenter = ({ loading, error }) => {
                   </div>
                 </div>
                 <p className="forgot-password text-right">
-                  Forgot <a href="#">password?</a>
+                  <a href="#">Forgot password?</a>
                 </p>
               </SideImg>
               <div id="open-modal" className="modal-window">
@@ -190,7 +190,7 @@ const UserPresenter = ({ loading, error }) => {
             </Content>
             <BoxContent>
               <button type="submit" className="btn btn-dark btn-lg btn-block">
-                Sign in
+                Sign In
               </button>
             </BoxContent>
             <BoxContent>

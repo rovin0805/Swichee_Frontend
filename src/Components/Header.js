@@ -5,8 +5,6 @@ import logo from "Assets/swichee.png";
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
 import { FiZap } from "react-icons/fi";
 import { CgSearch } from "react-icons/cg";
-import { FaRegBuilding } from "react-icons/fa";
-import logo2 from "Assets/logo.png";
 
 const CssHeader = styled.header`
   position: fixed;
@@ -35,7 +33,7 @@ const Coulmn = styled.div`
 `;
 
 const Item = styled.li`
-  padding : 2px 10px 10px 10px;
+  padding: 2px 10px 10px 10px;
   margin-top: 0px;
   width: 60px;
   height: 60px;
