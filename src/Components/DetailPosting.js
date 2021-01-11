@@ -354,6 +354,7 @@ class DetailPosting extends Component {
                 category={item.Category}
                 thumbnail={item.Thumbnail}
                 title={item.Title}
+                avatar={item.image}
                 writer={item.User_name}
                 blue={item.Blue}
                 likes={item.Likes}

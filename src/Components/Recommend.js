@@ -105,6 +105,7 @@ const Recommend = ({
   category,
   thumbnail,
   title,
+  avatar,
   writer,
   blue,
   likes,
@@ -136,7 +137,7 @@ const Recommend = ({
               : title}
           </Title>
           <SubInfo>
-            <Avatar bgUrl={thumbnail} />
+            <Avatar bgUrl={avatar} />
             <Badge>
               {writer}
               {blue === 1 && (
@@ -173,6 +174,7 @@ Recommend.propTypes = {
   category: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
   writer: PropTypes.string.isRequired,
   blue: PropTypes.number.isRequired,
   likes: PropTypes.number.isRequired,
