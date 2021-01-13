@@ -84,7 +84,7 @@ const Title = styled.div`
   font-size: 23px;
   font-weight: bold;
   color: #525252;
-  &#rocommend {
+  &#recommend {
     font-size: 18px;
     margin-top: 0px;
   }
@@ -344,7 +344,7 @@ class DetailPosting extends Component {
           <Modal />
         </Container>
         <RecommendWrapper>
-          <Title id="rocommend">Recommended For You</Title>
+          <Title id="recommend">Recommended For You</Title>
           {recommend?.length > 0 &&
             recommend.map((item, index) => (
               <Recommend
@@ -358,7 +358,7 @@ class DetailPosting extends Component {
                 writer={item.User_name}
                 blue={item.Blue}
                 likes={item.Likes}
-                view={item.Views}
+                views={item.Views}
                 date={item.Date}
                 updateContainer={updateContainer}
               />
