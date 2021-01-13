@@ -39,11 +39,12 @@ const SidebarContainer = styled.div`
 const Category = styled.div`
   width: 100%;
   height: 560px; // TODO: make dynamic for number of categories
-  border-radius: 35px;
+  border-radius: 20px;
   // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   padding: 25px 20px;
-  background-color: white;
+  /* background-color: white; */
+  /* box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px; */
 `;
 
 const Title = styled.ul`

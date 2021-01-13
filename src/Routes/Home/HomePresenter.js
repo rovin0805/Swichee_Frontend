@@ -19,6 +19,7 @@ const Container = styled.div`
 const MainContent = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 `;
 
 const MainTitle = styled.div`
@@ -28,6 +29,7 @@ const MainTitle = styled.div`
   font-size: 18px;
   display: flex;
   align-items: center;
+  color: #23272b;
 `;
 
 const PostContainer = styled.div`
@@ -42,7 +44,7 @@ const HomePresenter = ({ thumbnails, infinite, trendings, loading, error }) => {
       ) : (
         <Container>
           <MainTitle>
-            <FaHotjar style={{ marginRight: 5 }} color="#ff9900" size={20} />
+            <FaHotjar style={{ marginRight: 5 }} color="#23272B" size={20} />
             Trending Posts
           </MainTitle>
           {error ? (
@@ -51,14 +53,14 @@ const HomePresenter = ({ thumbnails, infinite, trendings, loading, error }) => {
             <Trendings trendings={trendings} />
           )}
           <div>
-            <MainTitle>
+            {/* <MainTitle>
               <AiOutlineFieldTime
                 style={{ marginRight: 5 }}
                 color="#ff9900"
                 size={25}
               />
               Recent Posts
-            </MainTitle>
+            </MainTitle> */}
             <MainContent>
               {error ? (
                 error && <Message color="#D3D3D3" text={error} />

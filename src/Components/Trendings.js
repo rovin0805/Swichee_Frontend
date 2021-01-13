@@ -4,7 +4,7 @@ import { trendingImages } from "../testData";
 import "./Trendings.css";
 import PropTypes from "prop-types";
 import { FaHotjar } from "react-icons/fa";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TrendingContainer = styled.div`
   width: 100%;
@@ -12,6 +12,26 @@ const TrendingContainer = styled.div`
   white-space: nowrap;
   overflow: hidden;
   line-height: 148px; //different from height because of border, should be the same as height in the end
+`;
+
+const Img = styled.img.attrs((props) => ({
+  src: props.src,
+}))`
+  width: 180px;
+  height: 180px;
+  cursor: pointer;
+  border-radius: 10px;
+  position: relative;
+`;
+
+const InfoBox = styled.div`
+  background-color: white;
+  position: absolute;
+  width: 180px;
+  height: 80px;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
 `;
 
 class Trendings extends Component {
@@ -77,27 +97,26 @@ class Trendings extends Component {
       next,
       handlePrevious,
       handleNext,
-      trendings,
     } = this;
+    const { trendings } = this.props;
     return (
       <>
-        <div id="title">
-          <FaHotjar style={{ marginRight: 5 }} color="#ff9900" size={20} />
-          Trending
-        </div>
         <TrendingContainer>
           <div id="wrapper">
             <div id="carousel" ref={carousel}>
               <div id="content" ref={content}>
-                {/* {this.props.thumbnails.map(({ Thumbnail }, index) => ( */}
-                {trendingImages.map((Thumbnail, index) => (
-                  <img
-                    key={`${Thumbnail}-${index}`}
-                    src={Thumbnail}
-                    alt={`${Thumbnail}-${index}`}
-                    className="item"
-                  />
-                ))}
+                {trendings?.length > 0 &&
+                  trendings.map((post, index) => (
+                    <Link
+                      to={`/posting?id=${post.Contents_id}&type_id=${post.type_id}&category=${post.Category}`}
+                      key={index}
+                      id="link"
+                      style={{ height: 180 }}
+                    >
+                      <Img src={post.Thumbnail} alt={`${post}-${index}`} />
+                      {/* <InfoBox>dddddddddddddd</InfoBox> */}
+                    </Link>
+                  ))}
               </div>
             </div>
             <button id="prev" ref={previous} onClick={handlePrevious}>

@@ -51,3 +51,25 @@ export const feedApi = {
       },
     }),
 };
+
+export const searchApi = {
+  allPosts: (term) =>
+    api.get("api/search_all", {
+      params: {
+        search: term,
+      },
+    }),
+  people: (name) =>
+    api.get("api/search_people", {
+      params: {
+        search: name,
+      },
+    }),
+  posts: (term, type_id) =>
+    api.get("api/search", {
+      params: {
+        search: term,
+        type_id,
+      },
+    }),
+};

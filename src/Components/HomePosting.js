@@ -21,9 +21,10 @@ const Post = styled.div`
     margin: 20px 0;
   }
   border-radius: 20px;
-  // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
+  box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   font-size: 18px;
-  color: #383838;
+  /* color: #383838;
+  border: 1px solid lightgray; */
 `;
 
 const Header = styled.div`
