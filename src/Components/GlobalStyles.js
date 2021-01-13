@@ -4,7 +4,7 @@ import reset from "styled-reset";
 const globalStyles = createGlobalStyle`
     ${reset};
     a{
-        text-decoration:none;
+        text-decoration:none!important;
         color:inherit;
     }
     *{
