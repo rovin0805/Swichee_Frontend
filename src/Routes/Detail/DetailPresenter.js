@@ -5,7 +5,7 @@ import Message from "Components/Message";
 import DetailPosting from "Components/DetailPosting";
 
 const Container = styled.div`
-  width: 800px;
+  max-width: 800px;
   margin: 0 auto;
   margin-top: 50px;
   display: flex;

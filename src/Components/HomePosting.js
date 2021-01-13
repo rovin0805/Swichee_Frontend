@@ -15,7 +15,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 
 const Post = styled.div`
   background-color: white;
-  width: 90%;
+  width: 100%;
   margin: 40px 0;
   :first-child {
     margin: 20px 0;
@@ -24,6 +24,14 @@ const Post = styled.div`
   // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   font-size: 18px;
   color: #383838;
+  @media only screen and (min-width: 768px) and(max-width: 1024) {
+    align-items: center;
+    width: 100vw;
+  }
+  @media only screen and (min-width: 1025) {
+    align-items: center;
+    width: 600px;
+  }
 `;
 
 const Header = styled.div`
@@ -74,13 +82,14 @@ const ImgContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  padding : 20px;
 `;
 
 const Img = styled.img.attrs((props) => ({
   src: props.bgUrl,
 }))`
-  width: 450px; //fixed
-  height: 450px; //fixed
+  width: 100%;
+  height: auto;
   border-radius: 20px;
   transition: 0.3s all ease-in-out;
   &:hover {

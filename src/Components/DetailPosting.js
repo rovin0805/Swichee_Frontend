@@ -17,6 +17,7 @@ import { IoOptionsOutline } from "react-icons/io5";
 
 const Container = styled.div`
   margin: 30px;
+
 `;
 
 const SliderWrapper = styled.div`
@@ -39,8 +40,8 @@ const Img = styled.img.attrs((props) => ({
     border-radius: 20px;
   }
   &#blog {
-    width: 100%;
-    max-height: 300px;
+    width: 60%;
+    height: auto;
   }
 `;
 
@@ -74,6 +75,7 @@ const Text = styled.span`
 
 const Title = styled.div`
   margin-top: 40px;
+  margin-left: 20px;
   font-size: 23px;
   font-weight: bold;
   color: #525252;
@@ -167,11 +169,11 @@ const CommentsTitle = styled.div`
 `;
 
 const RecommendWrapper = styled.div`
-  background-color: #f0f0f0;
   padding: 30px;
   padding-bottom: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  background-color: #f0f0f0;
 `;
 
 class DetailPosting extends Component {

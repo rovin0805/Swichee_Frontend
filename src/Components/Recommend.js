@@ -12,7 +12,7 @@ import { CgFileDocument } from "react-icons/cg";
 
 const Container = styled.div`
   display: flex;
-  height: 150px;
+  width: 100vw;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   margin: 20px 0;
@@ -22,24 +22,43 @@ const Container = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+  @media only screen and (min-width: 300px) {
+    width:100%;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const ImageContainer = styled.div`
   overflow: hidden;
-  max-width: 40%;
-  max-height: 200px;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  margin-left: 10px;
+  @media only screen and (max-width: 699px) {
+    margin : 10px 0px 10px 10px;
+    max-width: 150px;
+    border-radius: 20px;
+  }
+  @media only screen and (min-width: 700px){
+    width: 25%;
+    border-radius: 20px;
+    margin : 10px 0px 10px 10px;
+  }
 `;
 
 const Image = styled.img.attrs((props) => ({
   src: props.bgUrl,
 }))`
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
+  @media only screen and (min-width: 300px) {
+    width:100%;
+    height:auto;
+  }
 `;
 
 // const Image = styled.div`
@@ -67,20 +86,43 @@ const Overlay = styled.div`
 `;
 
 const StrInfo = styled.div`
-  padding: 30px;
+  padding: 20px;
+  width: 60%;
+  @media only screen and (max-width: 570px) {
+    display: flex;
+    margin-left: 50px;
+  }
 `;
-
+const Between = styled.div`
+  @media only screen and (max-width: 620px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
 const Title = styled.span`
   font-size: 18px;
   font-weight: bold;
   color: #383838;
+
+  @media only screen and (min-width: 620px){
+    font-size: 23px;
+  }
 `;
 
 const SubInfo = styled.div`
-  margin-top: 50px;
+  
   color: grey;
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 619px) {
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+  }
+  @media only screen and (min-width: 620px) {
+    margin-top: 50px;
+  }
 `;
 
 const Avatar = styled.img.attrs((props) => ({
@@ -90,6 +132,9 @@ const Avatar = styled.img.attrs((props) => ({
   width: 35px;
   height: 35px;
   margin-right: 5px;
+  @media only screen and (max-width: 570px) {
+    margin: 3px 3px 3px 3px;
+  }
 `;
 
 const Badge = styled.div`
@@ -97,6 +142,10 @@ const Badge = styled.div`
   display: flex;
   align-items: center;
   font-size: 16px;
+  @media only screen and (max-width: 619px) {
+    display : float;
+    padding-right: 0px;
+  }
 `;
 
 const Recommend = ({
@@ -130,6 +179,7 @@ const Recommend = ({
           </Overlay>
         </ImageContainer>
         <StrInfo>
+          <Between>
           <Title>
             {title.length > 20
               ? `${title.substring(0, 30).replace(/\.+$/, "")}...`
@@ -161,6 +211,7 @@ const Recommend = ({
             </Badge>
             <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
           </SubInfo>
+          </Between>
         </StrInfo>
       </Container>
     </Link>
