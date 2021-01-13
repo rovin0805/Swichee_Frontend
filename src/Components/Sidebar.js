@@ -4,12 +4,11 @@ import * as Scroll from "react-scroll";
 import { AiOutlineArrowUp } from "react-icons/ai";
 
 const categories = [
-  "No Choice",
   "Funding",
   "Music",
   "Sports",
   "Gaming",
-  "Codemy",
+  "Comedy",
   "Entertainment",
   "News & Politics",
   "Education",
@@ -39,7 +38,7 @@ const SidebarContainer = styled.div`
 
 const Category = styled.div`
   width: 100%;
-  height: 580px; // TODO: make dynamic for number of categories
+  height: 560px; // TODO: make dynamic for number of categories
   border-radius: 35px;
   // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   margin-top: 20px;
