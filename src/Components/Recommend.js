@@ -109,7 +109,7 @@ const Recommend = ({
   writer,
   blue,
   likes,
-  view,
+  views,
   date,
   updateContainer,
 }) => {
@@ -158,7 +158,7 @@ const Recommend = ({
             </Badge>
             <Badge>
               <AiOutlineEye style={{ marginRight: 3 }} size={20} />
-              {view > 999 ? `${Math.floor(view * 0.001)}K` : view}
+              {views > 999 ? `${Math.floor(views * 0.001)}K` : views}
             </Badge>
             <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
           </SubInfo>
@@ -178,7 +178,7 @@ Recommend.propTypes = {
   writer: PropTypes.string.isRequired,
   blue: PropTypes.number.isRequired,
   likes: PropTypes.number.isRequired,
-  view: PropTypes.number.isRequired,
+  views: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   updateContainer: PropTypes.func.isRequired,
 };
