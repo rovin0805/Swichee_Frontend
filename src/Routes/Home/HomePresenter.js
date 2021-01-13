@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { AiOutlineFieldTime } from "react-icons/ai";
+import { FaHotjar } from "react-icons/fa";
 import HomePosting from "Components/HomePosting";
 import Trendings from "Components/Trendings";
 import Sidebar from "Components/Sidebar";
@@ -40,7 +41,15 @@ const HomePresenter = ({ thumbnails, infinite, trendings, loading, error }) => {
         <Loader />
       ) : (
         <Container>
-          <Trendings trendings={trendings} />
+          <MainTitle>
+            <FaHotjar style={{ marginRight: 5 }} color="#ff9900" size={20} />
+            Trending Posts
+          </MainTitle>
+          {error ? (
+            error && <Message color="#D3D3D3" text={error} />
+          ) : (
+            <Trendings trendings={trendings} />
+          )}
           <div>
             <MainTitle>
               <AiOutlineFieldTime
