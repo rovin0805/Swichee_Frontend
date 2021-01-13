@@ -124,7 +124,9 @@ const DropBtn = styled.button`
   font-size: 28px;
   border: none;
   cursor: pointer;
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const DropDownItem = styled.div`
