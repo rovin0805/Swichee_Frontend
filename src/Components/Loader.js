@@ -11,8 +11,8 @@ const Container = styled.div`
   font-size: 28px;
   margin-top: 20px;
   color: #525252; */
-  height: 90vh;
-  width: 100vw;
+  height: 80vh;
+  width: 100%;
   font-family: "Cabin Condensed", sans-serif;
   display: flex;
   flex-direction: column;
