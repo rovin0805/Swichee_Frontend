@@ -19,8 +19,8 @@ const Container = styled.div`
 `;
 
 const SliderWrapper = styled.div`
-  width: 500px;
-  height: 500px;
+  width: 80%;
+  height: 80%;
   margin: 0 auto;
 `;
 
@@ -180,6 +180,12 @@ const RecommendWrapper = styled.div`
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 `;
+const Down400px = styled.div`
+  @media only screen and (max-width: 400px) {
+    display: flex;
+    flex-direction: column;
+  }
+`
 
 class DetailPosting extends Component {
   constructor(props) {

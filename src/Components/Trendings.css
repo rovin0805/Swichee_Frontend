@@ -42,12 +42,14 @@
   left: 0;
   transform: translate(50%, -50%);
   display: none;
+  opacity: 0.5;
 }
 
 #next {
   top: 50%;
   right: 0;
   transform: translate(-50%, -50%);
+  opacity: 0.5;
 }
 
 #content {
@@ -56,11 +58,4 @@
   grid-auto-flow: column;
   margin: auto;
   box-sizing: border-box;
-}
-
-.item {
-  width: 180px;
-  height: 180px;
-  background: green;
-  cursor: pointer;
 }

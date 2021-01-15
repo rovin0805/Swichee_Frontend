@@ -26,6 +26,8 @@ const categories = [
 ];
 
 const SidebarContainer = styled.div`
+  margin-left: 30px;
+  margin-right: 30px;
   width: 250px;
   max-height: calc(90vh - 50px);
   position: sticky;
@@ -34,16 +36,20 @@ const SidebarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: left;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const Category = styled.div`
   width: 100%;
   height: 560px; // TODO: make dynamic for number of categories
-  border-radius: 35px;
+  border-radius: 20px;
   // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
-  margin-top: 20px;
-  padding: 25px 20px;
-  background-color: white;
+  /* margin-top: 20px; */
+  padding: 25px 10px;
+  /* background-color: white; */
+  /* box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px; */
 `;
 
 const Title = styled.ul`

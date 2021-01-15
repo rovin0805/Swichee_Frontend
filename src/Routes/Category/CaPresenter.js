@@ -6,7 +6,7 @@ import Loader from "Components/Loader";
 import Message from "Components/Message";
 
 const Container = styled.div`
-  width: 800px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,7 @@ const MainContent = styled.div`
 const MainTitle = styled.div`
   color: #ff9900;
   margin-top: 40px;
+  margin-left: 20px;
   font-weight: bold;
   font-size: 20px;
   display: flex;
@@ -29,37 +30,16 @@ const MainTitle = styled.div`
 
 const PostContainer = styled.div`
   width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
 `;
-
-const categories = [
-  "No Choice",
-  "Funding",
-  "Music",
-  "Sports",
-  "Gaming",
-  "Codemy",
-  "Entertainment",
-  "News & Politics",
-  "Education",
-  "Pets & Animal",
-  "Travel & Events",
-  "Science & Tech",
-  "People & Blogs",
-  "Fashion & Style",
-  "Autos & Vehicles",
-  "Film & Animation",
-  "Food & Recipe",
-  "Webtoon",
-  "Daily",
-  "Illustration",
-];
 
 const Background = styled.img.attrs((props) => ({
   src: props.bgUrl,
 }))`
   margin-top: 50px;
   width: 100%;
-  max-height: 250px;
+  max-height: 100px;
   overflow: hidden;
 `;
 
@@ -68,13 +48,14 @@ const CaPresenter = ({ categories, theme, loading, error, updateContainer }) =>
     <Loader />
   ) : (
     <Container>
-      <Background
+      {/* <Background
         bgUrl={
-          "https://mk0madklubben208sy3o.kinstacdn.com/wp-content/uploads/2020/07/restaurant_hero_FCKbh.jpg"
+          require(`Assets/${theme.match(/(^\w+)&?/i)[1].toLowerCase()}.jpg`)
+            .default
         }
-      />
+      /> */}
       <div>
-        <MainTitle>{theme}</MainTitle>
+        <MainTitle>{theme.replace("&", " & ")}</MainTitle>
         <MainContent>
           {error ? (
             error && <Message color="#D3D3D3" text={error} />
@@ -92,6 +73,7 @@ const CaPresenter = ({ categories, theme, loading, error, updateContainer }) =>
                       contentsType={ca.type_id}
                       title={ca.Title}
                       writer={ca.User_name}
+                      nickname={ca.Nickname}
                       blue={ca.blue}
                       likes={ca.Likes}
                       views={ca.Views}
