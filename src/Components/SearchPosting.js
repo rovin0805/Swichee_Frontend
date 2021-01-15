@@ -11,8 +11,10 @@ import { MdAudiotrack } from "react-icons/md";
 import { CgFileDocument } from "react-icons/cg";
 
 const Container = styled.div`
-  width: 350px;
-  height: 300px;
+  width: 250px;
+  height: 200px;
+  margin-left:auto;
+  margin-right:auto;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   margin-bottom: 30px;
@@ -22,6 +24,11 @@ const Container = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+  @media only screen and (min-width: 600px) {
+    width: 350px;
+    height: 300px;
+  }
+
 `;
 
 const ImageContainer = styled.div`
@@ -57,6 +64,10 @@ const Overlay = styled.div`
 
 const StrInfo = styled.div`
   padding: 20px;
+  @media only screen and (max-width: 599px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 const Title = styled.span`
@@ -85,6 +96,9 @@ const Badge = styled.div`
   display: flex;
   align-items: center;
   font-size: 16px;
+  @media only screen and (max-width: 599px) {
+    display: none;
+  }
 `;
 
 const User = styled.div`
@@ -92,12 +106,16 @@ const User = styled.div`
   align-items: center;
   margin: 10px 0;
   font-weight: bold;
+  
 `;
 
 const SubInfo = styled.div`
   color: grey;
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const Posts = ({

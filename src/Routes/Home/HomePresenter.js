@@ -9,7 +9,7 @@ import Loader from "Components/Loader";
 import Message from "Components/Message";
 
 const Container = styled.div`
-  width: 800px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -20,6 +20,8 @@ const MainContent = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 `;
 
 const MainTitle = styled.div`
