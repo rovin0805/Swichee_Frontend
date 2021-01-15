@@ -26,8 +26,8 @@ const Container = styled.div`
 
 const ImageContainer = styled.div`
   overflow: hidden;
-  max-width: 40%;
-  max-height: 200px;
+  max-width: 30%;
+  max-height: 100%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -39,7 +39,7 @@ const Image = styled.img.attrs((props) => ({
   src: props.bgUrl,
 }))`
   width: 100%;
-  height: 100%;
+  height: auto;
 `;
 
 // const Image = styled.div`
@@ -68,6 +68,17 @@ const Overlay = styled.div`
 
 const StrInfo = styled.div`
   padding: 30px;
+  margin-left: 10px;
+  @media only screen and (max-width: 538px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+
 `;
 
 const Title = styled.span`
@@ -97,7 +108,22 @@ const Badge = styled.div`
   display: flex;
   align-items: center;
   font-size: 16px;
+  
 `;
+
+const MediaBadge = styled.div`
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  @media only screen and (max-width: 538px) {
+    display: none;
+  }
+`;
+
+const Displaynone = styled.div`
+
+`
 
 const Recommend = ({
   contentsId,
@@ -140,6 +166,8 @@ const Recommend = ({
             <Avatar bgUrl={avatar} />
             <Badge>
               {writer}
+            </Badge>
+            <MediaBadge>
               {blue === 1 && (
                 <HiBadgeCheck
                   color="#488dea"
@@ -147,20 +175,20 @@ const Recommend = ({
                   size={20}
                 />
               )}
-            </Badge>
-            <Badge>
+            </MediaBadge>
+            <MediaBadge>
               <AiOutlineHeart
                 color="red"
                 style={{ marginRight: 3 }}
                 size={20}
               />
               {likes > 999 ? `${Math.floor(likes * 0.001)}K` : likes}
-            </Badge>
-            <Badge>
+            </MediaBadge>
+            <MediaBadge>
               <AiOutlineEye style={{ marginRight: 3 }} size={20} />
               {views > 999 ? `${Math.floor(views * 0.001)}K` : views}
-            </Badge>
-            <Badge>{formatDistanceToNowStrict(koTime)} ago</Badge>
+            </MediaBadge>
+            <MediaBadge>{formatDistanceToNowStrict(koTime)} ago</MediaBadge>
           </SubInfo>
         </StrInfo>
       </Container>

@@ -6,7 +6,7 @@ import { Posts, People } from "Components/SearchPosting";
 import { BiSearchAlt } from "react-icons/bi";
 
 const Container = styled.div`
-  width: 800px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -54,6 +54,7 @@ const Btn = styled.button`
   font-weight: bold;
   background-color: white;
   color: grey;
+  overflow: hidden;
   &:hover {
     color: #ff9900;
   }
@@ -74,8 +75,43 @@ const ResultsNum = styled.div`
 `;
 
 const Grid = styled.div`
-  display: inline-grid;
   grid-template-columns: repeat(2, 1fr);
+  margin-left:10px;
+  margin-right:10px;
+  @media only screen and (min-width: 520px) and (max-width: 599px) {
+    display: inline-grid;
+  }
+  @media only screen and  (min-width: 600px) and (max-width: 767px) {
+
+  }
+  @media only screen and (min-width: 768px) {
+    display: inline-grid;
+  }
+`;
+
+const PersonGrid = styled.div`
+  grid-template-columns: repeat(2, 1fr);
+  margin-left:10px;
+  margin-right:10px;
+  @media only screen and (max-width: 519px) {
+    margin-left:auto;
+    margin-right:auto;
+  }
+  @media only screen and (min-width: 520px) and (max-width: 599px) {
+    display: grid;
+    justify-content: space-evenly;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  @media only screen and  (min-width: 600px) and (max-width: 767px) {
+    margin-left:auto;
+    margin-right:auto;
+  }
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    justify-content: space-evenly;
+    margin-left: 13%;
+  }
 `;
 
 const Subject = styled.div`
@@ -83,6 +119,15 @@ const Subject = styled.div`
   font-weight: bold;
   color: #ff9900;
   margin: 20px 0;
+  margin-left: 20px;
+  @media only screen and (max-width: 520px){
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media only screen and  (min-width: 600px) and (max-width: 767px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const SearchPresenter = ({
@@ -157,7 +202,7 @@ const SearchPresenter = ({
           {people?.length > 0 && (
             <>
               <Subject>Users Results : {people.length}</Subject>
-              <Grid>
+              <PersonGrid>
                 {people.map((person, index) => (
                   <People
                     key={index}
@@ -167,7 +212,7 @@ const SearchPresenter = ({
                     nickname={person.Nickname}
                   />
                 ))}
-              </Grid>
+              </PersonGrid>
             </>
           )}
           {posts?.length > 0 && (
