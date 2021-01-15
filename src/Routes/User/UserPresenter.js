@@ -77,7 +77,7 @@ const Content = styled.div`
   }
 `;
 
-const Btn = styled.button`
+const Btn = styled.div`
   cursor: pointer;
   outline: none;
   width: 100%;
@@ -161,15 +161,13 @@ const UserPresenter = ({ loading, error }) => {
                   </div>
                 </div>
                 <p className="forgot-password text-right">
-                  <a href="#">Forgot password?</a>
+                  <a href="#open-modal">Forgot password?</a>
                 </p>
               </SideImg>
             </Content>
             <BoxContent>
               <a href="#open-modal">
-                <button type="submit" className="btn btn-dark btn-lg btn-block">
-                  Sign In
-                </button>
+                <div className="btn btn-dark btn-lg btn-block">Sign In</div>
               </a>
             </BoxContent>
             <BoxContent>
