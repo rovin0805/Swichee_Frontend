@@ -14,7 +14,7 @@ const globalStyles = createGlobalStyle`
         outline: none;
     }
     body{
-        font-family:-apple-system, BlinkMacSystemFont, 'Noto Sans KR', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: "Helvetica Neue", 'Noto Sans KR', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         padding-top: 50px;
         font-size: 12px;
         background-color: #f4f5f7;
