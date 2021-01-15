@@ -1,15 +1,16 @@
 .modal-window {
     position: fixed;
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.5);
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 999;
+    z-index: 998;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s;
+    border-radius: 10px;
   }
   .modal-window:target {
     visibility: visible;
@@ -17,17 +18,17 @@
     pointer-events: auto;
   }
   .modal-window > div {
-    width: 350px;
+    width: 400px;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 2em;
     background: #f4f5f7;
+    box-shadow: 0 0 20px rgb(14, 13, 13);
+    align-items: center;
   }
-  .modal-window header {
-    font-weight: bold;
-  }
+
   .modal-window h1 {
     font-size: 150%;
     margin: 0 0 15px;
@@ -35,7 +36,7 @@
   .modal-close {
     color: rgb(0, 0, 0);
     line-height: 50px;
-    font-size: 80%;
+    font-size: 28px;
     position: absolute;
     right: 0;
     text-align: center;
