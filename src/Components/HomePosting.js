@@ -30,7 +30,7 @@ const Post = styled.div`
 
 const Header = styled.div`
   /* padding: 10px 15px 15px 15px; */
-  padding: 15px 47px;
+  padding: 15px 40px;
 `;
 
 const HeaderTop = styled.div`
@@ -96,6 +96,38 @@ const Img = styled.img.attrs((props) => ({
   margin-right:auto;
   width: 90%; //fixed
   height: 90%; //fixed
+  @media only screen and (min-width: 400px) and (max-width: 459px) {
+    width: 360px;
+    height: 360px;
+  }
+  @media only screen and (min-width: 460px) and (max-width: 499px) {
+    width: 390px;
+    height: 390px;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 533px) {
+    width: 420px;
+    height: 420px;
+  }
+  @media only screen and (min-width: 534px) and (max-width: 599px) {
+    width: 450px;
+    height: 450px;
+  }
+  @media only screen and (min-width: 600px) and (max-width: 645px) {
+    width: 300px;
+    height: 300px;
+  }
+  @media only screen and (min-width: 646px) and (max-width: 721px) {
+    width: 350px;
+    height: 350px;
+  }
+  @media only screen and  (min-width: 722px) and (max-width: 767px) {
+    width: 400px;
+    height: 400px;
+  }
+  @media only screen and (min-width: 768px) {
+    width: 450px;
+    height: 450px;
+  }
   border-radius: 20px;
   transition: 0.3s all ease-in-out;
   &:hover {
