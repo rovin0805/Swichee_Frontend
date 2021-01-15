@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Loader from "Components/Loader";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "Components/Modal.css";
+import Modal from "Components/Modal";
 import logo from "Assets/logo.png";
-import ReactStoreBadges from "react-store-badges";
 
 const Title = styled.div`
   font-size: 25px;
@@ -166,32 +164,13 @@ const UserPresenter = ({ loading, error }) => {
                   <a href="#">Forgot password?</a>
                 </p>
               </SideImg>
-              <div id="open-modal" className="modal-window">
-                <Badge>
-                  <a href="#" title="Close" className="modal-close">
-                    Close
-                  </a>
-                  <Badge style={{ marginRight: 5 }}>
-                    <ReactStoreBadges
-                      platform={"ios"}
-                      url={"https://apps.apple.com/au/app/id1472654007"}
-                      locale={"ko-kr"}
-                    />
-                    <ReactStoreBadges
-                      platform={"android"}
-                      url={
-                        "https://play.google.com/store/apps/details?id=com.swichee.swichee&hl=ko&gl=US"
-                      }
-                      locale={"ko-kr"}
-                    />
-                  </Badge>
-                </Badge>
-              </div>
             </Content>
             <BoxContent>
-              <button type="submit" className="btn btn-dark btn-lg btn-block">
-                Sign In
-              </button>
+              <a href="#open-modal">
+                <button type="submit" className="btn btn-dark btn-lg btn-block">
+                  Sign In
+                </button>
+              </a>
             </BoxContent>
             <BoxContent>
               <a href="#open-modal">
@@ -202,6 +181,7 @@ const UserPresenter = ({ loading, error }) => {
               </a>
             </BoxContent>
           </Login>
+          <Modal />
         </Container>
       </form>
     </>
