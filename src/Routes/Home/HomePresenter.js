@@ -20,8 +20,6 @@ const MainContent = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  margin-left: 20px;
-  margin-right: 20px;
 `;
 
 const MainTitle = styled.div`
