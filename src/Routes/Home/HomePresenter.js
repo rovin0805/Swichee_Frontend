@@ -29,7 +29,7 @@ const MainTitle = styled.div`
   font-size: 18px;
   display: flex;
   align-items: center;
-  color: #23272b;
+  color: #ff7675;
 `;
 
 const PostContainer = styled.div`
@@ -44,7 +44,7 @@ const HomePresenter = ({ thumbnails, infinite, trendings, loading, error }) => {
       ) : (
         <Container>
           <MainTitle>
-            <FaHotjar style={{ marginRight: 5 }} color="#23272B" size={20} />
+            <FaHotjar style={{ marginRight: 5 }} color="#ff7675" size={20} />
             Trending Posts
           </MainTitle>
           {error ? (
