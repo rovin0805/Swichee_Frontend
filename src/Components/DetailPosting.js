@@ -75,8 +75,8 @@ const Writer = styled.span`
 
 const Nickname = styled.div`
   color: grey;
-  font-size: 14px;
-  margin-top: 3px;
+  font-size: 15px;
+  margin-top: 5px;
 `;
 
 const Title = styled.div`
