@@ -90,7 +90,6 @@ const Img = styled.img.attrs((props) => ({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 90%; //fixed
@@ -136,8 +135,8 @@ const Img = styled.img.attrs((props) => ({
 
 const Overlay = styled.div`
   position: absolute;
-  right: 70px;
-  top: 50px;
+  right: 15%;
+  top: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
