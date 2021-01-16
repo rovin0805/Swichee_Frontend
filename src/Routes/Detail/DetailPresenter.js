@@ -19,12 +19,19 @@ const Container = styled.div`
 const DetailPresenter = ({
   type,
   postingDetail,
+  photos,
   comments,
   recommend,
   loading,
   error,
   updateContainer,
 }) => {
+  let photoArr = [];
+  if (type === 1) {
+    photos.forEach((element) => {
+      photoArr.push(element.Image);
+    });
+  }
   return loading ? (
     <Loader />
   ) : error ? (
@@ -35,14 +42,14 @@ const DetailPresenter = ({
         <DetailPosting
           key={postingDetail[0].Contents_id}
           type={type}
-          photoImg={postingDetail[0]["GROUP_CONCAT(Image.Image SEPARATOR ',')"]}
+          photoImg={photoArr}
           audioImg={postingDetail[0].Album_image}
           audio={postingDetail[0].Audio}
           video={postingDetail[0].Video}
           blogImg={postingDetail[0].Background_image}
           avatar={postingDetail[0].image}
           writer={postingDetail[0].User_name}
-          nickname={postingDetail[0].Nickname}
+          nickname={postingDetail[0].nickname}
           blue={postingDetail[0].Blue}
           title={postingDetail[0].Title}
           body={postingDetail[0].Contents}

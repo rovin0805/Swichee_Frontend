@@ -10,6 +10,7 @@ class DetailContainer extends React.Component {
     this.state = {
       type: null,
       postingDetail: null,
+      photos: null,
       recommend: null,
       comments: null,
       error: null,
@@ -57,6 +58,11 @@ class DetailContainer extends React.Component {
       await feedApi.addView(parsedId);
       const { data: comments } = await feedApi.comments(parsedId);
       const { data: recommend } = await feedApi.recommend(parsedId, category);
+      if (parsedTypeId === 1) {
+        const { data: photos } = await feedApi.blur(parsedId, parsedTypeId);
+        this.setState({ photos });
+        console.log("photos", photos);
+      }
       this.setState({
         type: parsedTypeId,
         postingDetail,
@@ -84,6 +90,7 @@ class DetailContainer extends React.Component {
   render() {
     const {
       postingDetail,
+      photos,
       type,
       comments,
       recommend,
@@ -94,6 +101,7 @@ class DetailContainer extends React.Component {
       <DetailPresenter
         type={type}
         postingDetail={postingDetail}
+        photos={photos}
         comments={comments}
         recommend={recommend}
         error={error}

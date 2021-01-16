@@ -24,6 +24,13 @@ export const feedApi = {
         type_id,
       },
     }),
+  blur: (id, type_id) =>
+    api.get("api/blur", {
+      params: {
+        id,
+        type_id,
+      },
+    }),
   addView: (id) =>
     api.get("api/add", {
       params: {

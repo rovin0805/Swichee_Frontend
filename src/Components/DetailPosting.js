@@ -232,14 +232,12 @@ class DetailPosting extends Component {
       recommend,
       updateContainer,
     } = this.props;
-    let photoArr = [];
-    if (type === 1) photoArr = photoImg.split(",");
     return (
       <>
         <Container>
           {type === 1 && (
             <SliderWrapper>
-              <Slider photoArr={photoArr} />
+              <Slider photoArr={photoImg} />
             </SliderWrapper>
           )}
           {type === 2 && (
@@ -371,7 +369,7 @@ class DetailPosting extends Component {
 
 DetailPosting.propTypes = {
   type: PropTypes.number.isRequired,
-  photoImg: PropTypes.string,
+  // photoImg: PropTypes.string,
   audioImg: PropTypes.string,
   audio: PropTypes.string,
   video: PropTypes.string,
