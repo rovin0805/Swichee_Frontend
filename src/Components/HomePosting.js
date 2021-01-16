@@ -25,7 +25,6 @@ const Post = styled.div`
   font-size: 18px;
   /* color: #383838;
   border: 1px solid lightgray; */
-
 `;
 
 const Header = styled.div`
@@ -92,8 +91,8 @@ const Img = styled.img.attrs((props) => ({
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 90%; //fixed
   height: 90%; //fixed
   @media only screen and (min-width: 400px) and (max-width: 459px) {
@@ -120,7 +119,7 @@ const Img = styled.img.attrs((props) => ({
     width: 350px;
     height: 350px;
   }
-  @media only screen and  (min-width: 722px) and (max-width: 767px) {
+  @media only screen and (min-width: 722px) and (max-width: 767px) {
     width: 400px;
     height: 400px;
   }
@@ -137,8 +136,8 @@ const Img = styled.img.attrs((props) => ({
 
 const Overlay = styled.div`
   position: absolute;
-  right: 50px;
-  top: 30px;
+  right: 70px;
+  top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
