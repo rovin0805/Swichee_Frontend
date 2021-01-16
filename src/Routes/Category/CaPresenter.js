@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import HomePosting from "Components/HomePosting";
 import Sidebar from "Components/Sidebar";
 import Loader from "Components/Loader";
@@ -45,9 +46,17 @@ const Background = styled.img.attrs((props) => ({
 
 const CaPresenter = ({ categories, theme, loading, error, updateContainer }) =>
   loading ? (
-    <Loader />
+    <>
+      <Helmet>
+        <title>Loading | Swichee</title>
+      </Helmet>
+      <Loader />
+    </>
   ) : (
     <Container>
+      <Helmet>
+        <title>{theme} | Swichee</title>
+      </Helmet>
       {/* <Background
         bgUrl={
           require(`Assets/${theme.match(/(^\w+)&?/i)[1].toLowerCase()}.jpg`)

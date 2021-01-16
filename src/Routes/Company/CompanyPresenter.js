@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import Loader from "Components/Loader";
 // import nob from "Assets/nob.png";
 // import nob2 from "Assets/nob2.png";
@@ -114,6 +115,9 @@ const Logo = styled.div`
 const CompanyPresenter = ({ loading, error }) => {
   return (
     <>
+      <Helmet>
+        <title>Swichee</title>
+      </Helmet>
       {loading ? (
         <Loader />
       ) : (

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "Components/Modal";
 import logo from "Assets/logo.png";
@@ -112,6 +113,9 @@ const Logo = styled.div`
 const UserPresenter = ({ loading, error }) => {
   return (
     <>
+      <Helmet>
+        <title>Sign In | Swichee</title>
+      </Helmet>
       <form>
         <Container>
           <Logo>

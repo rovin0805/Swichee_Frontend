@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { FaHotjar } from "react-icons/fa";
 import HomePosting from "Components/HomePosting";
@@ -39,6 +40,9 @@ const PostContainer = styled.div`
 const HomePresenter = ({ thumbnails, infinite, trendings, loading, error }) => {
   return (
     <>
+      <Helmet>
+        <title>Swichee</title>
+      </Helmet>
       {loading ? (
         <Loader />
       ) : (

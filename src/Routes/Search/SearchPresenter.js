@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import Loader from "Components/Loader";
 import Message from "Components/Message";
 import { Posts, People } from "Components/SearchPosting";
@@ -76,13 +77,12 @@ const ResultsNum = styled.div`
 
 const Grid = styled.div`
   grid-template-columns: repeat(2, 1fr);
-  margin-left:10px;
-  margin-right:10px;
+  margin-left: 10px;
+  margin-right: 10px;
   @media only screen and (min-width: 520px) and (max-width: 599px) {
     display: inline-grid;
   }
-  @media only screen and  (min-width: 600px) and (max-width: 767px) {
-
+  @media only screen and (min-width: 600px) and (max-width: 767px) {
   }
   @media only screen and (min-width: 768px) {
     display: inline-grid;
@@ -91,11 +91,11 @@ const Grid = styled.div`
 
 const PersonGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
-  margin-left:10px;
-  margin-right:10px;
+  margin-left: 10px;
+  margin-right: 10px;
   @media only screen and (max-width: 519px) {
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
   }
   @media only screen and (min-width: 520px) and (max-width: 599px) {
     display: grid;
@@ -103,9 +103,9 @@ const PersonGrid = styled.div`
     margin-left: 10%;
     margin-right: 10%;
   }
-  @media only screen and  (min-width: 600px) and (max-width: 767px) {
-    margin-left:auto;
-    margin-right:auto;
+  @media only screen and (min-width: 600px) and (max-width: 767px) {
+    margin-left: auto;
+    margin-right: auto;
   }
   @media only screen and (min-width: 768px) {
     display: grid;
@@ -120,11 +120,11 @@ const Subject = styled.div`
   color: #ff9900;
   margin: 20px 0;
   margin-left: 20px;
-  @media only screen and (max-width: 520px){
+  @media only screen and (max-width: 520px) {
     margin-left: auto;
     margin-right: auto;
   }
-  @media only screen and  (min-width: 600px) and (max-width: 767px) {
+  @media only screen and (min-width: 600px) and (max-width: 767px) {
     margin-left: auto;
     margin-right: auto;
   }
@@ -155,99 +155,104 @@ const SearchPresenter = ({
   const totalResults = postsNum + pplNum;
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
-        <SearchBar>
-          <BiSearchAlt style={{ marginRight: 5 }} size={45} />
-          <Input
-            placeholder="What are you looking for?"
-            value={searchTerm}
-            onChange={updateTerm}
-          ></Input>
-        </SearchBar>
-        <BtnWrapper>
-          <Btn value="6" onClick={getBtnValue}>
-            All
-          </Btn>
-          <Btn value="5" onClick={getBtnValue}>
-            People
-          </Btn>
-          <Btn value="1" onClick={getBtnValue}>
-            Photo
-          </Btn>
-          <Btn value="2" onClick={getBtnValue}>
-            Audio
-          </Btn>
-          <Btn value="3" onClick={getBtnValue}>
-            Video
-          </Btn>
-          <Btn value="4" onClick={getBtnValue}>
-            Blog
-          </Btn>
-        </BtnWrapper>
-      </Form>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          {(people?.length > 0 || posts?.length > 0) && (
-            <ResultsNum>
-              Total
-              <span style={{ color: "#ff9900" }}>{totalResults}</span>
-              {`Result${totalResults === 1 ? "" : "s"} ${
-                totalResults === 1 ? "was" : "were"
-              } found`}
-            </ResultsNum>
-          )}
-          {people?.length > 0 && (
-            <>
-              <Subject>Users Results : {people.length}</Subject>
-              <PersonGrid>
-                {people.map((person, index) => (
-                  <People
-                    key={index}
-                    avatar={person.image}
-                    writer={person.User_name}
-                    blue={person.Blue}
-                    nickname={person.Nickname}
-                  />
-                ))}
-              </PersonGrid>
-            </>
-          )}
-          {posts?.length > 0 && (
-            <>
-              <Subject>Posts Results : {posts.length}</Subject>
-              <Grid>
-                {posts.map((post, index) => (
-                  <Posts
-                    key={index}
-                    id={post.Contents_id}
-                    thumbnail={post.Thumbnail}
-                    title={post.Title}
-                    avatar={post.image}
-                    writer={post.User_name}
-                    blue={post.Blue}
-                    likes={post.Likes}
-                    views={post.Views}
-                    date={post.Date}
-                    typeId={post.type_id}
-                    category={post.Category}
-                  />
-                ))}
-              </Grid>
-            </>
-          )}
-          {error && <Message color="#D3D3D3" text={error} />}
-          {people?.length === 0 && (
-            <Message text="Users Nothing found" color="#95a5a6" />
-          )}
-          {posts?.length === 0 && (
-            <Message text="Posts Nothing found" color="#95a5a6" />
-          )}
-        </>
-      )}
-    </Container>
+    <>
+      <Helmet>
+        <title>Search | Swichee</title>
+      </Helmet>
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <SearchBar>
+            <BiSearchAlt style={{ marginRight: 5 }} size={45} />
+            <Input
+              placeholder="What are you looking for?"
+              value={searchTerm}
+              onChange={updateTerm}
+            ></Input>
+          </SearchBar>
+          <BtnWrapper>
+            <Btn value="6" onClick={getBtnValue}>
+              All
+            </Btn>
+            <Btn value="5" onClick={getBtnValue}>
+              People
+            </Btn>
+            <Btn value="1" onClick={getBtnValue}>
+              Photo
+            </Btn>
+            <Btn value="2" onClick={getBtnValue}>
+              Audio
+            </Btn>
+            <Btn value="3" onClick={getBtnValue}>
+              Video
+            </Btn>
+            <Btn value="4" onClick={getBtnValue}>
+              Blog
+            </Btn>
+          </BtnWrapper>
+        </Form>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            {(people?.length > 0 || posts?.length > 0) && (
+              <ResultsNum>
+                Total
+                <span style={{ color: "#ff9900" }}>{totalResults}</span>
+                {`Result${totalResults === 1 ? "" : "s"} ${
+                  totalResults === 1 ? "was" : "were"
+                } found`}
+              </ResultsNum>
+            )}
+            {people?.length > 0 && (
+              <>
+                <Subject>Users Results : {people.length}</Subject>
+                <PersonGrid>
+                  {people.map((person, index) => (
+                    <People
+                      key={index}
+                      avatar={person.image}
+                      writer={person.User_name}
+                      blue={person.Blue}
+                      nickname={person.Nickname}
+                    />
+                  ))}
+                </PersonGrid>
+              </>
+            )}
+            {posts?.length > 0 && (
+              <>
+                <Subject>Posts Results : {posts.length}</Subject>
+                <Grid>
+                  {posts.map((post, index) => (
+                    <Posts
+                      key={index}
+                      id={post.Contents_id}
+                      thumbnail={post.Thumbnail}
+                      title={post.Title}
+                      avatar={post.image}
+                      writer={post.User_name}
+                      blue={post.Blue}
+                      likes={post.Likes}
+                      views={post.Views}
+                      date={post.Date}
+                      typeId={post.type_id}
+                      category={post.Category}
+                    />
+                  ))}
+                </Grid>
+              </>
+            )}
+            {error && <Message color="#D3D3D3" text={error} />}
+            {people?.length === 0 && (
+              <Message text="Users Nothing found" color="#95a5a6" />
+            )}
+            {posts?.length === 0 && (
+              <Message text="Posts Nothing found" color="#95a5a6" />
+            )}
+          </>
+        )}
+      </Container>
+    </>
   );
 };
 
