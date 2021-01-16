@@ -140,7 +140,9 @@ const DropBtn = styled.button`
   color: grey;
   border: none;
   cursor: pointer;
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const DropDownItem = styled.div`
