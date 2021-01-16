@@ -44,14 +44,6 @@ const InfoColumn = styled.div`
 
 const ImageContainer = styled.div`
   position: relative;
-  &:hover {
-    ${Img} {
-      opacity: 0.5;
-    }
-    ${Info} {
-      opacity: 1;
-    }
-  }
 `;
 
 class Trendings extends Component {
@@ -146,7 +138,7 @@ class Trendings extends Component {
                               : post.Title}
                           </InfoColumn>
                           <InfoColumn>
-                            <AiOutlineHeart color="red" size={20} />
+                            <AiOutlineHeart color="red" size={15} />
                             {post.Likes > 999
                               ? `${Math.floor(post.Likes * 0.001)}K`
                               : post.Likes}
