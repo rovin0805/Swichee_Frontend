@@ -124,11 +124,13 @@ const UserPresenter = ({ loading, error }) => {
                 <Content>
                   <label>Username or Email Address</label>
                 </Content>
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Enter email"
-                />
+                <a href="#open-modal">
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Enter email"
+                  />
+                </a>
               </div>
             </Content>
             <Content>
@@ -136,11 +138,13 @@ const UserPresenter = ({ loading, error }) => {
                 <Content>
                   <label>Password</label>
                 </Content>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Enter password"
-                />
+                <a href="#open-modal">
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Enter password"
+                  />
+                </a>
               </div>
             </Content>
             <Content>
