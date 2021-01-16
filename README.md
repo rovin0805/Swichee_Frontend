@@ -31,7 +31,7 @@
 - [x] 무한 스크롤 구현 [v] + 중복 방지 [v]
 - [x] 컨텐츠 옵션 (dropdown) : 링크 복사 + 신고 --> hover를 onclick으로 수정 [v]
 - [x] 닉네임
-- [ ] Trending api [x] + 렌더링 [ ] + (moving animation effect (?))
+- [x] Trending api [x] + 렌더링 [x] + (moving animation effect (?))
 - [x] 미디어 쿼리
 
 ### Posting Detail

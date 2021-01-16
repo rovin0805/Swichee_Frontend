@@ -3,6 +3,7 @@ import styled from "styled-components";
 import "./Trendings.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const TrendingContainer = styled.div`
   width: 100%;
@@ -12,24 +13,45 @@ const TrendingContainer = styled.div`
   line-height: 148px; //different from height because of border, should be the same as height in the end
 `;
 
-const Img = styled.img.attrs((props) => ({
-  src: props.src,
-}))`
+const Img = styled.div`
+  background-image: linear-gradient(180deg, transparent 0% 50%, white 78%),
+    url(${(props) => props.bgUrl});
   width: 180px;
   height: 180px;
-  cursor: pointer;
   border-radius: 10px;
-  position: relative;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center center;
+  transition: opacity 0.1s linear;
+  border: 0.5px solid lightgray;
 `;
 
-const InfoBox = styled.div`
-  background-color: white;
+const Info = styled.div`
+  bottom: -25%;
+  right: 5%;
   position: absolute;
-  width: 180px;
-  height: 80px;
-  bottom: 0;
+  opacity: 1;
+  transition: opacity 0.1s linear;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+`;
+
+const InfoColumn = styled.div`
+  font-weight: bold;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  &:hover {
+    ${Img} {
+      opacity: 0.5;
+    }
+    ${Info} {
+      opacity: 1;
+    }
+  }
 `;
 
 class Trendings extends Component {
@@ -111,8 +133,26 @@ class Trendings extends Component {
                       id="link"
                       style={{ height: 180 }}
                     >
-                      <Img src={post.Thumbnail} alt={`${post}-${index}`} />
-                      {/* <InfoBox>dddddddddddddd</InfoBox> */}
+                      {/* <Img src={post.Thumbnail} alt={`${post}-${index}`} /> */}
+                      <ImageContainer>
+                        <Img bgUrl={post.Thumbnail} />
+                        <Info>
+                          <InfoColumn>
+                            {post.Title.length > 15
+                              ? `${post.Title.substring(0, 15).replace(
+                                  /\.+$/,
+                                  ""
+                                )}...`
+                              : post.Title}
+                          </InfoColumn>
+                          <InfoColumn>
+                            <AiOutlineHeart color="red" size={20} />
+                            {post.Likes > 999
+                              ? `${Math.floor(post.Likes * 0.001)}K`
+                              : post.Likes}
+                          </InfoColumn>
+                        </Info>
+                      </ImageContainer>
                     </Link>
                   ))}
               </div>
