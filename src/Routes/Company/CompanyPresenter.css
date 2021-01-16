@@ -1,0 +1,49 @@
+
+body { 
+  background-color: white;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.big-type { 
+  font-size: 40px;
+  line-height: 1.0625; 
+  font-weight: 600;
+  font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+  line-height:100%;
+}
+
+p {
+  font-size: 50px;
+}
+
+.masked-copy { 
+  -webkit-background-clip: text;
+  color: transparent !important;
+  
+}
+
+.masked-copy h2 { 
+  color: black;
+  display: inline;
+  font: inherit;
+  line-height:140%;
+}
+
+.masked-copy p {
+  display: inline;
+  line-height:90%;
+}
+
+.texture-orange {
+  color: #e5895f;
+  
+  background-image: url('https://swichee.s3.amazonaws.com/photo-1557682224-5b8590cd9ec5.jpg'); 
+}
+
+.ball {
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0.7;
+}
