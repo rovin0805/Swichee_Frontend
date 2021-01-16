@@ -14,7 +14,7 @@ const TrendingContainer = styled.div`
 `;
 
 const Img = styled.div`
-  background-image: linear-gradient(180deg, transparent 0% 50%, white 78%),
+  background-image: linear-gradient(180deg, transparent 0% 50%, white 83%),
     url(${(props) => props.bgUrl});
   width: 180px;
   height: 180px;
@@ -27,7 +27,7 @@ const Img = styled.div`
 `;
 
 const Info = styled.div`
-  bottom: -25%;
+  bottom: -30%;
   right: 5%;
   position: absolute;
   opacity: 1;
