@@ -1,11 +1,15 @@
 # Swichee Clone Mobile Web Application
 
+## ERROR
+
+- [ ] gh-pages 404
+
 ## To Do
 
 - [x] 모바일 앱 스토어로 연결
 - [x] helmet
 - [ ] 코드 및 파일 정리
-- [ ] 더미 데이터 넣기 20개까지
+- [x] 더미 데이터 넣기
 
 ### Header
 
@@ -77,7 +81,7 @@
 
 - [x] 구현
 - [x] 미디어 쿼리
-- [ ] 완성본 사진 추가
+- [x] 완성본 사진 추가
 
 ### Log in / Sign up 페이지
 
