@@ -17,18 +17,15 @@ const Post = styled.div`
   background-color: white;
   width: 100%;
   margin: 40px 0;
-  :first-child {
-    margin: 20px 0;
-  }
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   font-size: 18px;
-  /* color: #383838;
-  border: 1px solid lightgray; */
+  :first-child {
+    margin: 20px 0;
+  }
 `;
 
 const Header = styled.div`
-  /* padding: 10px 15px 15px 15px; */
   padding: 15px 40px;
 `;
 
@@ -74,8 +71,6 @@ const Badge = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  /* overflow: hidden;
-  max-height: 500px; */
   width: 100%;
   height: 100%;
   position: relative;
@@ -92,8 +87,8 @@ const Img = styled.img.attrs((props) => ({
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  width: 90%; //fixed
-  height: 90%; //fixed
+  width: 90%;
+  height: 90%;
   @media only screen and (min-width: 400px) and (max-width: 459px) {
     width: 360px;
     height: 360px;

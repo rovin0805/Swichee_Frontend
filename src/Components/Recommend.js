@@ -42,17 +42,6 @@ const Image = styled.img.attrs((props) => ({
   height: auto;
 `;
 
-// const Image = styled.div`
-//   border-top-left-radius: 10px;
-//   border-bottom-left-radius: 10px;
-//   width: 100%;
-//   height: 100%;
-//   background-image: url(${(props) => props.bgUrl});
-//   background-size: cover;
-//   background-position: center center;
-//   position: relative;
-// `;
-
 const Overlay = styled.div`
   position: absolute;
   right: 0.75em;
@@ -74,11 +63,9 @@ const StrInfo = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
   }
-  
-
 `;
 
 const Title = styled.span`
@@ -108,7 +95,6 @@ const Badge = styled.div`
   display: flex;
   align-items: center;
   font-size: 16px;
-  
 `;
 
 const MediaBadge = styled.div`
@@ -120,10 +106,6 @@ const MediaBadge = styled.div`
     display: none;
   }
 `;
-
-const Displaynone = styled.div`
-
-`
 
 const Recommend = ({
   contentsId,
@@ -164,9 +146,7 @@ const Recommend = ({
           </Title>
           <SubInfo>
             <Avatar bgUrl={avatar} />
-            <Badge>
-              {writer}
-            </Badge>
+            <Badge>{writer}</Badge>
             <MediaBadge>
               {blue === 1 && (
                 <HiBadgeCheck

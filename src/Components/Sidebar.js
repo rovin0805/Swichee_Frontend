@@ -45,11 +45,7 @@ const Category = styled.div`
   width: 100%;
   height: 560px; // TODO: make dynamic for number of categories
   border-radius: 20px;
-  // box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
-  /* margin-top: 20px; */
   padding: 25px 10px;
-  /* background-color: white; */
-  /* box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px; */
 `;
 
 const Title = styled.ul`

@@ -1,5 +1,9 @@
 # Swichee Clone Mobile Web Application
 
+## File Map
+
+![filemap](src/Assets/filemap.jpg)
+
 ## ERROR
 
 - [ ] gh-pages 404

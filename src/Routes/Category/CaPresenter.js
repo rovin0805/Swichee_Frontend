@@ -35,14 +35,14 @@ const PostContainer = styled.div`
   margin-right: 20px;
 `;
 
-const Background = styled.img.attrs((props) => ({
-  src: props.bgUrl,
-}))`
-  margin-top: 50px;
-  width: 100%;
-  max-height: 100px;
-  overflow: hidden;
-`;
+// const Background = styled.img.attrs((props) => ({
+//   src: props.bgUrl,
+// }))`
+//   margin-top: 50px;
+//   width: 100%;
+//   max-height: 100px;
+//   overflow: hidden;
+// `;
 
 const CaPresenter = ({ categories, theme, loading, error, updateContainer }) =>
   loading ? (
@@ -93,24 +93,6 @@ const CaPresenter = ({ categories, theme, loading, error, updateContainer }) =>
                 ) : (
                   <Message color="#D3D3D3" text={"No contents"} />
                 )}
-                {/* {infinite?.length > 0 &&
-                  infinite.map((infi, index) => (
-                    <HomePosting
-                      key={`post-${index}`}
-                      id={infi.Contents_id}
-                      category={infi.Category}
-                      imageUrl={infi.Thumbnail}
-                      avatar={infi.image}
-                      contentsType={infi.type_id}
-                      title={infi.Title}
-                      writer={infi.User_name}
-                      blue={infi.blue}
-                      likes={infi.Likes}
-                      views={infi.Views}
-                      comments={infi.comment_count}
-                      date={infi.Date}
-                    />
-                  ))} */}
               </PostContainer>
               <Sidebar updateContainer={updateContainer} />
             </>
@@ -123,7 +105,6 @@ const CaPresenter = ({ categories, theme, loading, error, updateContainer }) =>
 CaPresenter.propTypes = {
   categories: PropTypes.array.isRequired,
   theme: PropTypes.string,
-  // infinite: PropTypes.array,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
 };

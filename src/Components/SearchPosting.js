@@ -13,8 +13,8 @@ import { CgFileDocument } from "react-icons/cg";
 const Container = styled.div`
   width: 250px;
   height: 200px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 8px -2px;
   margin-bottom: 30px;
@@ -28,7 +28,6 @@ const Container = styled.div`
     width: 350px;
     height: 300px;
   }
-
 `;
 
 const ImageContainer = styled.div`
@@ -106,7 +105,6 @@ const User = styled.div`
   align-items: center;
   margin: 10px 0;
   font-weight: bold;
-  
 `;
 
 const SubInfo = styled.div`

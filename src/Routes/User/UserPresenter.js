@@ -97,13 +97,6 @@ const SideImg = styled.div`
   justify-content: space-between;
 `;
 
-const Badge = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  margin-right: 10px;
-`;
-
 const Logo = styled.div`
   border-radius: 30%;
   overflow: hidden;

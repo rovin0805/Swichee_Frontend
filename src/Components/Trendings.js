@@ -112,68 +112,65 @@ class Trendings extends Component {
     } = this;
     const { trendings } = this.props;
     return (
-      <>
-        <TrendingContainer>
-          <div id="wrapper">
-            <div id="carousel" ref={carousel}>
-              <div id="content" ref={content}>
-                {trendings?.length > 0 &&
-                  trendings.map((post, index) => (
-                    <Link
-                      to={`/posting?id=${post.Contents_id}&type_id=${post.type_id}&category=${post.Category}`}
-                      key={index}
-                      id="link"
-                      style={{ height: 180 }}
-                    >
-                      {/* <Img src={post.Thumbnail} alt={`${post}-${index}`} /> */}
-                      <ImageContainer>
-                        <Img bgUrl={post.Thumbnail} />
-                        <Info>
-                          <InfoColumn>
-                            {post.Title.length > 15
-                              ? `${post.Title.substring(0, 15).replace(
-                                  /\.+$/,
-                                  ""
-                                )}...`
-                              : post.Title}
-                          </InfoColumn>
-                          <InfoColumn>
-                            <AiOutlineHeart color="red" size={15} />
-                            {post.Likes > 999
-                              ? `${Math.floor(post.Likes * 0.001)}K`
-                              : post.Likes}
-                          </InfoColumn>
-                        </Info>
-                      </ImageContainer>
-                    </Link>
-                  ))}
-              </div>
+      <TrendingContainer>
+        <div id="wrapper">
+          <div id="carousel" ref={carousel}>
+            <div id="content" ref={content}>
+              {trendings?.length > 0 &&
+                trendings.map((post, index) => (
+                  <Link
+                    to={`/posting?id=${post.Contents_id}&type_id=${post.type_id}&category=${post.Category}`}
+                    key={index}
+                    id="link"
+                    style={{ height: 180 }}
+                  >
+                    <ImageContainer>
+                      <Img bgUrl={post.Thumbnail} />
+                      <Info>
+                        <InfoColumn>
+                          {post.Title.length > 15
+                            ? `${post.Title.substring(0, 15).replace(
+                                /\.+$/,
+                                ""
+                              )}...`
+                            : post.Title}
+                        </InfoColumn>
+                        <InfoColumn>
+                          <AiOutlineHeart color="red" size={15} />
+                          {post.Likes > 999
+                            ? `${Math.floor(post.Likes * 0.001)}K`
+                            : post.Likes}
+                        </InfoColumn>
+                      </Info>
+                    </ImageContainer>
+                  </Link>
+                ))}
             </div>
-            <button id="prev" ref={previous} onClick={handlePrevious}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path fill="none" d="M0 0h24v24H0V0z" />
-                <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
-              </svg>
-            </button>
-            <button id="next" ref={next} onClick={handleNext}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path fill="none" d="M0 0h24v24H0V0z" />
-                <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
-              </svg>
-            </button>
           </div>
-        </TrendingContainer>
-      </>
+          <button id="prev" ref={previous} onClick={handlePrevious}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path fill="none" d="M0 0h24v24H0V0z" />
+              <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+            </svg>
+          </button>
+          <button id="next" ref={next} onClick={handleNext}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path fill="none" d="M0 0h24v24H0V0z" />
+              <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+            </svg>
+          </button>
+        </div>
+      </TrendingContainer>
     );
   }
 }

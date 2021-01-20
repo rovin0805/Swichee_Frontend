@@ -12,7 +12,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-
   background-color: white;
   border-radius: 30px;
 `;

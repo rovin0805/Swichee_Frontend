@@ -1,8 +1,5 @@
 import React from "react";
 import UserPresenter from "./UserPresenter";
-import { feedApi } from "../../Api";
-
-
 class UserContainer extends React.Component {
   constructor() {
     super();
@@ -23,16 +20,10 @@ class UserContainer extends React.Component {
       });
     }
   }
-  
-render() {
-  const { error, loading } = this.state;
-    return (
-        <UserPresenter
-        error={error}
-        loading={loading}
-        />
-        
-    );
+
+  render() {
+    const { error, loading } = this.state;
+    return <UserPresenter error={error} loading={loading} />;
   }
 }
 
